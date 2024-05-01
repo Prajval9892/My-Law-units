@@ -32,5 +32,5 @@ urlpatterns = [
     path('home/AllToDo/',views.alltodo,name="alltodo"),
     path('home/Dashboard/',views.Dashboard,name="Dashboard"),
     path('signup/',views.Signup),
-    path('calendar/',views.Calender),
+    path('calender/',views.Calender,name="Calender"),
 ]
