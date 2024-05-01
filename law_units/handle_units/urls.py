@@ -22,5 +22,7 @@ urlpatterns = [
     path('index/', views.index),
     path('cases/',views.cases),
     path('home/',views.home),
-    path('forgotpassword/',views.forgotpassword)
+    path('forgotpassword/',views.forgotpassword),
+    path('Documents/',views.document),
+    path('CompletedToDo/',views.todo),
 ]
