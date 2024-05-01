@@ -19,8 +19,17 @@ def home(request):
 def forgotpassword(request):
     return render(request,"ForgotPassword.html")
 
-def todo(request):
+def completedtodo(request):
     return render(request,"CompletedToDo.html")
+
+def upcomingtodo(request):
+    return render(request,"UpcomingToDo.html")
+
+def alltodo(request):
+    return render(request,"AllToDo.html")
+
+def pendingtodo(request):
+    return render(request,"PendingToDo.html")
 
 def document(request):
     return render(request,"Document.html")
