@@ -1,30 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
     
-<!-- Mirrored from coderthemes.com/hyper/saas/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Oct 2023 18:58:26 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Dashboard</title>
+        <title>All To-DoS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{% static '/images/favicon.ico' %}">
-        
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
         <!-- Theme Config Js -->
-        <script src="{% static '/js/hyper-config.js' %}"></script>
+        <script src="{% static 'js/hyper-config.js' %}"></script>
 
         <!-- App css -->
-        <link href="{% static '/css/app-saas.min.css' %}" rel="stylesheet" type="text/css" id="app-style" />
-        
-       
+        <link href="{% static 'css/app-saas.min.css' %}" rel="stylesheet" type="text/css" id="app-style" />
 
         <!-- Icons css -->
-        <link href="{% static '/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        
+        <link href="{% static 'vendor/simplemde/simplemde.min.css' %}" rel="stylesheet" type="text/css" />                                                    
+
+        <!-- SimpleMDE js -->
+        <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
+        <!-- SimpleMDE demo -->
+        <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
     </head>
 
     <body>
@@ -40,22 +42,22 @@
                         <!-- Topbar Brand Logo -->
                         <div class="logo-topbar">
                             <!-- Logo light -->
-                            <a href="index" class="logo-light">
+                            <a href="index.html" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="{% static '/images/logo.png' %}" alt="logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{% static '/images/logo.png' %}" alt="small logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="small logo">
                                 </span>
                             </a>
 
                             <!-- Logo Dark -->
-                            <a href="index" class="logo-dark">
+                            <a href="index.html" class="logo-dark">
                                 <span class="logo-lg">
-                                    <img src="{% static '/images/logo.png' %}" alt="dark logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="dark logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{% static '/images/logo.png' %}" alt="small logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="small logo">
                                 </span>
                             </a>
                         </div>
@@ -159,7 +161,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
                                                     <div class="notify-icon">
-                                                        <img src="{% static '/images/users/avatar-2.jpg' %}" class="img-fluid rounded-circle" alt="" />
+                                                        <img src="{% static 'images/users/avatar-2.jpg' %}" class="img-fluid rounded-circle" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -197,7 +199,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
                                                     <div class="notify-icon">
-                                                        <img src="{% static '/images/users/avatar-4.jpg' %}" class="img-fluid rounded-circle" alt="" />
+                                                        <img src="{% static 'images/users/avatar-4.jpg' %}" class="img-fluid rounded-circle" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -231,7 +233,7 @@
                                     <div class="row g-0">
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Home">
+                                            <a class="dropdown-icon-item" href="Home.html">
                                                 <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
                                                 <span>Home</span>
                                             </a>
@@ -244,7 +246,7 @@
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
+                                            <a class="dropdown-icon-item" href="Cases.html">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
@@ -276,7 +278,7 @@
                                     
                                     <div class="row g-0">  
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="AllToDo">
+                                            <a class="dropdown-icon-item" href="AllToDo.html">
                                                 <i class=" ri-file-list-3-line widget-icon bg-white text-danger"></i>
                                                 <span>To-DOs</span>
                                             </a>
@@ -377,7 +379,7 @@
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
-                                    <img src="{% static '/images/users/Mhatre.jpg' }" alt="user-image" width="32" class="rounded-circle">
+                                    <img src="{% static 'images/users/Mhatre.jpg' %}" alt="user-image" width="32" class="rounded-circle">
                                 </span>
                                 <span class="d-lg-flex flex-column gap-1 d-none">
                                     <h5 class="my-0">Himanshu Mhatre</h5>
@@ -432,20 +434,20 @@
                 <!-- Brand Logo Light -->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
                     </span>
                 </a>
 
                 <!-- Brand Logo Dark -->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="dark logo">
+                        <img src="{% static 'images/logo.png' %}" alt="dark logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
                     </span>
                 </a>
 
@@ -464,7 +466,7 @@
                     <!-- Leftbar User -->
                     <div class="leftbar-user">
                         <a href="pages-profile.html">
-                            <img src="{% static '/images/users/Mhatre.jpg' %}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                            <img src="{% static 'images/users/Mhatre.jpg' %}" alt="user-image" height="42" class="rounded-circle shadow-sm">
                             <span class="leftbar-user-name mt-2">Himanshu Mhatre</span>
                         </a>
                     </div>
@@ -475,7 +477,7 @@
                         <li class="side-nav-title">Navigation</li>
                         
                          <li class="side-nav-item">
-                            <a href="{% url 'home' %}" class="side-nav-link">
+                            <a href="Home.html" class="side-nav-link">
                                 <i class="ri-home-gear-line"></i>
                                 <span> Home </span>
                             </a>
@@ -500,292 +502,7 @@
                                         <a href="NewCase.html">Add Case</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'cases' %}">Running case</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        
-                         <li class="dropdown d-none d-sm-inline-block">
-                            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="ri-apps-2-line font-22"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
-
-                                <div class="p-2">
-                                    <div class="row g-0">
-                                        
-                                        <div class="col">
-                                            <a class="dropdown-icon-item">
-                                                <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
-                                                <span>Home</span>
-                                            </a>
-                                        </div>
-                                        
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Dashboard.html">
-                                                <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
-                                                <span>Dashboard</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
-                                                <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
-                                                <span>Case</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="row g-0">
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
-                                                <i class="ri-team-line widget-icon bg-white text-danger"></i>
-                                                <span>Team</span>
-                                            </a>
-                                        </div>
-                                        
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Advocates.html">
-                                                <i class="ri-account-pin-circle-line widget-icon bg-white text-danger"></i>
-                                                <span>Advocates</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Calender.html">
-                                                <i class="uil-calender widget-icon bg-white text-danger"></i>
-                                                <span>Calender</span>
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                    
-                                    <div class="row g-0">  
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="AllToDo">
-                                                <i class=" ri-file-list-3-line widget-icon bg-white text-danger"></i>
-                                                <span>To-DOs</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Documents.html">
-                                                <i class="ri-folders-line widget-icon bg-white text-danger"></i>
-                                                <span>Documents</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Bills.html">
-                                                <i class="ri-article-line widget-icon bg-white text-danger"></i>
-                                                <span>Bills</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row g-0">
-                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="CauseList.html">
-                                                <i class="ri-file-list-line widget-icon bg-white text-danger"></i>
-                                                <span>Cause list</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="CaseDiary.html">
-                                                <i class="ri-book-line widget-icon bg-white text-danger"></i>
-                                                <span>My Case Diary</span>
-                                            </a>
-                                        </div>
-                                       
-                        
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <i class="mdi mdi-account-circle widget-icon bg-white text-danger"></i>
-                                                <span>My Account</span>
-                                            </a>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row g-0">
-                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="CauseList.html">
-                                                <i class="mdi mdi-account-edit widget-icon bg-white text-danger"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="CaseDiary.html">
-                                                <i class="mdi mdi-lifebuoy widget-icon bg-white text-danger"></i>
-                                                <span>Support</span>
-                                            </a>
-                                        </div>
-                                       
-                        
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Login.html">
-                                                <i class="mdi mdi-lifebuoy widget-icon bg-white text-danger"></i>
-                                                <span>Lock Screen</span>
-                                            </a>
-                                        </div>
-                                        
-                                    </div> 
-                                    <div class="row g-0">
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="Login.html">
-                                                <i class="ri-book-line widget-icon bg-white text-danger"></i>
-                                                <span>Logout</span>
-                                            </a>
-                                        </div>
-                                        
-                                    </div> <!-- end row-->
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class="d-none d-sm-inline-block">
-                            <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
-                                <i class="ri-settings-3-line font-22"></i>
-                            </a>
-                        </li>
-
-                        <li class="d-none d-sm-inline-block">
-                            <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" title="Theme Mode">
-                                <i class="ri-moon-line font-22"></i>
-                            </div>
-                        </li>
-
-
-                        <li class="d-none d-md-inline-block">
-                            <a class="nav-link" href="#" data-toggle="fullscreen">
-                                <i class="ri-fullscreen-line font-22"></i>
-                            </a>
-                        </li>
-
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <span class="account-user-avatar">
-                                    <img src="{% static '/images/users/Mhatre.jpg' %}" alt="user-image" width="32" class="rounded-circle">
-                                </span>
-                                <span class="d-lg-flex flex-column gap-1 d-none">
-                                    <h5 class="my-0">Himanshu Mhatre</h5>
-                                    <h6 class="my-0 fw-normal">Admin</h6>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
-                                <!-- item-->
-                                <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Welcome !</h6>
-                                </div>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="mdi mdi-account-circle me-1"></i>
-                                    <span>My Account</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="mdi mdi-account-edit me-1"></i>
-                                    <span>Settings</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="mdi mdi-lifebuoy me-1"></i>
-                                    <span>Support</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="mdi mdi-lock-outline me-1"></i>
-                                    <span>Lock Screen</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="mdi mdi-logout me-1"></i>
-                                    <span>Logout</span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- ========== Topbar End ========== -->
-
-            <!-- ========== Left Sidebar Start ========== -->
-            <div class="leftside-menu">
-
-                <!-- Brand Logo Light -->
-                <a href="index.html" class="logo logo-light">
-                    <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="logo">
-                    </span>
-                    <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
-                    </span>
-                </a>
-
-                <!-- Brand Logo Dark -->
-                <a href="index.html" class="logo logo-dark">
-                    <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="dark logo">
-                    </span>
-                    <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
-                    </span>
-                </a>
-
-                <!-- Sidebar Hover Menu Toggle Button -->
-                <div class="button-sm-hover" data-bs-toggle="tooltip" data-bs-placement="right" title="Show Full Sidebar">
-                    <i class="ri-checkbox-blank-circle-line align-middle"></i>
-                </div>
-
-                <!-- Full Sidebar Menu Close Button -->
-                <div class="button-close-fullsidebar">
-                    <i class="ri-close-fill align-middle"></i>
-                </div>
-
-                <!-- Sidebar -left -->
-                <div class="h-100" id="leftside-menu-container" data-simplebar>
-                    <!-- Leftbar User -->
-                    <div class="leftbar-user">
-                        <a href="pages-profile.html">
-                            <img src="{% static '/images/users/Mhatre.jpg' %}" alt="user-image" height="42" class="rounded-circle shadow-sm">
-                            <span class="leftbar-user-name mt-2">Himanshu Mhatre</span>
-                        </a>
-                    </div>
-
-                    <!--- Sidemenu -->
-                    <ul class="side-nav">
-
-                        <li class="side-nav-title">Navigation</li>
-                        
-                         <li class="side-nav-item">
-                            <a class="side-nav-link">
-                                <i class="ri-home-gear-line"></i>
-                                <span> Home </span>
-                            </a>
-                        </li>
-
-                        <li class="side-nav-item">
-                            <a href="Dashboard.html" class="side-nav-link">
-                                <i class=" ri-layout-2-line"></i>
-                                <span> Dashboard </span>
-                            </a>
-                        </li>
-                        
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarCase" aria-expanded="false" aria-controls="sidebarCase" class="side-nav-link">
-                                <i class="ri-briefcase-4-line"></i>
-                                <span> Case </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarCase">
-                                <ul class="side-nav-second-level">
-                                    <li>
-                                        <a href="NewCase.html">Add Case</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'cases' %}">Running case</a>
+                                        <a href="Cases.html">Running case</a>
                                     </li>
                                 </ul>
                             </div>
@@ -846,16 +563,16 @@
                             <div class="collapse" id="sidebarTODOS">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="AllToDo">All TO-Dos</a>
+                                        <a href="AllToDo.html">All TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="UpcomingToDo">Upcoming TO-Dos</a>
+                                        <a href="UpcomingToDo.html">Upcoming TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="PendingToDo">Pending TO-Dos</a>
+                                        <a href="PendingToDo.html">Pending TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="CompletedToDo">Completed TO-Dos</a>
+                                        <a href="CompletedToDo.html">Completed TO-Dos</a>
                                     </li>
                                 </ul>
                             </div>
@@ -870,10 +587,10 @@
                             <div class="collapse" id="sidebarDocuments">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewDocument">Add New Document</a>
+                                        <a href="NewDocument.html">Add New Document</a>
                                     </li>
                                     <li>
-                                        <a href="Document">Documents</a>
+                                        <a href="Document.html">Documents</a>
                                     </li>
                                 </ul>
                             </div>
@@ -966,146 +683,459 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
+                        
 
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
-
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a>Home</a></li>
+                                            <li class="breadcrumb-item"><a href="Dashboard.html">Home</a></li>
+                                            <li class="breadcrumb-item active">All To Dos</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Home</h4>
+                                    <h4 class="page-title">All To Dos</h4>
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
                         
                     </div> <!-- container -->
-
-                </div> <!-- content -->
                     
-                    <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card cta-box text-bg-danger">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div class="w-100 overflow-hidden">
-                                        <h2 class="mt-0 text-reset"><i class="mdi mdi-bullhorn-outline"></i></h2>
-                                        <h3 class="m-0 fw-normal cta-box-title text-reset"><b>"Unlock Your Potential, One Day at a Time. Master Your Schedule, Master Your Life. Take Control, Achieve Greatness."</b><i class="mdi mdi-arrow-right-bold-outline"></i></h3>
-                                    </div>
-                                    <img class="ms-3" src="{% static '/images/svg/email-campaign.svg' %}" width="220" alt="Generic placeholder image">
-                                </div>
-                                <a  href="TodaysTask.html"> <button type="button" class="btn btn-light rounded-pill">Schedule Day</button></a>
-                                </div>
+                    
+                    <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#add-new-task-modal" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i> Add New</a>
                             </div>
-                            <!-- end card-body -->
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tab-content">
-                                        <div class="tab-pane show active" id="with-captions-preview">
-                                            <div id="carouselExampleCaption" class="carousel slide" data-bs-ride="carousel">
-                                                <div class="carousel-inner" role="listbox">
- 
-                                                    <div class="carousel-item active">
-                                                        <div class="d-flex justify-content-center">
-                                                            <div class="d-flex flex-wrap gap-4">
-                                                                
-                                                                <a><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-home-gear-line" style="font-size: 40px;"></i><br>Home<br></button></a>
-                                                                <a href="Dashboard.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-layout-2-line" style="font-size: 40px;"></i><br>Dashboard<br></button></a>
-                                                                <a href="{% url 'cases' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-briefcase-4-line" style="font-size: 40px;"></i><br>Cases<br></button></a>
-                                                                <a href="Teams.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
-                                                                <a href="Advocate.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="uil-calender" style="font-size: 40px;"></i><br>Advocates<br></button></a>
-                                                                <a href="AllToDo"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-3-line" style="font-size: 40px;"></i><br>To-Dos<br></button></a>
-                                                                <a href="Document"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-folders-line" style="font-size: 40px;"></i><br>Documents<br></button></a>
-                                                                <a href="Bills.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-article-line" style="font-size: 40px;"></i><br>Bills<br></button></a>
-                                
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="carousel-item">
-                                                        <div class="d-flex justify-content-center">
-                                                           <div class="d-flex flex-wrap gap-4">
-                                                                
-                                                                <a href="Dashboard.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-layout-2-line" style="font-size: 40px;"></i><br>Dashboard<br></button></a>
-                                                                <a href="{% url 'cases' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-briefcase-4-line" style="font-size: 40px;"></i><br>Cases<br></button></a>
-                                                                <a href="Teams.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
-                                                                <a href="Advocate.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="uil-calender" style="font-size: 40px;"></i><br>Advocates<br></button></a>
-                                                                <a href="AllToDo"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-3-line" style="font-size: 40px;"></i><br>To-Dos<br></button></a>
-                                                                <a href="Document"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-folders-line" style="font-size: 40px;"></i><br>Documents<br></button></a>
-                                                                <a href="Bills.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-article-line" style="font-size: 40px;"></i><br>Bills<br></button></a>
-                                                                <a href="CauseList.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-line" style="font-size: 40px;"></i><br>Cause List<br></button></a>
                             
-                                                                 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="carousel-item">
-                                                        <div class="d-flex justify-content-center">
-                                                           <div class="d-flex flex-wrap gap-4">
-                                                                
-                                                               <a href="{% url 'cases' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-briefcase-4-line" style="font-size: 40px;"></i><br>Cases<br></button></a>
-                                                                <a href="Teams.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
-                                                                <a href="Advocate.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="uil-calender" style="font-size: 40px;"></i><br>Advocates<br></button></a>
-                                                                <a href="AllToDo"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-3-line" style="font-size: 40px;"></i><br>To-Dos<br></button></a>
-                                                                <a href="Document"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-folders-line" style="font-size: 40px;"></i><br>Documents<br></button></a>
-                                                                <a href="Bills.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-article-line" style="font-size: 40px;"></i><br>Bills<br></button></a>
-                                                                <a href="CauseList.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-line" style="font-size: 40px;"></i><br>Cause List<br></button></a>
-                                                                <a href="CaseDiary.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-book-line" style="font-size: 40px;"></i><br>My Case Diary<br></button></a>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="carousel-item">
-                                                        <div class="d-flex justify-content-center">
-                                                           <div class="d-flex flex-wrap gap-4">
-                                                                
-                                                                <a href="Advocate.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="uil-calender" style="font-size: 40px;"></i><br>Advocates<br></button></a>
-                                                                <a href="AllToDo"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-3-line" style="font-size: 40px;"></i><br>To-Dos<br></button></a>
-                                                                <a href="Document"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-folders-line" style="font-size: 40px;"></i><br>Documents<br></button></a>
-                                                                <a href="Bills.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-article-line" style="font-size: 40px;"></i><br>Bills<br></button></a>
-                                                                <a href="CauseList.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-line" style="font-size: 40px;"></i><br>Cause List<br></button></a>
-                                                                <a href="CaseDiary.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-book-line" style="font-size: 40px;"></i><br>My Case Diary<br></button></a>
-                                                                <a href="Login.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-logout-box-line" style="font-size: 40px;"></i><br>Logout<br></button></a>
-                                                                
-                                                            </div>
-                                                        </div>
+                        </div> 
+                    
+                    <!--  Add new task modal -->
+        <div class="modal fade task-modal-content" id="add-new-task-modal" tabindex="-1" role="dialog" aria-labelledby="NewTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="NewTaskModalLabel">Create New Task</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="p-2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="task-title" class="form-label">Description</label>
+                                <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="mb-3 col-md-6">
+                                <label for="example-date" class="form-label">Start Date</label>
+                                <input class="form-control" id="example-date" type="date" name="date">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="example-date" class="form-label">End Date</label>
+                                <input class="form-control" id="example-date" type="date" name="date">
+
+                            </div>
+
+                        </div>
+                        
+                        <div class="mb-3 col-md-6">
+                            <label for="example-multiselect" class="form-label">Case Name</label>
+                            <select class="form-control select2" data-toggle="select2">
+                                <option>Please Select</option>
+                                <option value="Case1">Case1</option>
+                                <option value="Case2">Case2</option>
+                                <option value="Case3">Case3</option>
+                                <option value="Case4">Case4</option>
+                                <option value="Case5">Case5</option>
+                                <option value="Case6">Case6</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="example-multiselect" class="form-label">Advocate Name</label>
+                            <select class="form-control select2" data-toggle="select2">
+                                <option>Please Select</option>
+                                <option value="Advocate1">Advocate1</option>
+                                <option value="Advocate2">Advocate2</option>
+                                <option value="Advocate3">Advocate3</option>
+                                <option value="Advocate4">Advocate4</option>
+                                <option value="Advocate5">Advocate5</option>
+                                <option value="Advocate6">Advocate6</option>
+                            </select>
+                        </div>
+                        
+                    <div class="text-end">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+                    
+
+                </div>
+                
+                <div class="row">
+                            <div class="col-12">
+                                <div class="card widget-inline">
+                                    <div class="card-body p-0">
+                                        <div class="row g-0">
+                                            <div class="col-sm-6 col-lg-3 " >
+                                                <div class="card rounded-0 shadow-none m-0 bg-primary-lighten border-primary border">
+                                                    <div class="card-body text-center ">
+                                                        <i class="ri-survey-line text-muted font-24 text-primary"></i>
+                                                        <h3><span>1</span></h3>
+                                                        <p class="text-muted font-15 mb-0">All Tasks</p>
                                                     </div>
                                                 </div>
-                                                
-                                                <a class="carousel-control-prev d-flex justify-content-start" href="#carouselExampleCaption" role="button" data-bs-slide="prev" style="width:30px;">
-                                                    <span class="carousel-control-prev-icon bg-danger" aria-hidden="true"></span>
-                                                </a>
-
-                                                <a class="carousel-control-next d-flex justify-content-end" href="#carouselExampleCaption" role="button" data-bs-slide="next" style="width: 30px;">
-                                                    <span class="carousel-control-next-icon bg-danger" aria-hidden="true"></span>
-
-                                                </a>
                                             </div>
-                                        </div> <!-- end preview-->
-                                    </div> <!-- end tab-content-->
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
-                    </div>
-
-                    
-
-                    
-                            
+                
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                                                    <div class="card-body text-center bg-warning-lighten border-warning border">
+                                                        <i class=" ri-alarm-line text-muted font-24"></i>
+                                                        <h3><span>0</span></h3>
+                                                        <p class="text-muted font-15 mb-0">Upcoming Tasks</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                                                    <div class="card-body text-center bg-danger-lighten border-danger border">
+                                                        <i class="uil-bell text-muted font-24"></i>
+                                                        <h3><span>0</span></h3>
+                                                        <p class="text-muted font-15 mb-0">Pending Tasks</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                                                    <div class="card-body text-center bg-success-lighten border-success border">
+                                                        <i class="ri-checkbox-circle-line text-muted font-24"></i>
+                                                        <h3><span>1</span> </h3>
+                                                        <p class="text-muted font-15 mb-0">Completed Tasks</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                        </div> <!-- end row -->
+                                    </div>
+                                </div> <!-- end card-box-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
                         
+                        <div class="col-xxl-12 col-xl-12">
+                                <!-- project card -->
+                                <div class="card d-block bg-warning-lighten border-warning border">
+                                    <div class="card-body">
+                                        <div class="dropdown card-widgets">
+                                            <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class='uil uil-ellipsis-h'></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                              
+                                                <!-- item-->
+                                                <a href="javascript:void(0);" class="dropdown-item">
+                                                    <i class='uil uil-edit me-1'></i>Edit
+                                                </a>
+                                                <!-- item-->
+                                                <a href="javascript:void(0);" class="dropdown-item text-danger">
+                                                    <i class='uil uil-trash-alt me-1'></i>Delete
+                                                </a>
+                                            </div> <!-- end dropdown menu-->
+                                        </div> <!-- end dropdown-->
+                                        
+                                        <div class="form-check float-start">
+                                            <input type="checkbox" class="form-check-input" id="completedCheck">
+                                            <label class="form-check-label" for="completedCheck">
+                                                Mark as completed
+                                            </label>
+                                        </div> <!-- end form-check-->
+                                        
+                                        <div class="clearfix"></div>
+
+                                        <h3 class="mt-3">Description about case</h3>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Case </h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-contacts-book-2-line font-18 text-warning me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           Case Name
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+                                            
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign To</h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-account-box-line font-18 text-warning me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           me
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+                                            
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign By </h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-account-pin-box-line font-18 text-warning me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           me
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+
+                                            <div class="col-6">
+                                                <!-- start due date -->
+                                                <p class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Due Date</p>
+                                                <div class="d-flex">
+                                                    <i class='uil uil-schedule font-18 text-warning me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                            12/10/2024 10am
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end due date -->
+                                            </div> <!-- end col -->
+                                            
+                                        </div> <!-- end row -->
+
+
+                                    </div> <!-- end card-body-->
+                                    
+                                </div> <!-- end card-->
+                        </div>
+                        
+                        
+                        <div class="col-xxl-12 col-xl-12">
+                                <!-- project card -->
+                                <div class="card d-block bg-success-lighten border-success border">
+                                    <div class="card-body">
+                                        <div class="dropdown card-widgets">
+                                            <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class='uil uil-ellipsis-h'></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                              
+                                                <!-- item-->
+                                                <a href="javascript:void(0);" class="dropdown-item">
+                                                    <i class='uil uil-edit me-1'></i>Edit
+                                                </a>
+                                                <!-- item-->
+                                                <a href="javascript:void(0);" class="dropdown-item text-danger">
+                                                    <i class='uil uil-trash-alt me-1'></i>Delete
+                                                </a>
+                                            </div> <!-- end dropdown menu-->
+                                        </div> <!-- end dropdown-->
+                                        
+                                        <div class="form-check float-start">
+                                            <input type="checkbox" class="form-check-input" id="completedCheck">
+                                            <label class="form-check-label" for="completedCheck">
+                                                Mark as completed
+                                            </label>
+                                        </div> <!-- end form-check-->
+                                        
+                                        <div class="clearfix"></div>
+
+                                        <h3 class="mt-3">Description about case</h3>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Case </h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-contacts-book-2-line font-18 text-success me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           Case Name
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+                                            
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign To</h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-account-box-line font-18 text-success me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           me
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+                                            
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign By </h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-account-pin-box-line font-18 text-success me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           me
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+
+                                            <div class="col-6">
+                                                <!-- start due date -->
+                                                <p class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Due Date</p>
+                                                <div class="d-flex">
+                                                    <i class='uil uil-schedule font-18 text-success me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                            12/10/2024 10am
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end due date -->
+                                            </div> <!-- end col -->
+                                            
+                                        </div> <!-- end row -->
+
+
+                                    </div> <!-- end card-body-->
+                                    
+                                </div> <!-- end card-->
+                        </div>
+                        
+                        <div class="col-xxl-12 col-xl-12">
+                                <!-- project card -->
+                                <div class="card d-block bg-danger-lighten border-danger border">
+                                    <div class="card-body">
+                                        <div class="dropdown card-widgets">
+                                            <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class='uil uil-ellipsis-h'></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                              
+                                                <!-- item-->
+                                                <a href="javascript:void(0);" class="dropdown-item">
+                                                    <i class='uil uil-edit me-1'></i>Edit
+                                                </a>
+                                                <!-- item-->
+                                                <a href="javascript:void(0);" class="dropdown-item text-danger">
+                                                    <i class='uil uil-trash-alt me-1'></i>Delete
+                                                </a>
+                                            </div> <!-- end dropdown menu-->
+                                        </div> <!-- end dropdown-->
+                                        
+                                        <div class="form-check float-start">
+                                            <input type="checkbox" class="form-check-input" id="completedCheck">
+                                            <label class="form-check-label" for="completedCheck">
+                                                Mark as completed
+                                            </label>
+                                        </div> <!-- end form-check-->
+                                        
+                                        <div class="clearfix"></div>
+
+                                        <h3 class="mt-3">Description about case</h3>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Case </h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-contacts-book-2-line font-18 text-danger me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           Case Name
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+                                            
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign To</h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-account-box-line font-18 text-danger me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           me
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+                                            
+                                            <div class="col-6">
+                                                <!-- assignee -->
+                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign By </h4>
+                                                
+                                                <div class="d-flex">
+                                                    <i class='ri-account-pin-box-line font-18 text-danger me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                           me
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end assignee -->
+                                            </div> <!-- end col -->
+
+                                            <div class="col-6">
+                                                <!-- start due date -->
+                                                <p class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Due Date</p>
+                                                <div class="d-flex">
+                                                    <i class='uil uil-schedule font-18 text-danger me-1'></i>
+                                                    <div>
+                                                        <h5 class="mt-1 font-14">
+                                                            12/10/2024 10am
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <!-- end due date -->
+                                            </div> <!-- end col -->
+                                            
+                                        </div> <!-- end row -->
+
+
+                                    </div> <!-- end card-body-->
+                                    
+                                </div> <!-- end card-->
+                        </div>
+                      
+
 
                 <!-- Footer Start -->
                 <footer class="footer">
@@ -1659,7 +1689,8 @@
                                         </label>
                                     </div>
                                     <h5 class="font-14 text-center text-muted mt-2">Fullscreen Layout</h5>
-                                </div>
+                                </div>   
+        
                             </div>
                         </div>
                     </div>
@@ -1668,12 +1699,19 @@
             </div>
         </div>
 
-        <!-- Vendor js -->
-        <script src="{% static '/js/vendor.min.js' %}"></script>
-        
+                <!-- Vendor js -->
+        <script src="{% static 'js/vendor.min.js' %}"></script>
+
+        <!-- dragula js-->
+        <script src="{% static 'vendor/dragula/dragula.min.js' %}"></script>
+
+        <!-- demo js -->
+        <script src="{% static 'js/ui/component.dragula.js' %}"></script>
+
         <!-- App js -->
-        <script src="{% static '/js/app.min.js' %}"></script>
+        <script src="{% static 'js/app.min.js' %}"></script>
 
     </body>
 
+<!-- Mirrored from coderthemes.com/hyper/saas/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Oct 2023 18:58:26 GMT -->
 </html>
