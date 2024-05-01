@@ -18,3 +18,4 @@ def home(request):
 
 def forgotpassword(request):
     return render(request,"ForgotPassword.html")
+
