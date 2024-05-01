@@ -20,9 +20,9 @@ from . import views
 urlpatterns = [
     path('login/', views.user_login),
     path('index/', views.index),
-    path('cases/',views.cases),
+    path('home/cases/',views.cases),
     path('home/',views.home),
-    path('forgotpassword/',views.forgotpassword),
-    path('Documents/',views.document),
-    path('CompletedToDo/',views.todo),
+    path('home/forgotpassword/',views.forgotpassword),
+    path('home/Document/',views.document),
+    path('home/AllToDo/',views.todo),
 ]
