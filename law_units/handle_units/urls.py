@@ -25,4 +25,7 @@ urlpatterns = [
     path('home/forgotpassword/',views.forgotpassword,name="forgotpassword"),
     path('home/Document/',views.document,name="doc"),
     path('home/AllToDo/',views.todo,name="todo"),
+    path('dashboard/',views.Dashboard),
+    path('signup/',views.Signup),
+    path('calendar/',views.Calender),
 ]
