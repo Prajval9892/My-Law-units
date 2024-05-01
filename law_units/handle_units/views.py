@@ -13,6 +13,9 @@ def index(request):
 def cases(request):
     return render(request,'Cases.html')
 
+def newcases(request):
+    return render(request,'NewCase.html')
+
 def home(request):
     return render(request,'Home.html')
 
@@ -33,6 +36,9 @@ def pendingtodo(request):
 
 def document(request):
     return render(request,"Document.html")
+
+def newdocument(request):
+    return render(request,"NewDocument.html")
 
 def Dashboard(request):
     return render(request , 'Dashboard.html')
