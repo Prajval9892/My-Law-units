@@ -1,10 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
         <meta charset="utf-8" />
-        <title>Starter Page</title>
+        <title>New Document</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -27,6 +26,21 @@
         <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
         <!-- SimpleMDE demo -->
         <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
+
+        <link href="{% static 'vendor/quill/quill.core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'vendor/quill/quill.snow.css' %}" rel="stylesheet" type="text/css" />                                                  
+
+        <!-- quill js -->
+        <script src="{% static 'vendor/quill/quill.min.js' %}"></script>
+        <!-- quill Init js-->
+        <script src="{% static 'js/pages/demo.quilljs.js' %}"></script>
+        
+        <link href="{% static 'vendor/simplemde/simplemde.min.css' %}" rel="stylesheet" type="text/css" />                                                    
+                                                    
+        <!-- SimpleMDE js -->
+        <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
+        <!-- SimpleMDE demo -->
+        <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
     </head>
 
     <body>
@@ -44,20 +58,20 @@
                             <!-- Logo light -->
                             <a href="index.html" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="{% static '/images/logo.png' %}" alt="logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{% static '/images/logo.png' %}" alt="small logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="small logo">
                                 </span>
                             </a>
 
                             <!-- Logo Dark -->
                             <a href="index.html" class="logo-dark">
                                 <span class="logo-lg">
-                                    <img src="{% static '/images/logo.png' %}" alt="dark logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="dark logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{% static '/images/logo.png' %}" alt="small logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="small logo">
                                 </span>
                             </a>
                         </div>
@@ -77,15 +91,6 @@
                         </button>
 
                         <!-- Topbar Search Form -->
-                        <div class="app-search dropdown d-none d-lg-block">
-                            <form>
-                                <div class="input-group">
-                                    <input type="search" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
-                                    <span class="mdi mdi-magnify search-icon"></span>
-                                    <button class="input-group-text btn btn-primary" type="submit">Search</button>
-                                </div>
-                            </form>
-                        </div>
                         
                     </div>
 
@@ -170,7 +175,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
                                                     <div class="notify-icon">
-                                                        <img src="{% static '/images/users/avatar-2.jpg' %}" class="img-fluid rounded-circle" alt="" />
+                                                        <img src="{% static 'images/users/avatar-2.jpg' %}" class="img-fluid rounded-circle" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -208,7 +213,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
                                                     <div class="notify-icon">
-                                                        <img src="{% static '/images/users/avatar-4.jpg' %}" class="img-fluid rounded-circle" alt="" />
+                                                        <img src="{% static 'images/users/avatar-4.jpg' %}" class="img-fluid rounded-circle" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -242,20 +247,20 @@
                                     <div class="row g-0">
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'home' %}">
+                                            <a class="dropdown-icon-item" href="Home.html">
                                                 <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
                                                 <span>Home</span>
                                             </a>
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Dashboard">
+                                            <a class="dropdown-icon-item" href="Dashboard.html">
                                                 <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
+                                            <a class="dropdown-icon-item" href="Cases.html">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
@@ -287,7 +292,7 @@
                                     
                                     <div class="row g-0">  
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'todo' %}">
+                                            <a class="dropdown-icon-item" href="AllToDo.html">
                                                 <i class=" ri-file-list-3-line widget-icon bg-white text-danger"></i>
                                                 <span>To-DOs</span>
                                             </a>
@@ -443,20 +448,20 @@
                 <!-- Brand Logo Light -->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
                     </span>
                 </a>
 
                 <!-- Brand Logo Dark -->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="dark logo">
+                        <img src="{% static 'images/logo.png' %}" alt="dark logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
                     </span>
                 </a>
 
@@ -486,14 +491,14 @@
                         <li class="side-nav-title">Navigation</li>
                         
                          <li class="side-nav-item">
-                            <a href="{% url 'home' %}" class="side-nav-link">
+                            <a href="Home.html" class="side-nav-link">
                                 <i class="ri-home-gear-line"></i>
                                 <span> Home </span>
                             </a>
                         </li>
 
                         <li class="side-nav-item">
-                            <a href="Dashboard.html" class="side-nav-link">
+                            <a href="Dashboard" class="side-nav-link">
                                 <i class=" ri-layout-2-line"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -508,10 +513,10 @@
                             <div class="collapse" id="sidebarCase">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewCase.html">Add Case</a>
+                                        <a href="NewCase">Add Case</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'cases' %}">Running case</a>
+                                        <a href="cases">Running case</a>
                                     </li>
                                 </ul>
                             </div>
@@ -572,16 +577,16 @@
                             <div class="collapse" id="sidebarTODOS">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{% url 'todo' %}">All TO-Dos</a>
+                                        <a href="AllToDo">All TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="UpcomingToDo.html">Upcoming TO-Dos</a>
+                                        <a href="UpcomingToDo">Upcoming TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="PendingToDo.html">Pending TO-Dos</a>
+                                        <a href="PendingToDo">Pending TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="CompletedToDo.html">Completed TO-Dos</a>
+                                        <a href="CompletedToDo">Completed TO-Dos</a>
                                     </li>
                                 </ul>
                             </div>
@@ -596,10 +601,10 @@
                             <div class="collapse" id="sidebarDocuments">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewDocument.html">Add New Document</a>
+                                        <a href="NewDocument">Add New Document</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'doc' %}">Documents</a>
+                                        <a href="Document">Documents</a>
                                     </li>
                                 </ul>
                             </div>
@@ -699,131 +704,205 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="Dashboard.html">Home</a></li>
-                                            <li class="breadcrumb-item active">Case</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Documents</a></li>
+                                            <li class="breadcrumb-item active">Add New Document</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Case</h4>
+                                    <h4 class="page-title">Add New Document</h4>
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
                         
                     </div> <!-- container -->
-                    
-                    <div class="row mb-2">
-                            <div class="col-sm-4">
-                                <a href="NewCase.html" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i> Add New</a>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="text-sm-end">
-                                    <div class="btn-group mb-3">
-                                        <button type="button" class="btn btn-primary">All</button>
-                                    </div>
-                                    <div class="btn-group mb-3 ms-1">
-                                        <button type="button" class="btn btn-light">Running</button>
-                                        <button type="button" class="btn btn-light">Closed</button>
-                                        <button type="button" class="btn btn-light">Transferred/NOC</button>
-                                        <button type="button" class="btn btn-light">Direction Matters</button>
-                                        <button type="button" class="btn btn-light">Order Reserved</button>
-                                        <button type="button" class="btn btn-light">Sine Die</button>
-                                    </div>
-                                </div>
-                            </div><!-- end col-->
-                        </div> 
-                    
 
                 </div>
                 
                 <!-- content -->
                 
-                <div class="col-xl-12">
+                <div class="row">
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
+                                        
+                                        <h4 class="header-title">Drop or Click on choose files to select one or many files</h4>
+                                        
+                                        <div class="mb-3 col-xl-12">
+                                            <div class="tab-pane show active" id="file-upload-preview">
+                                                <form action="#" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                                    data-upload-preview-template="#uploadPreviewTemplate">
+                                                    <div class="fallback">
+                                                        <input name="file" type="file" multiple />
+                                                    </div>
 
-                                        <div class="tab-content">
-                                            <div class="tab-pane show active" id="basic-example-preview">
-                                                <div class="table-responsive-sm">
-                                                    <table class="table table-centered mb-0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Court</th>
-                                                                <th>Case</th>
-                                                                <th>Stage</th>
-                                                                <th>Client(s) / External Advocate(s)</th>
-                                                                <th>Hearing Date</th>
-                                                                <th>Title</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div> <!-- end table-responsive-->                     
-                                            </div> <!-- end preview-->                                            
+                                                    <div class="dz-message needsclick">
+                                                        <i class="h1 text-muted ri-upload-cloud-2-line"></i>
+                                                        <h3>Drop files here or click to upload.</h3>
+                                                    </div>
+                                                    
+
+                                                <!-- Preview -->
+                                                <div class="dropzone-previews mt-3" id="file-previews"></div>                                         
+                                            </div> <!-- end preview-->
+
                                         </div> <!-- end tab-content-->
+                                        <div class="row">
+                                        
 
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-                 
-                
+                                                      <div class="mb-3 col-xl-6">
+                                                    <label for="project-overview" class="form-label">Type</label>
+                                                    
+                                                    <select class="form-control select2" data-toggle="select2">
+                                                        <option>Please Select</option>
+                                                        <option value="Adjournment Letter">Adjournment Letter</option>
+                                                        <option value="Admission/ Denial">Admission/ Denial</option>
+                                                        <option value="Affidavit">Affidavit</option>
+                                                        <option value="Affidavit of Evidence">Affidavit of Evidence</option>
+                                                        <option value="Affidavit of Service">Affidavit of Service</option>
+                                                        <option value="Affidavit of documents">Affidavit of documents</option>
+                                                        <option value="Annexure">Annexure</option>
+                                                        <option value="Application">Application/option>
+                                                        <option value="Arbitration Petition">Arbitration Petition</option>
+                                                        <option value="Arguments">Arguments</option>
+                                                        <option value="Assessment Order">Assessment Order</option>
+                                                        <option value="Bare Acts">Bare Acts</option>
+                                                        <option value="CIT(Appeals) Order">CIT(Appeals) Order</option>
+                                                        <option value="Chamber Summons">Chamber Summons</option>
+                                                        <option value="Circulars">Circulars</option>
+                                                        <option value="Commission Agreement">Commission Agreement</option>
+                                                        <option value="Company Petition">Company Petition</option>
+                                                        <option value="Compilation of documents">Compilation of documents</option>
+                                                        <option value="Complaint">Complaint</option>
+                                                        <option value="Criminal Complaint">Criminal Complaint</option>
+                                                        <option value="Draft Issues">Draft Issues</option>
+                                                        <option value="End User Undertaking EUU">End User Undertaking EUU</option>
+                                                        <option value="Engagement Letter">Engagement Letter</option>
+                                                        <option value="High Court Orders">High Court Orders</option>
+                                                        <option value="ITAT Order">ITAT Order</option>
+                                                        <option value="Intellectual Property Agreement">Intellectual Property Agreement</option>
+                                                        <option value="International Channel Partner Agreement">International Channel Partner Agreement</option>
+                                                        <option value="International Distribution Agreement">International Distribution Agreement</option>
+                                                        <option value="International Representative Agreement">International Representative Agreement</option>
+                                                        <option value="Intervention Application">Intervention Application</option>
+                                                        <option value="Issues framed">Issues framed</option>
+                                                        <option value="JV- Joint Venture Agreement">JV- Joint Venture Agreement</option>
+                                                        <option value="Lease Deed">Lease Deed</option>
+                                                        <option value="Legal Consultancy Agreement">Legal Consultancy Agreement</option>
+                                                        <option value="Letter">Letter</option>
+                                                        <option value="List of dates (LOD)">List of dates (LOD)</option>
+                                                        <option value="MOU-Memorandum of Understanding">MOU-Memorandum of Understanding</option>
+                                                        <option value="Miscellaneous Agreements">Miscellaneous Agreements</option>
+                                                        <option value="Miscellaneous Application">Miscellaneous Application</option>
+                                                        <option value="NCLT Form">NCLT Form</option>
+                                                        <option value="NDA- Non Disclosure Agreement">NDA- Non Disclosure Agreement</option>
+                                                        <option value="Notice of Motion">Notice of Motion</option>
+                                                        <option value="Notices">Notices</option>
+                                                        <option value="Order">Order</option>
+                                                        <option value="Paper books">Paper books</option>
+                                                        <option value="Particular of claim">Particular of claim</option>
+                                                        <option value="Partnership Agreement">Partnership Agreement</option>
+                                                        <option value="Plaint">Plaint</option>
+                                                        <option value="Power of Attorney">Power of Attorney</option>
+                                                        <option value="Precipe">Precipe</option>
+                                                        <option value="Reconciliation">Reconciliation</option>
+                                                        <option value="Registration Certificate">Registration Certificate</option>
+                                                        <option value="Rejoinder">Rejoinder</option>
+                                                        <option value="Rent Agreement">Rent Agreement</option>
+                                                        <option value="Reply">Reply</option>
+                                                        <option value="Reply to Chamber Summons">Reply to Chamber Summons</option>
+                                                        <option value="Reply to Notice of Motion">Reply to Notice of Motion</option>
+                                                        <option value="Residual">Residual</option>
+                                                        <option value="Sales Agreement">Sales Agreement</option>
+                                                        <option value="Schedule">Schedule</option>
+                                                        <option value="Security Agency Agreement">Security Agency Agreement</option>
+                                                        <option value="Statement">Statement</option>
+                                                        <option value="Summary Suit">Summary Suit</option>
+                                                        <option value="Summons for Judgment">Summons for Judgment</option>
+                                                        <option value="Sur – rejoinder">Sur – rejoinder</option>
+                                                        <option value="Synopsis">Synopsis</option>
+                                                        <option value="Temporary Injunction Application">Temporary Injunction Application</option>
+                                                        <option value="The Agreement">The Agreement</option>
+                                                        <option value="Transfer of Technology Agreement">Transfer of Technology Agreement</option>
+                                                        <option value="Vakalatnama">Vakalatnama</option>
+                                                        <option value="Writ of Summons">Writ of Summons</option>
+                                                        <option value="Written Statement">Written Statement</option>
+                                                        <option value="Written Statement">Written Submission</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <br>
+                                                    <label for="project-overview" class="form-label">Would you like to link these documents with any of the cases :</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
+                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
+                                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                                    </div>
+                                            </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Term</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Description</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Judgement Date</label>
+                                            <input type="date" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Expiry Date</label>
+                                            <input type="date" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Purpose</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">First Party</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Second Party</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Headed By</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="col-auto">
+                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                        </div>
+                                        
+                                            </div>
+                                        
+                                        </form>
+                                            
+                                                
+
+                                    </div>
+                                    <!-- end card-body -->
+                                </div>
+                                <!-- end card-->
+                            </div>
+                            <!-- end col-->
+                        </div>
+                        
 
                 <!-- Footer Start -->
                 <footer class="footer">
@@ -1386,11 +1465,28 @@
             </div>
         </div>
 
-        <!-- Vendor js -->
         <script src="{% static 'js/vendor.min.js' %}"></script>
-        
+
+        <!-- Code Highlight js -->
+        <script src="{% static 'vendor/highlightjs/highlight.pack.min.js' %}"></script>
+        <script src="{% static 'vendor/clipboard/clipboard.min.js' %}"></script>
+        <script src="{% static 'js/hyper-syntax.js' %}"></script>
+
+        <!-- Quill Editor js -->
+        <script src="{% static 'vendor/quill/quill.min.js' %}"></script>
+
+        <!-- Quill Demo js -->
+        <script src="{% static 'js/pages/demo.quilljs.js' %}"></script>
+
+        <!-- Simplemde Editor js -->
+        <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
+
+        <!-- Simplemde Demo js -->
+        <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
+
         <!-- App js -->
         <script src="{% static 'js/app.min.js' %}"></script>
+        
 
     </body>
 
