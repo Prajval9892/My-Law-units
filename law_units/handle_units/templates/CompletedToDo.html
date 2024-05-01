@@ -233,7 +233,7 @@
                                     <div class="row g-0">
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Home.html">
+                                            <a class="dropdown-icon-item" href="{% url 'home' %}">
                                                 <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
                                                 <span>Home</span>
                                             </a>
@@ -246,7 +246,7 @@
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Cases.html">
+                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
@@ -278,7 +278,7 @@
                                     
                                     <div class="row g-0">  
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="AllToDo.html">
+                                            <a class="dropdown-icon-item" href="{% url 'todo' %}">
                                                 <i class=" ri-file-list-3-line widget-icon bg-white text-danger"></i>
                                                 <span>To-DOs</span>
                                             </a>
@@ -477,7 +477,7 @@
                         <li class="side-nav-title">Navigation</li>
                         
                          <li class="side-nav-item">
-                            <a href="Home.html" class="side-nav-link">
+                            <a href="{% url 'home' %}" class="side-nav-link">
                                 <i class="ri-home-gear-line"></i>
                                 <span> Home </span>
                             </a>
@@ -502,7 +502,7 @@
                                         <a href="NewCase.html">Add Case</a>
                                     </li>
                                     <li>
-                                        <a href="Cases.html">Running case</a>
+                                        <a href="{% url 'cases' %}">Running case</a>
                                     </li>
                                 </ul>
                             </div>
@@ -563,7 +563,7 @@
                             <div class="collapse" id="sidebarTODOS">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="AllToDo.html">All TO-Dos</a>
+                                        <a href="{% url 'todo' %}">All TO-Dos</a>
                                     </li>
                                     <li>
                                         <a href="UpcomingToDo.html">Upcoming TO-Dos</a>
@@ -590,7 +590,7 @@
                                         <a href="NewDocument.html">Add New Document</a>
                                     </li>
                                     <li>
-                                        <a href="Document.html">Documents</a>
+                                        <a href="{% url 'doc' %}">Documents</a>
                                     </li>
                                 </ul>
                             </div>
