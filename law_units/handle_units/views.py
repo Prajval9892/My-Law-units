@@ -24,3 +24,12 @@ def todo(request):
 
 def document(request):
     return render(request,"Document.html")
+
+def Dashboard(request):
+    return render(request , 'Dashboard.html')
+
+def Signup(request):
+    return render(request , 'SignUp.html')
+
+def Calender(request):
+    return render(request , 'Calender.html')
