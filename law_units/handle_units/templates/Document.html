@@ -249,7 +249,7 @@
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Dashboard.html">
+                                            <a class="dropdown-icon-item" href="{% url 'dashboard' %}">
                                                 <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
                                                 <span>Dashboard</span>
                                             </a>
@@ -264,7 +264,7 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -493,7 +493,7 @@
                         </li>
 
                         <li class="side-nav-item">
-                            <a href="Dashboard.html" class="side-nav-link">
+                            <a href="{% url 'dashboard' %}" class="side-nav-link">
                                 <i class=" ri-layout-2-line"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -508,7 +508,7 @@
                             <div class="collapse" id="sidebarCase">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewCase.html">Add Case</a>
+                                        <a href="{% url 'newcases' %}">Add Case</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'cases' %}">Running case</a>
@@ -529,7 +529,7 @@
                                         <a href="AddMember.html">Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="Teams.html">Teams</a>
+                                        <a href="{% url 'team' %}">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -699,7 +699,7 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="Dashboard.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
                                             <li class="breadcrumb-item active">Document</li>
                                         </ol>
                                     </div>

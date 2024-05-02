@@ -238,7 +238,7 @@
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Dashboard">
+                                            <a class="dropdown-icon-item" href="{% url 'dashboard' %}">
                                                 <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
                                                 <span>Dashboard</span>
                                             </a>
@@ -253,7 +253,7 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -482,7 +482,7 @@
                         </li>
 
                         <li class="side-nav-item">
-                            <a href="Dashboard" class="side-nav-link">
+                            <a href="{% url 'dashboard' %}" class="side-nav-link">
                                 <i class=" ri-layout-2-line"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -497,7 +497,7 @@
                             <div class="collapse" id="sidebarCase">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewCase.html">Add Case</a>
+                                        <a href="{% url 'newcases' %}">Add Case</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'cases' %}">Running case</a>
@@ -523,7 +523,7 @@
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Dashboard">
+                                            <a class="dropdown-icon-item" href="{% url 'dashboard' %}">
                                                 <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
                                                 <span>Dashboard</span>
                                             </a>
@@ -538,7 +538,7 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -767,7 +767,7 @@
                         </li>
 
                         <li class="side-nav-item">
-                            <a href="Dashboard" class="side-nav-link">
+                            <a href="{% url 'dashboard' %}" class="side-nav-link">
                                 <i class=" ri-layout-2-line"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -803,7 +803,7 @@
                                         <a href="AddMember.html">Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="Teams.html">Teams</a>
+                                        <a href="{% url 'team' %}">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -870,7 +870,7 @@
                             <div class="collapse" id="sidebarDocuments">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewDocument">Add New Document</a>
+                                        <a href="{% url 'NewDocument' %}">Add New Document</a>
                                     </li>
                                     <li>
                                         <a href="Document">Documents</a>
@@ -1020,9 +1020,9 @@
                                                             <div class="d-flex flex-wrap gap-4">
                                                                 
                                                                 <a><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-home-gear-line" style="font-size: 40px;"></i><br>Home<br></button></a>
-                                                                <a href="Dashboard"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-layout-2-line" style="font-size: 40px;"></i><br>Dashboard<br></button></a>
+                                                                <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-layout-2-line" style="font-size: 40px;"></i><br>Dashboard<br></button></a>
                                                                 <a href="{% url 'cases' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-briefcase-4-line" style="font-size: 40px;"></i><br>Cases<br></button></a>
-                                                                <a href="Teams.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
+                                                                <a href="{% url 'team' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
                                                                 <a href="Advocate.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="uil-calender" style="font-size: 40px;"></i><br>Advocates<br></button></a>
                                                                 <a href="AllToDo"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-3-line" style="font-size: 40px;"></i><br>To-Dos<br></button></a>
                                                                 <a href="Document"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-folders-line" style="font-size: 40px;"></i><br>Documents<br></button></a>
@@ -1037,9 +1037,9 @@
                                                         <div class="d-flex justify-content-center">
                                                            <div class="d-flex flex-wrap gap-4">
                                                                 
-                                                                <a href="Dashboard"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-layout-2-line" style="font-size: 40px;"></i><br>Dashboard<br></button></a>
+                                                                <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-layout-2-line" style="font-size: 40px;"></i><br>Dashboard<br></button></a>
                                                                 <a href="{% url 'cases' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-briefcase-4-line" style="font-size: 40px;"></i><br>Cases<br></button></a>
-                                                                <a href="Teams.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
+                                                                <a href="{% url 'team' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
                                                                 <a href="Advocate.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="uil-calender" style="font-size: 40px;"></i><br>Advocates<br></button></a>
                                                                 <a href="AllToDo"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-3-line" style="font-size: 40px;"></i><br>To-Dos<br></button></a>
                                                                 <a href="Document"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-folders-line" style="font-size: 40px;"></i><br>Documents<br></button></a>
@@ -1056,7 +1056,7 @@
                                                            <div class="d-flex flex-wrap gap-4">
                                                                 
                                                                <a href="{% url 'cases' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-briefcase-4-line" style="font-size: 40px;"></i><br>Cases<br></button></a>
-                                                                <a href="Teams.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
+                                                                <a href="{% url 'team' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-account-pin-circle-line" style="font-size: 40px;"></i><br>Teams<br></button></a>
                                                                 <a href="Advocate.html"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="uil-calender" style="font-size: 40px;"></i><br>Advocates<br></button></a>
                                                                 <a href="AllToDo"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-file-list-3-line" style="font-size: 40px;"></i><br>To-Dos<br></button></a>
                                                                 <a href="Document"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 135px;height: 135px;"><i class="ri-folders-line" style="font-size: 40px;"></i><br>Documents<br></button></a>

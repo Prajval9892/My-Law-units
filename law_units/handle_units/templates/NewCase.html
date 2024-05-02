@@ -14,6 +14,7 @@
 
         <!-- Theme Config Js -->
         <script src="{% static 'js/hyper-config.js' %}"></script>
+        <script src="{% static 'js/page_logic/newcase.js' %}"></script>
 
         <!-- App css -->
         <link href="{% static 'css/app-saas.min.css' %}" rel="stylesheet" type="text/css" id="app-style" />
@@ -253,13 +254,13 @@
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Cases.html">
+                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -460,7 +461,7 @@
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Cases.html">
+                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
@@ -469,7 +470,7 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -713,10 +714,10 @@
                             <div class="collapse" id="sidebarCase">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewCase.html">Add Case</a>
+                                        <a href="{% url 'newcases' %}">Add Case</a>
                                     </li>
                                     <li>
-                                        <a href="Cases.html">Running case</a>
+                                        <a href="{% url 'cases' %}">Running case</a>
                                     </li>
                                 </ul>
                             </div>
@@ -734,7 +735,7 @@
                                         <a href="AddMember.html">Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="Teams.html">Teams</a>
+                                        <a href="{% url 'team' %}">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -804,7 +805,7 @@
                                         <a href="NewDocument.html">Add New Document</a>
                                     </li>
                                     <li>
-                                        <a href="Document.html">Documents</a>
+                                        <a href="{% url 'NewDocument' %}">Documents</a>
                                     </li>
                                 </ul>
                             </div>
@@ -930,9 +931,9 @@
 
                                         <div class="row">
                                                 <div class="mb-3 col-xl-5">
-                                                    <label for="project-overview" class="form-label">Court</label>
+                                                    <label for="Court" class="form-label">Court</label>
                                                     
-                                                    <select class="form-control select2" data-toggle="select2">
+                                                    <select class="form-control select2" data-toggle="select2" id="Court">
                                                         <option>Please Select</option>
                                                         <option value="Supreme Court of India">Supreme Court of India</option>
                                                         <option value="High Court">High Court</option>
@@ -948,67 +949,66 @@
                                                 </div>
 
                                                 <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Case Number</label>
+                                                    <label for="case-number" class="form-label">Case Number</label>
                                                     <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
                                                 </div>
                                            
                                                 <div class="mb-3 col-xl-3">
-                                                    <label for="project-overview" class="form-label">Year</label>
+                                                    <label for="year" class="form-label">Year</label>
                                                     <input type="text" id="year" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Date of filling</label>
-                                                    <input type="text" id="case-date" class="form-control" >
+                                                    <label for="case-date" class="form-label">Date of filling</label>
+                                                    <input type="date" id="case-date" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Court Hall</label>
+                                                    <label for="case-hall" class="form-label">Court Hall</label>
                                                     <input type="text" id="case-hall" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Floor</label>
+                                                    <label for="case-floor" class="form-label">Floor</label>
                                                     <input type="text" id="case-floor" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Classification</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="classification" class="form-label">Classification</label>
+                                                    <input type="text" id="classification" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Title</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="Title" class="form-label">Title</label>
+                                                    <input type="text" id="Title" class="form-control" >
                                             </div>
-                                            
-                                            <div class="mb-3 col-xl-12">
-                                                <label for="project-overview" class="form-label">Description</label>
-                                                <div id="snow-editor" style="height: 200px;">
+                                            <!-- <div class="mb-3 col-xl-12">
+                                                <label for="description" class="form-label">Description</label>
+                                                <div id="snow-editor" style="height: 200px;"> -->
                                                     <h3><span class="ql-size-large">Description</span></h3>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                                </div>
+                                                    <input type="text" id="description" class="form-control" >
+                                                <!-- </div>
+                                            </div> -->
+                                            
+                                            <div class="mb-3 col-xl-4">
+                                                    <label for="Honble_Judge" class="form-label">Before Hon'ble Judge(s)</label>
+                                                    <input type="text" id="Honble_Judge" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Before Hon'ble Judge(s)</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="ref_by" class="form-label">Referred By</label>
+                                                    <input type="text" id="ref_by" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Referred By</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Section/Category</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="Section" class="form-label">Section/Category</label>
+                                                    <input type="text" id="Section" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-5">
-                                                    <label for="project-overview" class="form-label">Priority</label>
+                                                    <label for="Priority" class="form-label">Priority</label>
                                                     
-                                                    <select class="form-control select2" data-toggle="select2">
+                                                    <select class="form-control select2" data-toggle="select2" id="Priority">
                                                         <option>Please Select</option>
                                                         <option value="Super Critical">Super Critical</option>
                                                         <option value="Critical">Critical</option>
@@ -1020,37 +1020,37 @@
                                                 </div>
                                            
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Under Act(S)</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="Act" class="form-label">Under Act(S)</label>
+                                                    <input type="text" id="Act" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Under Section(S)</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="Section" class="form-label">Under Section(S)</label>
+                                                    <input type="text" id="Section" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">FIR Police Station</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="FIR" class="form-label">FIR Police Station</label>
+                                                    <input type="text" id="FIR-Police" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">FIR Number</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="FIR" class="form-label">FIR Number</label>
+                                                    <input type="text" id="FIR" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-12">
                                                     <label for="project-overview" class="form-label">Is this affidavit / vakalath Field ? :</label>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Yes_affidavit" value="Yes">
                                                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="No_affidavit" value="No">
                                                         <label class="form-check-label" for="inlineRadio2">No</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Not Applicable">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="not_app_affidavit" value="Not Applicable">
                                                         <label class="form-check-label" for="inlineRadio2">Not Applicable</label>
                                                     </div>
                                             </div>
@@ -1062,7 +1062,7 @@
                                                         <h3><label for="project-overview" class="form-label">Your Advocate</label></h3>
 
                                                         <label for="project-overview" class="form-label">Click here to add Advocate</label>
-                                                        <select class="form-control select2" data-toggle="select2">
+                                                        <select class="form-control select2" data-toggle="select2" id="adv">
                                                             <option>Please Select</option>
                                                             <option value="Advocate1">Advocate1</option>
                                                             <option value="Advocate2">Advocate2</option>
@@ -1083,16 +1083,16 @@
 
                                                         <div class="row">
                                                             <div class="mb-1 col-xl-4">
-                                                                <label for="fullName1">Full Name</label>
-                                                                <input type="text" class="form-control" id="fullName1" name="fullName1">
+                                                                <label for="fullName0">Full Name</label>
+                                                                <input type="text" class="form-control" id="fullName0" name="fullName1">
                                                             </div>
                                                             <div class="mb-1 col-xl-4">
-                                                                <label for="email1">Email</label>
-                                                                <input type="text" class="form-control" id="email1" name="email1">
+                                                                <label for="email0">Email</label>
+                                                                <input type="text" class="form-control" id="email0" name="email1">
                                                             </div>
                                                             <div class="mb-1 col-xl-3">
-                                                                <label for="phoneNo1">Phone No</label>
-                                                                <input type="text" class="form-control" id="phoneNo1" name="phoneNo1">
+                                                                <label for="phoneNo0">Phone No</label>
+                                                                <input type="text" class="form-control" id="phoneNo0" name="phoneNo1">
                                                             </div>
                                                         </div>
 
@@ -1114,16 +1114,16 @@
 
                                                         <div class="row">
                                                             <div class="mb-1 col-xl-4">
-                                                                <label for="fullName1">Full Name</label>
-                                                                <input type="text" class="form-control" id="fullName1" name="fullName1">
+                                                                <label for="fullNametwo0">Full Name</label>
+                                                                <input type="text" class="form-control" id="fullNametwo0" name="fullName1">
                                                             </div>
                                                             <div class="mb-1 col-xl-4">
-                                                                <label for="email1">Email</label>
-                                                                <input type="text" class="form-control" id="email1" name="email1">
+                                                                <label for="emailtwo0">Email</label>
+                                                                <input type="email" class="form-control" id="emailtwo0" name="email1">
                                                             </div>
                                                             <div class="mb-1 col-xl-3">
-                                                                <label for="phoneNo1">Phone No</label>
-                                                                <input type="text" class="form-control" id="phoneNo1" name="phoneNo1">
+                                                                <label for="phoneNotwo0">Phone No</label>
+                                                                <input type="text" class="form-control" id="phoneNotwo0" name="phoneNo1">
                                                             </div>
                                                         </div>
 
@@ -1144,7 +1144,7 @@
                                                         <h3><label for="project-overview" class="form-label">Your Team</label></h3>
 
                                                         <label for="project-overview" class="form-label">Click here to add Team member</label>
-                                                        <select class="form-control select2" data-toggle="select2">
+                                                        <select class="form-control select2" data-toggle="select2" id="team">
                                                             <option>Please Select</option>
                                                             <option value="Advocate1">Advocate1</option>
                                                             <option value="Advocate2">Advocate2</option>
@@ -1158,7 +1158,7 @@
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                                <button type="button" class="btn btn-primary mb-2" onclick="add_case()">Submit</button>
                                             </div>
       
 
@@ -1763,7 +1763,7 @@
     inputElement.innerHTML = `
       <div class="row">
   <div class="col-xl-4">
-    <div class="mb-1">
+    <div class="mb-1">        
       <label for="fullName${inputContainer.childElementCount + 1}">Full Name</label>
       <input type="text" class="form-control" id="fullName${inputContainer.childElementCount + 1}" name="fullName${inputContainer.childElementCount + 1}">
     </div>
@@ -1808,20 +1808,20 @@
       <div class="row">
   <div class="col-xl-4">
     <div class="mb-1">
-      <label for="fullName${inputContainer.childElementCount + 1}">Full Name</label>
-      <input type="text" class="form-control" id="fullName${inputContainer.childElementCount + 1}" name="fullName${inputContainer.childElementCount + 1}">
+      <label for="fullNametwo${inputContainer.childElementCount + 1}">Full Name</label>
+      <input type="text" class="form-control" id="fullNametwo${inputContainer.childElementCount + 1}" name="fullName${inputContainer.childElementCount + 1}">
     </div>
   </div>
   <div class="col-xl-4">
     <div class="mb-1">
-      <label for="email${inputContainer.childElementCount + 1}">Email</label>
-      <input type="text" class="form-control" id="email${inputContainer.childElementCount + 1}" name="email${inputContainer.childElementCount + 1}">
+      <label for="emailtwo${inputContainer.childElementCount + 1}">Email</label>
+      <input type="text" class="form-control" id="emailtwo${inputContainer.childElementCount + 1}" name="email${inputContainer.childElementCount + 1}">
     </div>
   </div>
   <div class="col-xl-3">
     <div class="mb-1">
-      <label for="phoneNo${inputContainer.childElementCount + 1}">Phone No</label>
-      <input type="text" class="form-control" id="phoneNo${inputContainer.childElementCount + 1}" name="phoneNo${inputContainer.childElementCount + 1}">
+      <label for="phoneNotwo${inputContainer.childElementCount + 1}">Phone No</label>
+      <input type="text" class="form-control" id="phoneNotwo${inputContainer.childElementCount + 1}" name="phoneNo${inputContainer.childElementCount + 1}">
     </div>
   </div>
   <div class="col-xl-1">
@@ -1840,7 +1840,9 @@
   function deleteInputs2(button) {
     button.parentElement.remove();
   }
+  window.csrf_token = "{{ csrf_token|safe }}"
 </script>
+
     </body>
 
 <!-- Mirrored from coderthemes.com/hyper/saas/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Oct 2023 18:58:26 GMT -->
