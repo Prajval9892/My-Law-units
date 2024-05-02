@@ -1,5 +1,7 @@
 from django.shortcuts import render
+import json
 from rest_framework.decorators import api_view
+from .models import *
 
 # Create your views here.
 
@@ -35,7 +37,7 @@ def pendingtodo(request):
     return render(request,"PendingToDo.html")
 
 def document(request):
-    return render(request,"Document.html")
+    return render(request,"{% url 'NewDocument' %}")
 
 def newdocument(request):
     return render(request,"NewDocument.html")
@@ -48,3 +50,10 @@ def Signup(request):
 
 def Calender(request):
     return render(request , 'Calender.html')
+
+def list_team(request):
+    return render(request , 'team.html')
+
+def add_case(request):
+    print(json.loads(request.body))
+    data = json.loads(request.body)

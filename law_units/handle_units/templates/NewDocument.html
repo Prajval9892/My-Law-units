@@ -269,7 +269,7 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -534,7 +534,7 @@
                                         <a href="AddMember.html">Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="Teams.html">Teams</a>
+                                        <a href="{% url 'team' %}">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -601,7 +601,7 @@
                             <div class="collapse" id="sidebarDocuments">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewDocument">Add New Document</a>
+                                        <a href="{% url 'NewDocument' %}">Add New Document</a>
                                     </li>
                                     <li>
                                         <a href="Document">Documents</a>

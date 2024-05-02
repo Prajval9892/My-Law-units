@@ -233,20 +233,20 @@
                                     <div class="row g-0">
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Home.html">
+                                            <a class="dropdown-icon-item" href="{% url 'home' %}">
                                                 <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
                                                 <span>Home</span>
                                             </a>
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Dashboard.html">
+                                            <a class="dropdown-icon-item" href="{% url 'dashboard' %}">
                                                 <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Cases.html">
+                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
@@ -255,7 +255,7 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Teams.html">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -477,14 +477,14 @@
                         <li class="side-nav-title">Navigation</li>
                         
                          <li class="side-nav-item">
-                            <a href="Home.html" class="side-nav-link">
+                            <a href="{% url 'home' %}" class="side-nav-link">
                                 <i class="ri-home-gear-line"></i>
                                 <span> Home </span>
                             </a>
                         </li>
 
                         <li class="side-nav-item">
-                            <a href="Dashboard.html" class="side-nav-link">
+                            <a href="{% url 'dashboard' %}" class="side-nav-link">
                                 <i class=" ri-layout-2-line"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -499,10 +499,10 @@
                             <div class="collapse" id="sidebarCase">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewCase.html">Add Case</a>
+                                        <a href="{% url 'newcases' %}">Add Case</a>
                                     </li>
                                     <li>
-                                        <a href="Cases.html">Running case</a>
+                                        <a href="{% url 'cases' %}">Running case</a>
                                     </li>
                                 </ul>
                             </div>
@@ -520,7 +520,7 @@
                                         <a href="AddMember.html">Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="Teams.html">Teams</a>
+                                        <a href="{% url 'team' %}">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -590,7 +590,7 @@
                                         <a href="NewDocument.html">Add New Document</a>
                                     </li>
                                     <li>
-                                        <a href="Document.html">Documents</a>
+                                        <a href="{% url 'NewDocument' %}">Documents</a>
                                     </li>
                                 </ul>
                             </div>
