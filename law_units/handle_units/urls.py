@@ -35,4 +35,8 @@ urlpatterns = [
     path('signup/',views.Signup),
     path('home/calendar/',views.Calender,name="calendar"),
     path('add_case/',views.add_case,name="add_case"),
+    path('home/addmember/',views.Addmember,name="addmember"),
+    #path('home/Teams',views.Teams,name="Teams"),
+    path('home/Advocates',views.Advocates,name="Advocates"),
+    path('home/NewAdvocate',views.NewAdvocate,name="NewAdvocate"),
 ]
