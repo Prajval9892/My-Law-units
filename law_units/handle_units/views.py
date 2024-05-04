@@ -57,3 +57,15 @@ def list_team(request):
 def add_case(request):
     print(json.loads(request.body))
     data = json.loads(request.body)
+
+def Addmember(request):
+    return render(request , 'AddMember.html')
+
+def Teams(request):
+    return render(request,"Teams.html")
+
+def Advocates(request):
+    return render(request,"Advocate.html")
+
+def NewAdvocate(request):
+    return render(request,"NewAdvocate.html")
