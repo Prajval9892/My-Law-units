@@ -1,13 +1,14 @@
 end_point = "http://localhost:8000/"
 function add_case(){
-    
     var inputContainer1 = document.getElementById('inputContainer');
     var number_of_item1 = inputContainer1.childElementCount
     data_to_submit = {}
     data_to_submit["court"] = document.getElementById("Court").value
+    console.log("888888888888888888888888",data_to_submit)
     data_to_submit["case_number"] = document.getElementById("case-number").value
     data_to_submit["year"] = document.getElementById("year").value
     data_to_submit["case_date"] = document.getElementById("case-date").value
+    data_to_submit["high_court"] = document.getElementById("high_court").value
     data_to_submit["case-hall"] = document.getElementById("case-hall").value
     data_to_submit["case-floor"] = document.getElementById("case-floor").value
     data_to_submit["classification"] = document.getElementById("classification").value
@@ -29,6 +30,15 @@ function add_case(){
     else if(document.getElementById("No_affidavit").checked)
     {
     data_to_submit["affidavit"] = document.getElementById("No_affidavit").value
+    }
+
+    if (document.getElementById("cnr_check_yes").checked)
+    {
+    data_to_submit["cnr_check_yes"] = document.getElementById("cnr_check_yes").value
+    }
+    else if(document.getElementById("cnr_check_no").checked)
+    {
+    data_to_submit["cnr_check_no"] = document.getElementById("cnr_check_no").value
     }
 
     else if(document.getElementById("not_app_affidavit").checked){
