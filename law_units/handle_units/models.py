@@ -42,8 +42,11 @@ class contact_point(models.Model):
 class case(models.Model):
     advocate = models.ForeignKey(Advocate,on_delete=models.CASCADE)
     case_number = models.IntegerField(primary_key=True)
+    case_type = models.CharField(max_length=100)
     court = models.CharField(max_length=50)
     cnr_number = models.BooleanField()
+    cnr = models.CharField(max_length=100)
+    respondent = models.CharField(max_length=100)
     high_court = models.CharField(max_length=50)
     year = models.DateField()
     appearing_as = models.CharField(max_length=100)
@@ -65,7 +68,7 @@ class case(models.Model):
     fir_year = models.DateField()
     affidavit_vakalat = models.BooleanField()
     filed = models.BooleanField()
-    advocate = models.CharField(max_length=50)
+    affidavit_vakalat_date = models.DateField()
 
 class opponent(models.Model):
     case = models.ForeignKey(case,on_delete=models.CASCADE)
