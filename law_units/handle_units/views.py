@@ -25,19 +25,19 @@ def forgotpassword(request):
     return render(request,"ForgotPassword.html")
 
 def completedtodo(request):
-    return render(request,"CompletedToDo.html")
+    return render(request,"{% url 'alltodo' %}")
 
 def upcomingtodo(request):
-    return render(request,"UpcomingToDo.html")
+    return render(request,"{% url 'alltodo' %}")
 
 def alltodo(request):
     return render(request,"AllToDo.html")
 
 def pendingtodo(request):
-    return render(request,"PendingToDo.html")
+    return render(request,"{% url 'alltodo' %}")
 
 def document(request):
-    return render(request,"{% url 'NewDocument' %}")
+    return render(request,"Document.html")
 
 def newdocument(request):
     return render(request,"NewDocument.html")
@@ -62,7 +62,7 @@ def Addmember(request):
     return render(request , 'AddMember.html')
 
 def Teams(request):
-    return render(request,"Teams.html")
+    return render(request,"team.html")
 
 def Advocates(request):
     return render(request,"Advocate.html")
