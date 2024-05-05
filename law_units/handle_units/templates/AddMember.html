@@ -11,6 +11,7 @@
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+        <script src="{% static 'js/page_logic/addteam.js' %}"></script>
 
         <!-- Theme Config Js -->
         <script src="{% static 'js/hyper-config.js' %}"></script>
@@ -727,25 +728,25 @@
 
                                                     <div class="row">
                                                         <div class="mb-1 col-xl-2">
-                                                            <label for="firstName1">First Name</label>
-                                                            <input type="text" class="form-control" id="firstName1" name="firstName1">
+                                                            <label for="firstName0">First Name</label>
+                                                            <input type="text" class="form-control" id="firstName0" name="firstName0">
                                                         </div>
                                                         <div class="mb-1 col-xl-2">
-                                                            <label for="lastName1">Last Name</label>
-                                                            <input type="text" class="form-control" id="lastName1" name="lastName1">
+                                                            <label for="lastName0">Last Name</label>
+                                                            <input type="text" class="form-control" id="lastName0" name="lastName0">
                                                         </div>
                                                         <div class="mb-1 col-xl-2">
-                                                            <label for="designation1">Designation</label>
+                                                            <label for="designation0">Designation</label>
                                                             <input type="text" class="form-control" id="designation1" name="designation1">
                                                         </div>
                                                         <div class="mb-1 col-xl-3">
-                                                            <label for="email1">Email Address</label>
-                                                            <input type="email" class="form-control" id="email1" name="email1">
+                                                            <label for="email0">Email Address</label>
+                                                            <input type="email" class="form-control" id="email0" name="email0">
                                                         </div>
 
                                                         <div class="mb-1 col-xl-2">
-                                                            <label for="mobileNumber1">Mobile Number</label>
-                                                            <input type="text" class="form-control" id="mobileNumber1" name="mobileNumber1">
+                                                            <label for="mobileNumber0">Mobile Number</label>
+                                                            <input type="text" class="form-control" id="mobileNumber0" name="mobileNumber0">
                                                         </div>
                                                     </div>
 
@@ -759,7 +760,7 @@
                                         </div>
                                         
                                         <div class="col-auto">
-                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                                <button type="button" class="btn btn-primary mb-2" onclick="add_team()">Submit</button>
                                         </div>
                                         
                                     </div>

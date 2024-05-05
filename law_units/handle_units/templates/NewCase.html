@@ -11,9 +11,10 @@
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+        <script src="{% static '/js/page_logic/newcase.js' %}"></script>
 
         <!-- Theme Config Js -->
-        <script src="{% static 'js/hyper-config.js' %}"></script>
+        <script src="{% static '/js/hyper-config.js' %}"></script>
 
         <!-- App css -->
         <link href="{% static 'css/app-saas.min.css' %}" rel="stylesheet" type="text/css" id="app-style" />
@@ -469,7 +470,7 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'team' %}"">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
@@ -734,7 +735,7 @@
                                         <a href="{%  url 'add_team' %}" >Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'team' %}"">Teams</a>
+                                        <a href="{% url 'team' %}">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -930,9 +931,9 @@
 
                                         <div class="row">
                                                 <div class="mb-3 col-xl-5">
-                                                    <label for="project-overview" class="form-label">Court</label>
+                                                    <label for="Court" class="form-label">Court</label>
                                                     
-                                                    <select class="form-control select2" data-toggle="select2">
+                                                    <select class="form-control select2" data-toggle="select2" id="Court">
                                                         <option>Please Select</option>
                                                         <option value="Supreme Court of India">Supreme Court of India</option>
                                                         <option value="High Court">High Court</option>
@@ -948,12 +949,12 @@
                                                 </div>
 
                                             <div class="mb-3 col-xl-4">
-                                                <label for="project-overview" class="form-label">Case Number</label>
+                                                <label for="case-number" class="form-label">Case Number</label>
                                                     <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
                                                 </div>
                                            
                                                 <div class="mb-3 col-xl-3">
-                                                    <label for="project-overview" class="form-label">Year</label>
+                                                    <label for="year" class="form-label">Year</label>
                                                     <input type="text" id="year" class="form-control" >
                                                 </div>
                                             
@@ -965,7 +966,7 @@
                                             <div class="mb-3 col-xl-6">
                                                     <label for="project-overview" class="form-label">High Court</label>
                                                     
-                                                    <select class="form-control select2" data-toggle="select2">
+                                                    <select class="form-control select2" data-toggle="select2" id="high_court">
                                                         <option>Please Select</option>
                                                         <option value="Allahabad High Court">Allahabad High Court</option>
                                                         <option value="Andhra Pradesh High Court">Andhra Pradesh High Court</option>
@@ -999,11 +1000,11 @@
                                              <div class="mb-3 mt-4  col-xl-3">
                                                 <label for="project-overview" class="form-label">Do you have CNR #? :</label>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
-                                                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cnr_check_yes" value="Yes">
+                                                    <label class="form-check-label" for="cnr_check">Yes</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cnr_check_no" value="No">
                                                     <label class="form-check-label" for="inlineRadio2">No</label>
                                                 </div>
                                             </div>
@@ -1061,13 +1062,13 @@
                                                     <input type="text" id="case-floor" class="form-control" >
                                             </div>
                                             
-                                            <div class="mb-3 col-xl-12">
+                                            <!-- <div class="mb-3 col-xl-12">
                                                 <label for="project-overview" class="form-label">Description</label>
-                                                <div id="snow-editor" style="height: 200px;">
-                                                    <h3><span class="ql-size-large">Description</span></h3>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                                </div>
-                                            </div>
+                                                <div id="snow-editor" style="height: 200px;"> -->
+                                            <h3><span class="ql-size-large">Description</span></h3>
+                                            <input type="text" id="case-floor" class="form-control" >
+                                                <!-- </div>
+                                            </div> -->
                                             
                                             <div class="mb-3 col-xl-4">
                                                     <label for="project-overview" class="form-label">Before Hon'ble Judge(s)</label>
@@ -1247,7 +1248,7 @@
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                                <button type="button" class="btn btn-primary mb-2" onclick="add_case()">Submit</button>
                                             </div>
       
 
