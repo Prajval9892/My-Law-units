@@ -247,20 +247,20 @@
                                     <div class="row g-0">
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Home.html">
+                                            <a class="dropdown-icon-item" href="{% url 'home' %}">
                                                 <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
                                                 <span>Home</span>
                                             </a>
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Dashboard.html">
+                                            <a class="dropdown-icon-item" href="{% url 'dashboard' %}">
                                                 <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Cases.html">
+                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
@@ -269,20 +269,20 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'team' %}">
+                                            <a class="dropdown-icon-item" href="{% url 'team' %}"">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Advocates.html">
+                                            <a class="dropdown-icon-item" href="{% url 'Advocates' %}">
                                                 <i class="ri-account-pin-circle-line widget-icon bg-white text-danger"></i>
                                                 <span>Advocates</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Calender.html">
+                                            <a class="dropdown-icon-item" href="{% url 'calendar' %}">
                                                 <i class="uil-calender widget-icon bg-white text-danger"></i>
                                                 <span>Calender</span>
                                             </a>
@@ -292,13 +292,13 @@
                                     
                                     <div class="row g-0">  
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="AllToDo.html">
+                                            <a class="dropdown-icon-item" href="{% url 'alltodo' %}">
                                                 <i class=" ri-file-list-3-line widget-icon bg-white text-danger"></i>
                                                 <span>To-DOs</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="Documents.html">
+                                            <a class="dropdown-icon-item" href="{% url 'doc' %}">
                                                 <i class="ri-folders-line widget-icon bg-white text-danger"></i>
                                                 <span>Documents</span>
                                             </a>
@@ -491,14 +491,14 @@
                         <li class="side-nav-title">Navigation</li>
                         
                          <li class="side-nav-item">
-                            <a href="Home.html" class="side-nav-link">
+                            <a href="{% url 'home' %}" class="side-nav-link">
                                 <i class="ri-home-gear-line"></i>
                                 <span> Home </span>
                             </a>
                         </li>
 
                         <li class="side-nav-item">
-                            <a href="Dashboard" class="side-nav-link">
+                            <a "{% url 'dashboard' %}" class="side-nav-link">
                                 <i class=" ri-layout-2-line"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -531,10 +531,10 @@
                             <div class="collapse" id="sidebarTeam">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="AddMember.html">Add New Team Member</a>
+                                        <a href="{%  url 'add_team' %}" >Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'team' %}">Teams</a>
+                                        <a href="{% url 'team' %}"">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -552,17 +552,17 @@
                             <div class="collapse" id="sidebarAdvocates">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="NewAdvocate.html">Add New Advocate</a>
+                                        <a href="{% url 'NewAdvocate' %}">Add New Advocate</a>
                                     </li>
                                     <li>
-                                        <a href="Advocate.html">Advocates</a>
+                                        <a href="{%  url 'Advocates' %}" >Advocates</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         
                         <li class="side-nav-item">
-                            <a href="Calender.html" class="side-nav-link">
+                            <a href="{% url 'calendar' %}" class="side-nav-link">
                                 <i class="uil-calender"></i>
                                 <span> Calendar </span>
                             </a>
@@ -593,7 +593,7 @@
                         </li>
                         
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarDocuments" aria-expanded="false" aria-controls="sidebarDocuments" class="side-nav-link">
+                            <a data-bs-toggle="collapse" href="{% url 'doc' %}" aria-expanded="false" aria-controls="sidebarDocuments" class="side-nav-link">
                                 <i class="ri-folders-line"></i>
                                 <span>Documents</span>
                                 <span class="menu-arrow"></span>
@@ -604,7 +604,7 @@
                                         <a href="{% url 'NewDocument' %}">Add New Document</a>
                                     </li>
                                     <li>
-                                        <a href="Document">Documents</a>
+                                        <a href="{% url 'doc' %}">Documents</a>
                                     </li>
                                 </ul>
                             </div>
@@ -705,7 +705,7 @@
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Documents</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'doc' %}">Documents</a></li>
                                             <li class="breadcrumb-item active">Add New Document</li>
                                         </ol>
                                     </div>
