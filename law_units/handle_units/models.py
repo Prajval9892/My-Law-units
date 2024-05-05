@@ -83,10 +83,9 @@ class opponent_advocate(models.Model):
     phone_number = models.IntegerField()
 
 class team_member(models.Model):
-    member_id = models.ForeignKey(case,on_delete=models.CASCADE)
+    member_id = models.CharField(primary_key=True,max_length=30)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length= 20)
     designation = models.CharField(max_length=50)
     email = models.EmailField()
     number = models.IntegerField()
-    cost_per_year = models.IntegerField()

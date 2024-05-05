@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from rest_framework.decorators import api_view
 from .models import *
-
+from django.http import JsonResponse
 # Create your views here.
 
 @api_view(["GET"])
@@ -58,7 +58,20 @@ def add_case(request):
     print(json.loads(request.body))
     data = json.loads(request.body)
 
+@api_view(["POST","GET"])
 def Addmember(request):
+    try:
+        if request.method == "POST":
+            data_list = json.loads(request.body)
+            for data in data_list:
+                tem_obj = team_member(first_name=data["firstName"],last_name=data["last_name"],designation=data["designation"],email=data["email"],
+                                    number = data["number"]
+                                    )
+                tem_obj.save()
+            return JsonResponse({"message":"Team Added Successfully","status":200},status=200)
+    except Exception as e:
+        return JsonResponse({"message":e.__str__(),"status":500},status=500)
+
     return render(request , 'AddMember.html')
 
 def Teams(request):
