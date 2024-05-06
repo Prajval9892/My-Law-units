@@ -137,5 +137,36 @@ def Teams(request):
 def Advocates(request):
     return render(request,"Advocate.html")
 
+@api_view(["POST","GET"])
 def NewAdvocate(request):
+    # try:
+    print(request.method,"ssssssssssssssssss")
+    if request.method == "POST":
+        new_advt = json.loads(request.body)
+        data=new_advt
+        advt_obj = Advocate(fullname=data["full_name"],email=data["email"],number=data["phone_no"],age=data["adv_age"],
+                                father_name = data["father_name"],company_name=data["company_name"],website=data["website_1"],
+                                tin=data["tin_1"],gst=data["gst_id_no"],pan=data["permanent-acc-no"],hourly_rate=data["hourly_rate"],
+                                )
+        advt_obj.save()
+        new_advocate1=Advocate.objects.get(email=data["email"])
+        
+        print(advt_obj.advocate_id,"jjjjjjjjjjj")
+        advt_obj1=home_address(address_line1=data["home_address_1"],address_line2=data["home-address-2"],country=data["country-2"],state=data["state-2"],city=data["city2"],
+                            zip_postal_code=data["home_zip_postal_code"],advocate=new_advocate1)
+        
+        advt_obj1.save()
+        
+        advt_obj2=office_address(address_line1=data["address_line_1"],address_line2=data["address_line_2"],country=data["country-1"],state=data["state1"],
+                            city=data["city1"],zip_postal_code=data["zip_postal_code"],advocate=new_advocate1)
+        advt_obj2.save()
+        
+        
+        for data in new_advt ["point_of_con"]:
+            advobj=contact_point(full_name=data["fullName"],contact_email=data["email"],phone_number=data["phoneNo"],designation=data["designation"],advocate=new_advocate1)
+            advobj.save()
+        
+        return JsonResponse({"message":"Team Added Successfully","status":200},status=200)
+    # except Exception as e:
+    #     return JsonResponse({"message":e.__str__(),"status":500},status=500)
     return render(request,"NewAdvocate.html")
