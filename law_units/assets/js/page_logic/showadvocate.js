@@ -1,9 +1,7 @@
 end_point = "http://localhost:8000/"
-alert("hiii")
 page_number=1
 function nextPage(){
 page_number = page_number+1
-alert("hiiiii")
 show_table()
 
 }
@@ -24,7 +22,7 @@ function show_table(){
 console.log(tableBody)
 my_param= new URLSearchParams()
 my_param.append("page_number",page_number)
-my_param.append("database","Team")
+my_param.append("database","Advocate")
 data_to_set = {
     method: "GET",
     headers: {
@@ -40,16 +38,15 @@ fetch(end_point+"home/team_pagi?"+my_param.toString(),data_to_set).then(data=>{
         var row = document.createElement('tr');
         row.innerHTML = `
         <td>${i + 1}</td>
-        <td>${new_data.data[i].first_name}</td>
-        <td>${new_data.data[i].last_name}</td>
-        <td>${new_data.data[i].designation}</td>
+        <td>${new_data.data[i].fullname}</td>
         <td>${new_data.data[i].email}</td>
         <td>${new_data.data[i].number}</td>
+        <td>${new_data.data[i].company_name}</td>
         <td class="table-action">
             <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
             <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
             <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-            <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete" onclick="delete_item(${new_data.data[i].member_id})"></i></a>
+            <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete" onclick="delete_item(${new_data.data[i].advocate_id})"></i></a>
         </td>
     `;
     tableBody.appendChild(row);
@@ -64,7 +61,7 @@ function delete_item(item_id){
     console.log(item_id)
     delete_param = new URLSearchParams()
     delete_param.append("id",item_id)
-    delete_param.append("database","team_member")
+    delete_param.append("database","Advocate")
     data_to_set={
         "method":"GET",
         "Content-type":"application/json",

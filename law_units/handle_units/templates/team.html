@@ -28,12 +28,45 @@
         <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
         <!-- SimpleMDE demo -->
         <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
+    
+        <style>
+            #toast {
+  visibility: hidden; 
+  min-width: 100px; 
+  margin-left: -125px; 
+  background-color: var(--primary); 
+  color: whitesmoke; 
+  text-align: center; 
+  border-radius: 8px;
+  padding: 12px;
+  position: fixed; 
+  z-index: 1; 
+  right: 5%;
+  top: 80px;
+}
+
+#toast.show {
+  visibility: visible; 
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+</style>
     </head>
 
     <body>
         <!-- Begin page -->
         <div class="wrapper">
-
+            <div id="toast">Image Uploaded</div>
             
             <!-- ========== Topbar Start ========== -->
             <div class="navbar-custom">
@@ -753,7 +786,7 @@
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete" onclick="delete_item('{{ i.member_id }}')"></i></a>
                                                                 </td>
                                                             </tr>
                                                             {% endfor %}

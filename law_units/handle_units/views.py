@@ -45,7 +45,9 @@ def newdocument(request):
     return render(request,"NewDocument.html")
 
 def Dashboard(request):
-    return render(request , 'Dashboard.html')
+    team_count = team_member.objects.all().count()
+    dashboard_data={"team_count":team_count}
+    return render(request , 'Dashboard.html',{"data":dashboard_data})
 
 def Signup(request):
     return render(request , 'SignUp.html')
@@ -69,16 +71,22 @@ def list_team(request):
 @api_view(["get"])
 def team_table_page(request):
     page_number = request.GET.get('page_number', 1)
-    item_per_page = 10
+    data_base = request.GET.get('database', None)
+    item_per_page = 1
     start = (int(page_number) - 1) * item_per_page
     end = int(page_number) * item_per_page
-    query_data = team_member.objects.all()[start:end]
+    print("data_base",data_base)
+    if data_base:
+        if data_base=="Team":
+            query_data = team_member.objects.all()[start:end]
+        elif data_base == "Advocate":
+            query_data = Advocate.objects.all()[start:end]
 
     serialize_data = [model_to_dict(obj) for obj in query_data]
 
     columns = list(serialize_data[0].keys())
 
-    columns.remove('member_id')
+    columns=["No","Full Name","Email","Number","Company Name"]
 
     response_data = {
         "data": serialize_data,
@@ -131,16 +139,26 @@ def Teams(request):
     page_number = 1
     item_par_page =2
     team_member.objects.filter()[page_number-1*item_par_page:page_number*item_par_page]
-    print("rrrrrrrrrrrrrr",team_member)
     return render(request,"team.html")
 
 def Advocates(request):
-    return render(request,"Advocate.html")
+    query_data=Advocate.objects.filter()
+    column=[]
+    serialize_data=[]
+    if query_data:
+        query_data = query_data[0:10]
+        serialize_data = [obj.__dict__ for obj in query_data]
+        column = list(serialize_data[0].keys())
+        column.pop(0)
+    table_data={}
+    table_data["data"] = serialize_data
+    table_data["col"] = column
+    col = ["No","Full Name","Email","Number","Company Name"]
+    return render(request , 'Advocate.html',{"query_data":query_data,"cols":col})
 
 @api_view(["POST","GET"])
 def NewAdvocate(request):
     # try:
-    print(request.method,"ssssssssssssssssss")
     if request.method == "POST":
         new_advt = json.loads(request.body)
         data=new_advt
@@ -151,7 +169,6 @@ def NewAdvocate(request):
         advt_obj.save()
         new_advocate1=Advocate.objects.get(email=data["email"])
         
-        print(advt_obj.advocate_id,"jjjjjjjjjjj")
         advt_obj1=home_address(address_line1=data["home_address_1"],address_line2=data["home-address-2"],country=data["country-2"],state=data["state-2"],city=data["city2"],
                             zip_postal_code=data["home_zip_postal_code"],advocate=new_advocate1)
         
@@ -170,3 +187,19 @@ def NewAdvocate(request):
     # except Exception as e:
     #     return JsonResponse({"message":e.__str__(),"status":500},status=500)
     return render(request,"NewAdvocate.html")
+
+
+@api_view(["GET"])
+def delete_record(request):
+    id = request.GET.get("id")
+    print("id",id)
+    database = request.GET.get("database")
+    if team_member.objects.filter(member_id=id).exists():
+        if database == "team_member":
+            obj=team_member.objects.get(member_id=id)
+        elif database == "Advocate":
+            obj=Advocate.objects.get(advocate_id=id)
+        obj.delete()
+        return JsonResponse({"message":"Team Member deleted successfully","status":200},status=200)
+    else:
+        return JsonResponse({"message":"Team Member Not Found","status":404},status=404)

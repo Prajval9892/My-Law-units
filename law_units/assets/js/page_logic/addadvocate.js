@@ -1,4 +1,4 @@
-end_point = "http://127.0.0.1:8001/"
+end_point = "http://127.0.0.1:8000/"
 function add_advocate(){
     var form_tag = document.getElementById("new_advocate")
     alert("hii")
