@@ -45,7 +45,9 @@ def newdocument(request):
     return render(request,"NewDocument.html")
 
 def Dashboard(request):
-    return render(request , 'Dashboard.html')
+    team_count = team_member.objects.all().count()
+    dashboard_data={"team_count":team_count}
+    return render(request , 'Dashboard.html',{"data":dashboard_data})
 
 def Signup(request):
     return render(request , 'SignUp.html')
