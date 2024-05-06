@@ -39,4 +39,5 @@ urlpatterns = [
     #path('home/Teams',views.Teams,name="Teams"),
     path('home/Advocates',views.Advocates,name="Advocates"),
     path('home/NewAdvocate',views.NewAdvocate,name="NewAdvocate"),
+    path('home/team_pagi',views.team_table_page,name="team_pagi"),
 ]

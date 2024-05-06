@@ -83,7 +83,7 @@ class opponent_advocate(models.Model):
     phone_number = models.IntegerField()
 
 class team_member(models.Model):
-    member_id = models.CharField(primary_key=True,max_length=30)
+    member_id = models.IntegerField(primary_key=True,max_length=30)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length= 20)
     designation = models.CharField(max_length=50)

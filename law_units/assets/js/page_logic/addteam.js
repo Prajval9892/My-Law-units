@@ -1,7 +1,6 @@
 end_point = "http://localhost:8000/"
 function add_team(){
     var form_tag = document.getElementById("team-mem")
-    console.log("888888888888888",form_tag)
     var inputContainer = document.getElementById('inputContainer');
     item = inputContainer.childElementCount
     item_list=[]
@@ -29,10 +28,18 @@ function add_team(){
     fetch(end_point+"home/addmember/",data_to_send).then(data=>{
         return data.json()
     }).then(parse_data=>{
-        const toast = document.getElementById('toast');
-        toast.classList.remove('hidden');
-        showToast(parse_data.message,"#76eb6a")
-        form_tag.reset()
+        if(parse_data.status==200){
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            showToast(parse_data.message,"#76eb6a")
+            form_tag.reset()
+        }
+        else{
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            showToast(parse_data.message,"#f25544")
+        }
+        
     })
 }
 
