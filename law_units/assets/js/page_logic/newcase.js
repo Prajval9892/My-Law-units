@@ -13,16 +13,23 @@ function add_case(){
     data_to_submit["case-floor"] = document.getElementById("case-floor").value
     data_to_submit["classification"] = document.getElementById("classification").value
     data_to_submit["Title"] = document.getElementById("Title").value
-    data_to_submit["Title"] = document.getElementById("Title").value
+    // data_to_submit["Title"] = document.getElementById("Title").value
     data_to_submit["description"] = document.getElementById("description").value
     data_to_submit["Honble_Judge"] = document.getElementById("Honble_Judge").value
     data_to_submit["ref_by"] = document.getElementById("ref_by").value
     data_to_submit["Section"] = document.getElementById("Section").value
     data_to_submit["Priority"] = document.getElementById("Priority").value
     data_to_submit["Act"] = document.getElementById("Act").value
-    data_to_submit["Section"] = document.getElementById("Section").value
-    data_to_submit["FIR"] = document.getElementById("FIR").value
-    data_to_submit["FIR_Police"] = document.getElementById("FIR-Police").value
+    data_to_submit["under-section"] = document.getElementById("under-section").value
+    data_to_submit["FIR_no"] = document.getElementById("FIR_no").value
+    data_to_submit["FIR_year"] = document.getElementById("FIR_year").value
+    data_to_submit["affidavit-vakalath-date"] = document.getElementById("affidavit-vakalath-date").value
+    
+    data_to_submit["FIR_Police_station"] = document.getElementById("FIR_Police_station").value
+    data_to_submit["petitioner-1"] = document.getElementById("petitioner-1").value
+    data_to_submit["Respondent-1"] = document.getElementById("Respondent-1").value
+    data_to_submit["date-filling-1"] = document.getElementById("date-filling-1").value
+    
     if (document.getElementById("Yes_affidavit").checked)
     {
     data_to_submit["affidavit"] = document.getElementById("Yes_affidavit").value
@@ -44,7 +51,7 @@ function add_case(){
     else if(document.getElementById("not_app_affidavit").checked){
         data_to_submit["affidavit"] = document.getElementById("not_app_affidavit").value
     }
-    data_to_submit["advocate"] = document.getElementById("adv").value
+    data_to_submit["advocate"] = document.getElementById("advocate").value
     data_to_submit["team"] = document.getElementById("team").value
     opponent_list = []
     for(i=0; i<=number_of_item1;i++){
@@ -72,13 +79,28 @@ function add_case(){
     data_to_submit["advocate_detail"] = opponents_advocate
     data_to_submit["opponent_list"] = opponent_list
 
-    var data_to_send = {
-        method:"POST",
-        headers:{
-            "Content-type":"application/json",
-            "X-CSRFToken":window.csrf_token
+    data_to_send={
+        method : "POST",
+        headers :{
+            "Content-type":"application/json"
         },
-        body:JSON.stringify(data_to_submit)
+        body:JSON.stringify([data_to_submit])
     }
-    fetch(end_point+"add_case/",data_to_send)
+
+    fetch(end_point+"home/NewCase/",data_to_send).then(data=>{
+        return data.json()
+    }).then(parse_data=>{
+        const toast = document.getElementById('toast');
+        toast.classList.remove('hidden');
+        showToast(parse_data.message,"#76eb6a")
+        form_tag.reset()
+    })
 }
+
+// function showToast(message,color) {
+//     var toast = document.getElementById("toast");
+//     toast.className = "show";
+//     toast.innerText = message;
+//     toast.style.backgroundColor = color
+//     setTimeout(function(){ toast.className = toast.className.replace("show", "dssssssssssssss"); }, 3000);
+//   }

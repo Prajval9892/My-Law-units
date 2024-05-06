@@ -42,11 +42,43 @@
         <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
         <!-- SimpleMDE demo -->
         <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
-        
+        <style>
+            #toast {
+  visibility: hidden; 
+  min-width: 100px; 
+  margin-left: -125px; 
+  background-color: var(--primary); 
+  color: whitesmoke; 
+  text-align: center; 
+  border-radius: 8px;
+  padding: 12px;
+  position: fixed; 
+  z-index: 1; 
+  right: 5%;
+  top: 80px;
+}
+
+#toast.show {
+  visibility: visible; 
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+        </style>
     </head>
 
     <body>
         <!-- Begin page -->
+        <div id="toast">Image Uploaded</div>
         <div class="wrapper">
 
             
@@ -927,7 +959,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         
-                                        <form action="#">
+                                        <form action="#" id="new_advocate">
 
                                         <div class="row">
                                            
@@ -944,49 +976,49 @@
                                                 </div>
 
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Phone NO</label>
-                                                    <input type="text" id="case-date" class="form-control" >
+                                                    <label for="phone-no" class="form-label">Phone NO</label>
+                                                    <input type="text" id="phone-no" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-2">
-                                                    <label for="project-overview" class="form-label">Age</label>
-                                                    <input type="text" id="case-hall" class="form-control" >
+                                                    <label for="adv-age" class="form-label">Age</label>
+                                                    <input type="text" id="adv-age" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Father's Name:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Company Name:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="father-name" class="form-label">Father's Name:</label>
+                                                    <input type="text" id="father-name" class="form-control" >
                                                 </div>
                                             
                                             <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Website:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="company-name" class="form-label">Company Name:</label>
+                                                    <input type="text" id="company-name" class="form-control" >
+                                                </div>
+                                            
+                                            <div class="mb-3 col-xl-6">
+                                                    <label for="website-1" class="form-label">Website:</label>
+                                                    <input type="text" id="website-1" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">TIN#:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="tin-1" class="form-label">TIN#:</label>
+                                                    <input type="text" id="tin-1" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">GST Identification Number (GSTIN):</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="gst-id-no" class="form-label">GST Identification Number (GSTIN):</label>
+                                                    <input type="text" id="gst-id-no" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Permanent Account Number (PAN):</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="permanent-acc-no" class="form-label">Permanent Account Number (PAN):</label>
+                                                    <input type="text" id="permanent-acc-no" class="form-control" >
                                             </div>
                                             
                                            
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Hourly Rate (INR):</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="hourly-rate" class="form-label">Hourly Rate (INR):</label>
+                                                    <input type="text" id="hourly-rate" class="form-control" >
                                             </div>
                                             
                                         </div>
@@ -996,33 +1028,33 @@
                                             <h3><label for="project-overview" class="form-label">Office Address</label></h3>
                                             
                                             <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Address Line 1:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="address-line-1" class="form-label">Address Line 1:</label>
+                                                    <input type="text" id="address-line-1" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Address Line 2:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="address-line-2" class="form-label">Address Line 2:</label>
+                                                    <input type="text" id="address-line-2" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Country:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="country-1" class="form-label">Country:</label>
+                                                    <input type="text" id="country-1" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">State:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="state1" class="form-label">State:</label>
+                                                    <input type="text" id="state1" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">City:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="city1" class="form-label">City:</label>
+                                                    <input type="text" id="city1" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Zip/Postal Code:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="zip-postal-code" class="form-label">Zip/Postal Code:</label>
+                                                    <input type="text" id="zip-postal-code" class="form-control" >
                                             </div>
                                             
                                             </div>
@@ -1032,33 +1064,33 @@
                                             <h3><label for="project-overview" class="form-label">Home Address</label></h3>
                                             
                                             <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Address Line 1:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="home-address-1" class="form-label">Address Line 1:</label>
+                                                    <input type="text" id="home-address-1" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Address Line 2:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="home-address-2" class="form-label">Address Line 2:</label>
+                                                    <input type="text" id="home-address-2" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Country:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="country-2" class="form-label">Country:</label>
+                                                    <input type="text" id="country-2" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">State:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="state-2" class="form-label">State:</label>
+                                                    <input type="text" id="state-2" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">City:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="city2" class="form-label">City:</label>
+                                                    <input type="text" id="city2" class="form-control" >
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Zip/Postal Code:</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                    <label for="home-zip-postal-code" class="form-label">Zip/Postal Code:</label>
+                                                    <input type="text" id="home-zip-postal-code" class="form-control" >
                                             </div>
                                             
                                             </div>
