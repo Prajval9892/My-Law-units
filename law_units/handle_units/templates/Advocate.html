@@ -8,12 +8,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
+        <style>
+            #toast {
+  visibility: hidden; 
+  min-width: 100px; 
+  margin-left: -125px; 
+  background-color: var(--primary); 
+  color: whitesmoke; 
+  text-align: center; 
+  border-radius: 8px;
+  padding: 12px;
+  position: fixed; 
+  z-index: 1; 
+  right: 5%;
+  top: 80px;
+}
 
+#toast.show {
+  visibility: visible; 
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+</style>
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
         <!-- Theme Config Js -->
         <script src="{% static 'js/hyper-config.js' %}"></script>
+        <script src="{% static 'js/page_logic/showadvocate.js' %}"></script>
 
         <!-- App css -->
         <link href="{% static 'css/app-saas.min.css' %}" rel="stylesheet" type="text/css" id="app-style" />
@@ -31,6 +63,7 @@
 
     <body>
         <!-- Begin page -->
+        <div id="toast">Image Uploaded</div>
         <div class="wrapper">
 
             
@@ -732,70 +765,36 @@
                                                     <table class="table table-centered mb-0">
                                                         <thead>
                                                             <tr>
-                                                                <th>No</th>
-                                                                <th>Full Name</th>
-                                                                <th>Email Address</th>
-                                                                <th>Phone No</th>
-                                                                <th>Company Name</th>
+                                                                {% for col in cols %}
+                                                                <th>{{ col }}</th>
+                                                                {% endfor %}
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="tbody_id">
+                                                            {% for i in query_data %}
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td>Full Name</td>
-                                                                <td>Email</td>
-                                                                <td>Phone no</td>
-                                                                <td>Company Name</td>
+                                                                <td>{{ forloop.counter }}</td> <!-- Use forloop.counter for sequence count -->
+                                                                <td>{{ i.fullname }}</td>
+                                                                <td>{{ i.email }}</td>
+                                                                <td>{{ i.number }}</td>
+                                                                <td>{{ i.company_name }}</td>
                                                                 <td class="table-action">
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete" onclick="delete_item('{{ i.advocate_id }}')"></i></a>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>Full Name</td>
-                                                                <td>Email</td>
-                                                                <td>Phone no</td>
-                                                                <td>Company Name</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>Full Name</td>
-                                                                <td>Email</td>
-                                                                <td>Phone no</td>
-                                                                <td>Company Name</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td>Full Name</td>
-                                                                <td>Email</td>
-                                                                <td>Phone no</td>
-                                                                <td>Company Name</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
+                                                            {% endfor %}
                                                         </tbody>
                                                     </table>
-                                                </div> <!-- end table-responsive-->                     
+                                                </div> <!-- end table-responsive--> 
+                                                <div class="pagination">
+                                                    <button class="prev" onclick="previousPage()">Previous</button>
+                                                    <span class="page-numbers"></span>
+                                                    <button class="next" onclick="nextPage()">Next</button>
+                                                </div>                    
                                             </div> <!-- end preview-->                                            
                                         </div> <!-- end tab-content-->
 
