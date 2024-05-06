@@ -14,6 +14,7 @@
 
         <!-- Theme Config Js -->
         <script src="{% static 'js/hyper-config.js' %}"></script>
+        <script src="{% static 'js/page_logic/showteam.js' %}"></script>
 
         <!-- App css -->
         <link href="{% static 'css/app-saas.min.css' %}" rel="stylesheet" type="text/css" id="app-style" />
@@ -733,22 +734,21 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>First Name</th>
-                                                                <th>Last Name</th>
-                                                                <th>Email Address</th>
-                                                                <th>Mobile No</th>
-                                                                <th>Designation</th>
+                                                                {% for col in cols %}
+                                                                <th>{{ col }}</th>
+                                                                {% endfor %}
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="tbody_id">
+                                                            {% for i in query_data %}
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td>First Name</td>
-                                                                <td>Last Name</td>
-                                                                <td>Email</td>
-                                                                <td>Mobile No</td>
-                                                                <td>Designation</td>
+                                                                <td>{{ forloop.counter }}</td> <!-- Use forloop.counter for sequence count -->
+                                                                <td>{{ i.first_name }}</td>
+                                                                <td>{{ i.last_name }}</td>
+                                                                <td>{{ i.designation }}</td>
+                                                                <td>{{ i.email }}</td>
+                                                                <td>{{ i.number }}</td>
                                                                 <td class="table-action">
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
@@ -756,57 +756,26 @@
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>First Name</td>
-                                                                <td>Last Name</td>
-                                                                <td>Email</td>
-                                                                <td>Mobile No</td>
-                                                                <td>Designation</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>First Name</td>
-                                                                <td>Last Name</td>
-                                                                <td>Email</td>
-                                                                <td>Mobile No</td>
-                                                                <td>Designation</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td>First Name</td>
-                                                                <td>Last Name</td>
-                                                                <td>Email</td>
-                                                                <td>Mobile No</td>
-                                                                <td>Designation</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
+                                                            {% endfor %}
                                                         </tbody>
-                                                    </table>
-                                                </div> <!-- end table-responsive-->                     
-                                            </div> <!-- end preview-->                                            
-                                        </div> <!-- end tab-content-->
 
+                                                    </table>
+                                                </div> <!-- end table-responsive-->
+                                                <div class="pagination">
+                                                    <button class="prev" onclick="previousPage()">Previous</button>
+                                                    <span class="page-numbers"></span>
+                                                    <button class="next" onclick="nextPage()">Next</button>
+                                                </div>
+                                                                     
+                                            </div> <!-- end preview--> 
+                                                                                       
+                                        </div> <!-- end tab-content-->
+                                        
                                     </div> <!-- end card body-->
                                 </div> <!-- end card -->
                             </div><!-- end col-->
+                            
+                            
                  
                 
 
