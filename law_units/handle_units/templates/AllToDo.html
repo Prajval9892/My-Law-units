@@ -8,7 +8,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
-
+        <style>
+        #toast {
+            visibility: hidden; 
+            min-width: 100px; 
+            margin-left: -125px; 
+            background-color: var(--primary); 
+            color: whitesmoke; 
+            text-align: center; 
+            border-radius: 8px;
+            padding: 12px;
+            position: fixed; 
+            z-index: 1; 
+            right: 5%;
+            top: 80px;
+          }
+          
+          #toast.show {
+            visibility: visible; 
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+          }
+          
+          @keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+          }
+          
+          @keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+          }
+                  </style>
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
@@ -22,7 +53,7 @@
         <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
         
         <link href="{% static 'vendor/simplemde/simplemde.min.css' %}" rel="stylesheet" type="text/css" />                                                    
-
+        <script src="{% static 'js/page_logic/add_to_do.js' %}"></script>
         <!-- SimpleMDE js -->
         <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
         <!-- SimpleMDE demo -->
@@ -30,6 +61,7 @@
     </head>
 
     <body>
+        <div id="toast">Image Uploaded</div>
         <!-- Begin page -->
         <div class="wrapper">
 
@@ -725,7 +757,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="task-title" class="form-label">Description</label>
-                                <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                                <textarea class="form-control" id="description" rows="5"></textarea>
                             </div>
                         </div>
 
@@ -733,11 +765,11 @@
 
                             <div class="mb-3 col-md-6">
                                 <label for="example-date" class="form-label">Start Date</label>
-                                <input class="form-control" id="example-date" type="date" name="date">
+                                <input class="form-control" id="start_date" type="date" name="date">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="example-date" class="form-label">End Date</label>
-                                <input class="form-control" id="example-date" type="date" name="date">
+                                <input class="form-control" id="end_date" type="date" name="date">
 
                             </div>
 
@@ -745,33 +777,27 @@
                         
                         <div class="mb-3 col-md-6">
                             <label for="example-multiselect" class="form-label">Case Name</label>
-                            <select class="form-control select2" data-toggle="select2">
+                            <select class="form-control select2" data-toggle="select2" id="case_name">
                                 <option>Please Select</option>
-                                <option value="Case1">Case1</option>
-                                <option value="Case2">Case2</option>
-                                <option value="Case3">Case3</option>
-                                <option value="Case4">Case4</option>
-                                <option value="Case5">Case5</option>
-                                <option value="Case6">Case6</option>
+                                {% for case in case_obj %}
+                                <option value="{{ case.case_number }}">{{ case.tital }}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
                         <div class="mb-3 col-md-6">
                             <label for="example-multiselect" class="form-label">Advocate Name</label>
-                            <select class="form-control select2" data-toggle="select2">
+                            <select class="form-control select2" data-toggle="select2" id="advocate">
                                 <option>Please Select</option>
-                                <option value="Advocate1">Advocate1</option>
-                                <option value="Advocate2">Advocate2</option>
-                                <option value="Advocate3">Advocate3</option>
-                                <option value="Advocate4">Advocate4</option>
-                                <option value="Advocate5">Advocate5</option>
-                                <option value="Advocate6">Advocate6</option>
+                                {% for adv in adv_obj %}
+                                <option value="{{ adv.fullname }}">{{ adv.fullname }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         
                     <div class="text-end">
                         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-primary" onclick="submit_to_do()" data-dismiss="modal">Submit</button>
                     </div>
                 </form>
             </div>
@@ -791,7 +817,7 @@
                                                 <div class="card rounded-0 shadow-none m-0 bg-primary-lighten border-primary border">
                                                     <div class="card-body text-center ">
                                                         <i class="ri-survey-line text-muted font-24 text-primary"></i>
-                                                        <h3><span>1</span></h3>
+                                                        <h3><span>{{ count.all_count }}</span></h3>
                                                         <p class="text-muted font-15 mb-0">All Tasks</p>
                                                     </div>
                                                 </div>
@@ -801,7 +827,7 @@
                                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
                                                     <div class="card-body text-center bg-warning-lighten border-warning border">
                                                         <i class=" ri-alarm-line text-muted font-24"></i>
-                                                        <h3><span>0</span></h3>
+                                                        <h3><span>{{ count.upcoming_count }}</span></h3>
                                                         <p class="text-muted font-15 mb-0">Upcoming Tasks</p>
                                                     </div>
                                                 </div>
@@ -811,7 +837,7 @@
                                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
                                                     <div class="card-body text-center bg-danger-lighten border-danger border">
                                                         <i class="uil-bell text-muted font-24"></i>
-                                                        <h3><span>0</span></h3>
+                                                        <h3><span>{{ count.pending_count }}</span></h3>
                                                         <p class="text-muted font-15 mb-0">Pending Tasks</p>
                                                     </div>
                                                 </div>
@@ -821,7 +847,7 @@
                                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
                                                     <div class="card-body text-center bg-success-lighten border-success border">
                                                         <i class="ri-checkbox-circle-line text-muted font-24"></i>
-                                                        <h3><span>1</span> </h3>
+                                                        <h3><span>{{ count.comp_count }}</span> </h3>
                                                         <p class="text-muted font-15 mb-0">Completed Tasks</p>
                                                     </div>
                                                 </div>
@@ -833,10 +859,16 @@
                             </div> <!-- end col-->
                         </div>
                         <!-- end row-->
-                        
+                        {% for to_do in to_do_list %}
                         <div class="col-xxl-12 col-xl-12">
                                 <!-- project card -->
-                                <div class="card d-block bg-warning-lighten border-warning border">
+                                {% if to_do.status == "expired" %}
+                                <div class="card d-block bg-danger-lighten border-danger border" id='{{ to_do.id }}'>
+                                {% elif to_do.status == "comp" %}
+                                <div class="card d-block bg-success-lighten border-success border" id='{{ to_do.id }}'>
+                                {% else %}
+                                <div class="card d-block bg-warning-lighten border-warning border" id='{{ to_do.id }}'>
+                                {% endif %}
                                     <div class="card-body">
                                         <div class="dropdown card-widgets">
                                             <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
@@ -856,7 +888,11 @@
                                         </div> <!-- end dropdown-->
                                         
                                         <div class="form-check float-start">
-                                            <input type="checkbox" class="form-check-input" id="completedCheck">
+                                            {% if to_do.status == "comp" %}
+                                            <input type="checkbox" class="form-check-input" id="completedCheck" checked onclick="change_status('pending','{{ to_do.id }}')">
+                                            {% else %}
+                                            <input type="checkbox" class="form-check-input" id="completedCheck" onclick="change_status('comp','{{ to_do.id }}')">
+                                            {% endif %}
                                             <label class="form-check-label" for="completedCheck">
                                                 Mark as completed
                                             </label>
@@ -875,7 +911,7 @@
                                                     <i class='ri-contacts-book-2-line font-18 text-warning me-1'></i>
                                                     <div>
                                                         <h5 class="mt-1 font-14">
-                                                           Case Name
+                                                           {{ dt.case_id.tital }}
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -890,7 +926,7 @@
                                                     <i class='ri-account-box-line font-18 text-warning me-1'></i>
                                                     <div>
                                                         <h5 class="mt-1 font-14">
-                                                           me
+                                                           {{ to_do.advocate_name }}
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -905,7 +941,7 @@
                                                     <i class='ri-account-pin-box-line font-18 text-warning me-1'></i>
                                                     <div>
                                                         <h5 class="mt-1 font-14">
-                                                           me
+                                                            {{ to_do.assign_by }}
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -919,7 +955,7 @@
                                                     <i class='uil uil-schedule font-18 text-warning me-1'></i>
                                                     <div>
                                                         <h5 class="mt-1 font-14">
-                                                            12/10/2024 10am
+                                                            {{ to_do.end_date }}
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -933,208 +969,7 @@
                                     
                                 </div> <!-- end card-->
                         </div>
-                        
-                        
-                        <div class="col-xxl-12 col-xl-12">
-                                <!-- project card -->
-                                <div class="card d-block bg-success-lighten border-success border">
-                                    <div class="card-body">
-                                        <div class="dropdown card-widgets">
-                                            <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class='uil uil-ellipsis-h'></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                              
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-edit me-1'></i>Edit
-                                                </a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item text-danger">
-                                                    <i class='uil uil-trash-alt me-1'></i>Delete
-                                                </a>
-                                            </div> <!-- end dropdown menu-->
-                                        </div> <!-- end dropdown-->
-                                        
-                                        <div class="form-check float-start">
-                                            <input type="checkbox" class="form-check-input" id="completedCheck">
-                                            <label class="form-check-label" for="completedCheck">
-                                                Mark as completed
-                                            </label>
-                                        </div> <!-- end form-check-->
-                                        
-                                        <div class="clearfix"></div>
-
-                                        <h3 class="mt-3">Description about case</h3>
-
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <!-- assignee -->
-                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Case </h4>
-                                                
-                                                <div class="d-flex">
-                                                    <i class='ri-contacts-book-2-line font-18 text-success me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                           Case Name
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
-                                            
-                                            <div class="col-6">
-                                                <!-- assignee -->
-                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign To</h4>
-                                                
-                                                <div class="d-flex">
-                                                    <i class='ri-account-box-line font-18 text-success me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                           me
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
-                                            
-                                            <div class="col-6">
-                                                <!-- assignee -->
-                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign By </h4>
-                                                
-                                                <div class="d-flex">
-                                                    <i class='ri-account-pin-box-line font-18 text-success me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                           me
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
-
-                                            <div class="col-6">
-                                                <!-- start due date -->
-                                                <p class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Due Date</p>
-                                                <div class="d-flex">
-                                                    <i class='uil uil-schedule font-18 text-success me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                            12/10/2024 10am
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end due date -->
-                                            </div> <!-- end col -->
-                                            
-                                        </div> <!-- end row -->
-
-
-                                    </div> <!-- end card-body-->
-                                    
-                                </div> <!-- end card-->
-                        </div>
-                        
-                        <div class="col-xxl-12 col-xl-12">
-                                <!-- project card -->
-                                <div class="card d-block bg-danger-lighten border-danger border">
-                                    <div class="card-body">
-                                        <div class="dropdown card-widgets">
-                                            <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class='uil uil-ellipsis-h'></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                              
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-edit me-1'></i>Edit
-                                                </a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item text-danger">
-                                                    <i class='uil uil-trash-alt me-1'></i>Delete
-                                                </a>
-                                            </div> <!-- end dropdown menu-->
-                                        </div> <!-- end dropdown-->
-                                        
-                                        <div class="form-check float-start">
-                                            <input type="checkbox" class="form-check-input" id="completedCheck">
-                                            <label class="form-check-label" for="completedCheck">
-                                                Mark as completed
-                                            </label>
-                                        </div> <!-- end form-check-->
-                                        
-                                        <div class="clearfix"></div>
-
-                                        <h3 class="mt-3">Description about case</h3>
-
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <!-- assignee -->
-                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Case </h4>
-                                                
-                                                <div class="d-flex">
-                                                    <i class='ri-contacts-book-2-line font-18 text-danger me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                           Case Name
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
-                                            
-                                            <div class="col-6">
-                                                <!-- assignee -->
-                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign To</h4>
-                                                
-                                                <div class="d-flex">
-                                                    <i class='ri-account-box-line font-18 text-danger me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                           me
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
-                                            
-                                            <div class="col-6">
-                                                <!-- assignee -->
-                                                <h4 class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Assign By </h4>
-                                                
-                                                <div class="d-flex">
-                                                    <i class='ri-account-pin-box-line font-18 text-danger me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                           me
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
-
-                                            <div class="col-6">
-                                                <!-- start due date -->
-                                                <p class="mt-2 mb-1 text-muted fw-bold font-16 text-uppercase">Due Date</p>
-                                                <div class="d-flex">
-                                                    <i class='uil uil-schedule font-18 text-danger me-1'></i>
-                                                    <div>
-                                                        <h5 class="mt-1 font-14">
-                                                            12/10/2024 10am
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <!-- end due date -->
-                                            </div> <!-- end col -->
-                                            
-                                        </div> <!-- end row -->
-
-
-                                    </div> <!-- end card-body-->
-                                    
-                                </div> <!-- end card-->
-                        </div>
-                      
+                        {% endfor %}
 
 
                 <!-- Footer Start -->

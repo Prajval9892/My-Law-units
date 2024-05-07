@@ -5,6 +5,7 @@ from .models import *
 from django.http import JsonResponse
 from django.core.serializers import serialize
 from django.forms.models import model_to_dict
+from datetime import datetime
 # Create your views here.
 
 @api_view(["GET"])
@@ -33,7 +34,33 @@ def upcomingtodo(request):
     return render(request,"{% url 'alltodo' %}")
 
 def alltodo(request):
-    return render(request,"AllToDo.html")
+    case_obj = case.objects.all()
+    all_to_do = ToDO.objects.all()
+    adv_obj = Advocate.objects.all()
+    data_to_send_list=[]
+    pending_count = ToDO.objects.filter(status="pending",end_date__gt=datetime.now().date()).count()
+    upcoming_count = ToDO.objects.filter(status="pending",end_date__lt=datetime.now().date()).count()
+    comp_count = ToDO.objects.filter(status="comp").count()
+    all_count = ToDO.objects.all().count()
+
+    count = {"pending_count":pending_count,"upcoming_count":upcoming_count,"comp_count":comp_count,"all_count":all_count}
+
+    for to_do in all_to_do:
+        data_to_send={}
+        data_to_send["tital"] = to_do.case_id.tital
+        data_to_send["advocate_name"] = to_do.advocate_name
+        data_to_send["assign_by"] = to_do.assign_by
+        data_to_send["end_date"] = to_do.end_date
+        data_to_send["id"] = to_do.to_do_id
+        if to_do.status=="comp":
+            data_to_send["status"] = "comp"
+        elif to_do.end_date>datetime.now().date():
+            data_to_send["status"] = "expired"
+        elif to_do.status=="pending":
+            data_to_send["status"] = "pending"
+        
+        data_to_send_list.append(data_to_send)
+    return render(request,"AllToDo.html",{"case_obj":case_obj,"to_do_list":data_to_send_list,"count":count,"adv_obj":adv_obj})
 
 def pendingtodo(request):
     return render(request,"{% url 'alltodo' %}")
@@ -75,7 +102,6 @@ def team_table_page(request):
     item_per_page = 1
     start = (int(page_number) - 1) * item_per_page
     end = int(page_number) * item_per_page
-    print("data_base",data_base)
     if data_base:
         if data_base=="Team":
             query_data = team_member.objects.all()[start:end]
@@ -92,13 +118,11 @@ def team_table_page(request):
         "data": serialize_data,
         "col": columns
     }
-    print("kkkkkkkkkkkk",response_data)
     return JsonResponse(response_data, status=200)
 
 
 
 def add_case(request):
-    print(json.loads(request.body))
     data = json.loads(request.body)
 
 @api_view(["POST","GET"])
@@ -192,7 +216,6 @@ def NewAdvocate(request):
 @api_view(["GET"])
 def delete_record(request):
     id = request.GET.get("id")
-    print("id",id)
     database = request.GET.get("database")
     if team_member.objects.filter(member_id=id).exists():
         if database == "team_member":
@@ -203,3 +226,21 @@ def delete_record(request):
         return JsonResponse({"message":"Team Member deleted successfully","status":200},status=200)
     else:
         return JsonResponse({"message":"Team Member Not Found","status":404},status=404)
+    
+
+
+@api_view(["POST"])
+def add_todo(request):
+    data = json.loads(request.body)
+    case_obj=case.objects.get(case_number=data["case_name"])
+    to_do_obj = ToDO(case_id=case_obj,advocate_name=data["advocate"],description=data["description"],start_date=data["start_date"],end_date=data["end_date"],assign_by=request.user)
+    to_do_obj.save()
+    return JsonResponse({"message":"TODO Added successfully","status":200},status=200)
+
+@api_view(["POST"])
+def change_to_status(request):
+    data = json.loads(request.body)
+    to_obj = ToDO.objects.get(to_do_id=data["id"])
+    to_obj.status = data["status"]
+    to_obj.save()
+    return JsonResponse({"message":"TO DO Updated Successfully","status":200},status=200)

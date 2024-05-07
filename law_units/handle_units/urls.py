@@ -41,5 +41,7 @@ urlpatterns = [
     path('home/NewAdvocate',views.NewAdvocate,name="NewAdvocate"),
     path('home/team_pagi',views.team_table_page,name="team_pagi"),
     path('home/delete_record',views.delete_record,name="delete_record"),
+    path('home/add_todo',views.add_todo,name="home/add_todo"),
+    path('home/change_to_do_status',views.change_to_status,name="change_to_status"),
 ]
             
