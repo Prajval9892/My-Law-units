@@ -4,7 +4,6 @@ function add_case(){
     var number_of_item1 = inputContainer1.childElementCount
     data_to_submit = {}
     data_to_submit["court"] = document.getElementById("Court").value
-    console.log("888888888888888888888888",data_to_submit)
     data_to_submit["case_number"] = document.getElementById("case-number").value
     data_to_submit["year"] = document.getElementById("year").value
     data_to_submit["case_date"] = document.getElementById("case-date").value

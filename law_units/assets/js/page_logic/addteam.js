@@ -13,8 +13,6 @@ function add_team(){
         data_to_submit["number"] = document.getElementById("mobileNumber"+i).value
         item_list.push(data_to_submit)
     }
-    console.log(item_list
-    )
     
 
     data_to_send={

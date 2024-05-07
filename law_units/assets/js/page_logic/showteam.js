@@ -21,7 +21,6 @@ window.onload = function render_table(){
 
 function show_table(){
     var tableBody = document.getElementById('tbody_id');
-console.log(tableBody)
 my_param= new URLSearchParams()
 my_param.append("page_number",page_number)
 my_param.append("database","Team")
@@ -61,7 +60,6 @@ fetch(end_point+"home/team_pagi?"+my_param.toString(),data_to_set).then(data=>{
 
 
 function delete_item(item_id){
-    console.log(item_id)
     delete_param = new URLSearchParams()
     delete_param.append("id",item_id)
     delete_param.append("database","team_member")

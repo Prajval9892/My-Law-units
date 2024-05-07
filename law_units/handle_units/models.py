@@ -83,9 +83,19 @@ class opponent_advocate(models.Model):
     phone_number = models.IntegerField()
 
 class team_member(models.Model):
-    member_id = models.IntegerField(primary_key=True,max_length=30)
+    member_id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length= 20)
     designation = models.CharField(max_length=50)
     email = models.EmailField()
     number = models.IntegerField()
+
+class ToDO(models.Model):
+    to_do_id = models.IntegerField(primary_key=True)
+    case_id = models.ForeignKey(case,on_delete=models.CASCADE)
+    advocate_name = models.CharField(max_length=30)
+    description = models.CharField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    assign_by = models.CharField(max_length=20,null=True,blank=True)
+    status = models.CharField(default="pending",max_length=20)
