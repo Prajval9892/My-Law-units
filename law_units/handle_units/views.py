@@ -33,6 +33,12 @@ def completedtodo(request):
 def upcomingtodo(request):
     return render(request,"{% url 'alltodo' %}")
 
+def bills(request):
+    return render(request,'Bills.html')
+
+def newbill(request):
+    return render(request,'NewBill.html')
+
 def alltodo(request):
     case_obj = case.objects.all()
     all_to_do = ToDO.objects.all()
@@ -121,9 +127,31 @@ def team_table_page(request):
     return JsonResponse(response_data, status=200)
 
 
-
+@api_view(["POST","GET"])
 def add_case(request):
-    data = json.loads(request.body)
+    # try:
+    if request.method == "POST":
+        n_data = json.loads(request.body)
+        ndata=n_data
+        new_case=case(court=ndata["court"],case_type=ndata["case-type"],case_number=ndata["case_number"],cnr=ndata["crn_no"],respondent=ndata["Respondent-1"],
+                        high_court=ndata["high_court"],state=ndata["stateDropdown"],district=ndata["districtDropdown"],court_establishment=ndata["Court-Establishment"],year=ndata["year"],Petitioner=ndata["petitioner-1"],date_of_filling=ndata["date-filling-1"],court_hall=ndata["case-hall"],floor=ndata["case-floor"],
+                        classification=ndata["classification"],tital=ndata["Title"],disc=ndata["description"],Before_Honble_Judg=ndata["Honble_Judge"],
+                        ref_by=ndata["ref_by"],section=ndata["Section"],Priority=ndata["Priority"],under_act=ndata["Act"],under_section=ndata["under-section"],fir_police_station=ndata["FIR_Police_station"],
+                        fir_number=ndata["FIR_no"],fir_year=ndata["FIR_year"],affidavit_vakalat_date=ndata["affidavit-vakalath-date"])
+        new_case.save()
+        newcases2=case.objects.get(case_number=ndata["case_number"])
+        for ndata in n_data ["opponent_list"]:
+            newcase1=opponent(full_name=ndata["full_name"],email=ndata["email"],phone_number=ndata["phone"],case=newcases2)
+            newcase1.save()
+        
+        
+        for ndata in n_data["advocate_detail"]:
+            advt_detail=opponent_advocate(full_name=ndata["full_name"],email=ndata["email"],phone_number=ndata["phone"],case=newcases2)
+            advt_detail.save()
+            
+    # except Exception as e:
+    #     return JsonResponse({"message":e.__str__(),"status":500},status=500)
+    return render(request,"Newcase.html")
 
 @api_view(["POST","GET"])
 def Addmember(request):

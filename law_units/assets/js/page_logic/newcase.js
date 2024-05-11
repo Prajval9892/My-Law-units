@@ -4,10 +4,15 @@ function add_case(){
     var number_of_item1 = inputContainer1.childElementCount
     data_to_submit = {}
     data_to_submit["court"] = document.getElementById("Court").value
+    data_to_submit["case-type"] = document.getElementById("case-type").value
     data_to_submit["case_number"] = document.getElementById("case-number").value
     data_to_submit["year"] = document.getElementById("year").value
-    data_to_submit["case_date"] = document.getElementById("case-date").value
+    // data_to_submit["case_date"] = document.getElementById("case-date").value
+    data_to_submit["crn_no"] = document.getElementById("crn_no").value
     data_to_submit["high_court"] = document.getElementById("high_court").value
+    data_to_submit["stateDropdown"] = document.getElementById("stateDropdown").value
+    data_to_submit["districtDropdown"] = document.getElementById("districtDropdown").value
+    data_to_submit["Court-Establishment"] = document.getElementById("Court-Establishment").value
     data_to_submit["case-hall"] = document.getElementById("case-hall").value
     data_to_submit["case-floor"] = document.getElementById("case-floor").value
     data_to_submit["classification"] = document.getElementById("classification").value
