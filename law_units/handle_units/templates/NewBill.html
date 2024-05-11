@@ -4,7 +4,7 @@
     
 <head>
         <meta charset="utf-8" />
-        <title>Starter Page</title>
+        <title>New Case</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -27,6 +27,21 @@
         <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
         <!-- SimpleMDE demo -->
         <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
+
+        <link href="{% static 'vendor/quill/quill.core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'vendor/quill/quill.snow.css' %}" rel="stylesheet" type="text/css" />                                                  
+
+        <!-- quill js -->
+        <script src="{% static 'vendor/quill/quill.min.js' %}"></script>
+        <!-- quill Init js-->
+        <script src="{% static 'js/pages/demo.quilljs.js' %}"></script>
+        
+        <link href="{% static 'vendor/simplemde/simplemde.min.css' %}" rel="stylesheet" type="text/css" />                                                    
+                                                    
+        <!-- SimpleMDE js -->
+        <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
+        <!-- SimpleMDE demo -->
+        <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
     </head>
 
     <body>
@@ -44,20 +59,20 @@
                             <!-- Logo light -->
                             <a href="index.html" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="{% static '/images/logo.png' %}" alt="logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{% static '/images/logo.png' %}" alt="small logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="small logo">
                                 </span>
                             </a>
 
                             <!-- Logo Dark -->
                             <a href="index.html" class="logo-dark">
                                 <span class="logo-lg">
-                                    <img src="{% static '/images/logo.png' %}" alt="dark logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="dark logo">
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{% static '/images/logo.png' %}" alt="small logo">
+                                    <img src="{% static 'images/logo.png' %}" alt="small logo">
                                 </span>
                             </a>
                         </div>
@@ -77,15 +92,6 @@
                         </button>
 
                         <!-- Topbar Search Form -->
-                        <div class="app-search dropdown d-none d-lg-block">
-                            <form>
-                                <div class="input-group">
-                                    <input type="search" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
-                                    <span class="mdi mdi-magnify search-icon"></span>
-                                    <button class="input-group-text btn btn-primary" type="submit">Search</button>
-                                </div>
-                            </form>
-                        </div>
                         
                     </div>
 
@@ -170,7 +176,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
                                                     <div class="notify-icon">
-                                                        <img src="{% static '/images/users/avatar-2.jpg' %}" class="img-fluid rounded-circle" alt="" />
+                                                        <img src="{% static 'images/users/avatar-2.jpg' %}" class="img-fluid rounded-circle" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -208,7 +214,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
                                                     <div class="notify-icon">
-                                                        <img src="{% static '/images/users/avatar-4.jpg' %}" class="img-fluid rounded-circle" alt="" />
+                                                        <img src="{% static 'images/users/avatar-4.jpg' %}" class="img-fluid rounded-circle" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -240,22 +246,221 @@
 
                                 <div class="p-2">
                                     <div class="row g-0">
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="Dashboard.html">
+                                                <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
+                                                <span>Dashboard</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="Cases.html">
+                                                <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
+                                                <span>Case</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="Teams.html">
+                                                <i class="ri-team-line widget-icon bg-white text-danger"></i>
+                                                <span>Team</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-0">
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="Advocates.html">
+                                                <i class="ri-account-pin-circle-line widget-icon bg-white text-danger"></i>
+                                                <span>Advocates</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="Calender.html">
+                                                <i class="uil-calender widget-icon bg-white text-danger"></i>
+                                                <span>Calender</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="AllToDo.html">
+                                               <i class=" ri-file-list-3-line widget-icon bg-white text-danger"></i>
+                                                <span>To-DOs</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row g-0">    
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="Documents.html">
+                                                <i class="ri-folders-line widget-icon bg-white text-danger"></i>
+                                                <span>Documents</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="Bills.html">
+                                                <i class="ri-article-line widget-icon bg-white text-danger"></i>
+                                                <span>Bills</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="CauseList.html">
+                                                <i class="ri-file-list-line widget-icon bg-white text-danger"></i>
+                                                <span>Cause list</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row g-0">
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="CaseDiary.html">
+                                                <i class="ri-book-line widget-icon bg-white text-danger"></i>
+                                                <span>My Case Diary</span>
+                                            </a>
+                                        </div>
+                                        
+                                    </div> <!-- end row-->
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="d-none d-sm-inline-block">
+                            <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
+                                <i class="ri-settings-3-line font-22"></i>
+                            </a>
+                        </li>
+
+                        <li class="d-none d-sm-inline-block">
+                            <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" title="Theme Mode">
+                                <i class="ri-moon-line font-22"></i>
+                            </div>
+                        </li>
+
+
+                        <li class="d-none d-md-inline-block">
+                            <a class="nav-link" href="#" data-toggle="fullscreen">
+                                <i class="ri-fullscreen-line font-22"></i>
+                            </a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <span class="account-user-avatar">
+                                    <img src="{% static 'images/users/Mhatre.jpg' %}" alt="user-image" width="32" class="rounded-circle">
+                                </span>
+                                <span class="d-lg-flex flex-column gap-1 d-none">
+                                    <h5 class="my-0">Himanshu Mhatre</h5>
+                                    <h6 class="my-0 fw-normal">Admin</h6>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-account-circle me-1"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-account-edit me-1"></i>
+                                    <span>Settings</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-lifebuoy me-1"></i>
+                                    <span>Support</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-lock-outline me-1"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-logout me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ========== Topbar End ========== -->
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="leftside-menu">
+
+                <!-- Brand Logo Light -->
+                <a href="index.html" class="logo logo-light">
+                    <span class="logo-lg">
+                        <img src="{% static 'images/logo.png' %}" alt="logo">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
+                    </span>
+                </a>
+
+                <!-- Brand Logo Dark -->
+                <a href="index.html" class="logo logo-dark">
+                    <span class="logo-lg">
+                        <img src="{% static 'images/logo.png' %}" alt="dark logo">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
+                    </span>
+                </a>
+
+                <!-- Sidebar Hover Menu Toggle Button -->
+                <div class="button-sm-hover" data-bs-toggle="tooltip" data-bs-placement="right" title="Show Full Sidebar">
+                    <i class="ri-checkbox-blank-circle-line align-middle"></i>
+                </div>
+
+                <!-- Full Sidebar Menu Close Button -->
+                <div class="button-close-fullsidebar">
+                    <i class="ri-close-fill align-middle"></i>
+                </div>
+
+                <!-- Sidebar -left -->
+                <div class="h-100" id="leftside-menu-container" data-simplebar>
+                    <!-- Leftbar User -->
+                    <div class="leftbar-user">
+                        <a href="pages-profile.html">
+                            <img src="{% static 'images/users/Mhatre.jpg' %}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                            <span class="leftbar-user-name mt-2">Himanshu Mhatre</span>
+                        </a>
+                    </div>
+
+                    <!--- Sidemenu -->
+                    <li class="dropdown d-none d-sm-inline-block">
+                            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="ri-apps-2-line font-22"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
+
+                                <div class="p-2">
+                                    <div class="row g-0">
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'home' %}">
+                                            <a class="dropdown-icon-item" href="Home.html">
                                                 <i class="ri-home-gear-line widget-icon bg-white text-danger"></i>
                                                 <span>Home</span>
                                             </a>
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'dashboard' %}">
+                                            <a class="dropdown-icon-item" href="Dashboard.html">
                                                 <i class="ri-layout-2-line widget-icon bg-white text-danger"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'cases' %}">
+                                            <a class="dropdown-icon-item" href="Cases.html">
                                                 <i class="ri-briefcase-4-line widget-icon bg-white text-danger"></i>
                                                 <span>Case</span>
                                             </a>
@@ -264,20 +469,20 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'team' %}"">
+                                            <a class="dropdown-icon-item" href="Teams.html">
                                                 <i class="ri-team-line widget-icon bg-white text-danger"></i>
                                                 <span>Team</span>
                                             </a>
                                         </div>
                                         
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'Advocates' %}">
+                                            <a class="dropdown-icon-item" href="Advocates.html">
                                                 <i class="ri-account-pin-circle-line widget-icon bg-white text-danger"></i>
                                                 <span>Advocates</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'calendar' %}">
+                                            <a class="dropdown-icon-item" href="Calender.html">
                                                 <i class="uil-calender widget-icon bg-white text-danger"></i>
                                                 <span>Calender</span>
                                             </a>
@@ -287,15 +492,15 @@
                                     
                                     <div class="row g-0">  
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'todo' %}">
+                                            <a class="dropdown-icon-item" href="AllToDo.html">
                                                 <i class=" ri-file-list-3-line widget-icon bg-white text-danger"></i>
                                                 <span>To-DOs</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="{% url 'doc' %}">
+                                            <a class="dropdown-icon-item" href="Documents.html">
                                                 <i class="ri-folders-line widget-icon bg-white text-danger"></i>
-                                                <a href="{% url 'NewDocument' %}">Documents</a>
+                                                <span>Documents</span>
                                             </a>
                                         </div>
                                         <div class="col">
@@ -388,7 +593,7 @@
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
-                                    <img src="{% static '/images/users/Mhatre.jpg' %}" alt="user-image" width="32" class="rounded-circle">
+                                    <img src="{% static 'images/users/Mhatre.jpg' %}" alt="user-image" width="32" class="rounded-circle">
                                 </span>
                                 <span class="d-lg-flex flex-column gap-1 d-none">
                                     <h5 class="my-0">Himanshu Mhatre</h5>
@@ -443,20 +648,20 @@
                 <!-- Brand Logo Light -->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
                     </span>
                 </a>
 
                 <!-- Brand Logo Dark -->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-lg">
-                        <img src="{% static '/images/logo.png' %}" alt="dark logo">
+                        <img src="{% static 'images/logo.png' %}" alt="dark logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{% static '/images/logo.png' %}" alt="small logo">
+                        <img src="{% static 'images/logo.png' %}" alt="small logo">
                     </span>
                 </a>
 
@@ -475,7 +680,7 @@
                     <!-- Leftbar User -->
                     <div class="leftbar-user">
                         <a href="pages-profile.html">
-                            <img src="{% static '/images/users/Mhatre.jpg' %}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                            <img src="{% static 'images/users/Mhatre.jpg' %}" alt="user-image" height="42" class="rounded-circle shadow-sm">
                             <span class="leftbar-user-name mt-2">Himanshu Mhatre</span>
                         </a>
                     </div>
@@ -486,14 +691,14 @@
                         <li class="side-nav-title">Navigation</li>
                         
                          <li class="side-nav-item">
-                            <a href="{% url 'home' %}" class="side-nav-link">
+                            <a href="Home.html" class="side-nav-link">
                                 <i class="ri-home-gear-line"></i>
                                 <span> Home </span>
                             </a>
                         </li>
 
                         <li class="side-nav-item">
-                            <a href="{% url 'dashboard' %}" class="side-nav-link">
+                            <a href="Dashboard.html" class="side-nav-link">
                                 <i class=" ri-layout-2-line"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -508,10 +713,10 @@
                             <div class="collapse" id="sidebarCase">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{% url 'newcases' %}">Add Case</a>
+                                        <a href="NewCase.html">Add Case</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'cases' %}">Running case</a>
+                                        <a href="Cases.html">Running case</a>
                                     </li>
                                 </ul>
                             </div>
@@ -526,10 +731,10 @@
                             <div class="collapse" id="sidebarTeam">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{%  url 'add_team' %}" >Add New Team Member</a>
+                                        <a href="AddMember.html">Add New Team Member</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'team' %}">Teams</a>
+                                        <a href="Teams.html">Teams</a>
                                     </li>
                                     <li>
                                         <a href="Groups.html">Group</a>
@@ -547,17 +752,17 @@
                             <div class="collapse" id="sidebarAdvocates">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{% url 'NewAdvocate' %}">Add New Advocate</a>
+                                        <a href="NewAdvocate.html">Add New Advocate</a>
                                     </li>
                                     <li>
-                                        <a href="{%  url 'Advocates' %}" >Advocates</a>
+                                        <a href="Advocate.html">Advocates</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         
                         <li class="side-nav-item">
-                            <a href="{% url 'calendar' %}" class="side-nav-link">
+                            <a href="Calender.html" class="side-nav-link">
                                 <i class="uil-calender"></i>
                                 <span> Calendar </span>
                             </a>
@@ -572,16 +777,16 @@
                             <div class="collapse" id="sidebarTODOS">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{% url 'todo' %}">All TO-Dos</a>
+                                        <a href="AllToDo.html">All TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'alltodo' %}">Upcoming TO-Dos</a>
+                                        <a href="UpcomingToDo.html">Upcoming TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'alltodo' %}">Pending TO-Dos</a>
+                                        <a href="PendingToDo.html">Pending TO-Dos</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'alltodo' %}">Completed TO-Dos</a>
+                                        <a href="CompletedToDo.html">Completed TO-Dos</a>
                                     </li>
                                 </ul>
                             </div>
@@ -596,10 +801,10 @@
                             <div class="collapse" id="sidebarDocuments">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="{% url 'NewDocument' %}">Add New Document</a>
+                                        <a href="NewDocument.html">Add New Document</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'doc' %}">Documents</a>
+                                        <a href="Document.html">Documents</a>
                                     </li>
                                 </ul>
                             </div>
@@ -699,100 +904,24 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
-                                            <li class="breadcrumb-item active">Case</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Bill</a></li>
+                                            <li class="breadcrumb-item active">New Bill</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Case</h4>
+                                    <h4 class="page-title">New Bill</h4>
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
                         
                     </div> <!-- container -->
-                    
-                    <div class="row mb-2">
-                            <div class="col-sm-4">
-                                <a href="{% url 'newcases' %}" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i> Add New</a>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="text-sm-end">
-                                    <div class="btn-group mb-3">
-                                        <button type="button" class="btn btn-primary">All</button>
-                                    </div>
-                                    <div class="btn-group mb-3 ms-1">
-                                        <button type="button" class="btn btn-light">Running</button>
-                                        <button type="button" class="btn btn-light">Closed</button>
-                                        <button type="button" class="btn btn-light">Transferred/NOC</button>
-                                        <button type="button" class="btn btn-light">Direction Matters</button>
-                                        <button type="button" class="btn btn-light">Order Reserved</button>
-                                        <button type="button" class="btn btn-light">Sine Die</button>
-                                    </div>
-                                </div>
-                            </div><!-- end col-->
-                        </div> 
-                    
 
                 </div>
                 
                 <!-- content -->
                 
-                <div class="col-xl-12">
-                                <div class="card">
-                                    <div class="card-body">
-
-                                        <div class="tab-content">
-                                            <div class="tab-pane show active" id="basic-example-preview">
-                                                <div class="table-responsive-sm">
-                                                    <table class="table table-centered mb-0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Court</th>
-                                                                <th>Case</th>
-                                                                <th>Stage</th>
-                                                                <th>Client(s) / External Advocate(s)</th>
-                                                                <th>Hearing Date</th>
-                                                                <th>Title</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#update-Case-modal" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div> <!-- end table-responsive-->                     
-                                            </div> <!-- end preview-->                                            
-                                        </div> <!-- end tab-content-->
-
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-                            
-                            
-                            
-<div class="modal fade task-modal-content" id="update-Case-modal" tabindex="-1" role="dialog" aria-labelledby="update-Case-modal" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="update-Bill-modal">Update Case Details</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                   
-                                    <div class="row">
+                <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -800,396 +929,149 @@
                                         <form action="#">
 
                                         <div class="row">
-                                                <div class="mb-3 col-xl-5">
-                                                    <label for="project-overview" class="form-label">Court</label>
-                                                    
-                                                    <select class="form-control select2" data-toggle="select2">
-                                                        <option>Please Select</option>
-                                                        <option value="Supreme Court of India">Supreme Court of India</option>
-                                                        <option value="High Court">High Court</option>
-                                                        <option value="District Court">District Court</option>
-                                                        <option value="Commission(Consumer Forum)">Commission(Consumer Forum)</option>
-                                                        <option value="Tribunals and Authorities">Tribunals and Authorities</option>
-                                                        <option value="Revenue Court">Revenue Court</option>
-                                                        <option value="Commissionerate">Commissionerate</option>
-                                                        <option value="Department">Department</option>
-                                                        <option value="Lok Adalat">Lok Adalat</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                </div>
-
-                                            <div class="mb-3 col-xl-4">
-                                                <label for="project-overview" class="form-label">Case Number</label>
-                                                    <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
-                                                </div>
-                                           
-                                                <div class="mb-3 col-xl-3">
-                                                    <label for="project-overview" class="form-label">Year</label>
-                                                    <input type="text" id="year" class="form-control" >
-                                                </div>
-
-                                                <div class="mb-3 col-xl-3">
-                                                    <label for="project-overview" class="form-label">Case Type </label>
-                                                    <input type="text" id="case-date" class="form-control" >
-                                                </div>
-
-                                                <div class="mb-3 col-xl-5">
-                                                    <label for="project-overview" class="form-label">High Court</label>
-
-                                                    <select class="form-control select2" data-toggle="select2">
-                                                        <option>Please Select</option>
-                                                        <option value="Allahabad High Court">Allahabad High Court</option>
-                                                        <option value="Andhra Pradesh High Court">Andhra Pradesh High Court</option>
-                                                        <option value="Bombay High Court">Bombay High Court</option>
-                                                        <option value="Calcutta High Court">Calcutta High Court</option>
-                                                        <option value="Chhattisgarh High Court">Chhattisgarh High Court</option>
-                                                        <option value="Delhi High Court">Delhi High Court</option>
-                                                        <option value="Gauhati High Court">Gauhati High Court</option>
-                                                        <option value="Gujarat High Court">Gujarat High Court</option>
-                                                        <option value="Himachal Pradesh High Court">Himachal Pradesh High Court</option>
-                                                        <option value="Jammu & Kashmir High Court">Jammu & Kashmir High Court</option>
-                                                        <option value="Jharkhand High Court">Jharkhand High Court</option>
-                                                        <option value="Karnataka High Court">Karnataka High Court</option>
-                                                        <option value="Kerala High Court">Kerala High Court</option>
-                                                        <option value="Madhya Pradesh High Court">Madhya Pradesh High Court</option>
-                                                        <option value="Madras High Court">Madras High Court</option>
-                                                        <option value="Manipur High Court">Manipur High Court</option>
-                                                        <option value="Meghalaya High Court">Meghalaya High Court</option>
-                                                        <option value="Orissa High Court">Orissa High Court</option>
-                                                        <option value="Patna High Court">Patna High Court</option>
-                                                        <option value="Punjab & Haryana High Court">Punjab & Haryana High Court</option>
-                                                        <option value="Rajasthan High Court">Rajasthan High Court</option>
-                                                        <option value="Sikkim High Court">Sikkim High Court</option>
-                                                        <option value="Telangana High Court">Telangana High Court</option>
-                                                        <option value="Tripura High Court">Tripura High Court</option>
-                                                        <option value="Uttarakhand High Court">Uttarakhand High Court</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3 col-xl-4">
-                                                    <label for="State" class="form-label">State</label>
-                                                    <select id="stateDropdown" class="form-control select2" data-toggle="select2" onchange="populateDistrictDropdown()">
-                                                        <option>Please Select</option>
-                                                        <option value="Andaman and Nicobar">Andaman and Nicobar</option>
-                                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                                        <option value="Assam">Assam</option>
-                                                        <option value="Bihar">Bihar</option>
-                                                        <option value="Chandigarh">Chandigarh</option>
-                                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                                                        <option value="Daman and Diu">Daman and Diu</option>
-                                                        <option value="Delhi">Delhi</option>
-                                                        <option value="Goa">Goa</option>
-                                                        <option value="Gujarat">Gujarat</option>
-                                                        <option value="Haryana">Haryana</option>
-                                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                                        <option value="Jharkhand">Jharkhand</option>
-                                                        <option value="Karnataka">Karnataka</option>
-                                                        <option value="Kerala">Kerala</option>
-                                                        <option value="Ladakh">Ladakh</option>
-                                                        <option value="Lakshadweep">Lakshadweep</option>
-                                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                                        <option value="Maharashtra">Maharashtra</option>
-                                                        <option value="Manipur">Manipur</option>
-                                                        <option value="Meghalaya">Meghalaya</option>
-                                                        <option value="Mizoram">Mizoram</option>
-                                                        <option value="Nagaland">Nagaland</option>
-                                                        <option value="Odisha">Odisha</option>
-                                                        <option value="Puducherry">Puducherry</option>
-                                                        <option value="Punjab">Punjab</option>
-                                                        <option value="Rajasthan">Rajasthan</option>
-                                                        <option value="Sikkim">Sikkim</option>
-                                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                                        <option value="Telangana">Telangana</option>
-                                                        <option value="Tripura">Tripura</option>
-                                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                                        <option value="Uttarakhand">Uttarakhand</option>
-                                                        <option value="West Bengal">West Bengal</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3 col-xl-4" id="districtDropdownContainer" style="display: none;">
-                                                    <label for="District" class="form-label">District</label>
-                                                    <select id="districtDropdown" class="form-control select2" data-toggle="select2">
-                                                        <option>Please Select</option>
-                                                    </select>
-                                                </div>
-
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="Court-Establishment" class="form-label">Court Establishment</label>
-                                                    <input type="text" id="case-date" class="form-control" >
-                                                </div>
-
-                                             <div class="mb-3 mt-4  col-xl-3">
-                                                <label for="project-overview" class="form-label">Do you have CNR #? :</label>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
-                                                    <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
-                                                    <label class="form-check-label" for="inlineRadio2">No</label>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">CRN# </label>
-                                                    <input type="text" id="case-date" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 mt-4  col-xl-4">
-                                                <label for="project-overview" class="form-label">Are you appearing as? :</label>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
-                                                    <label class="form-check-label" for="inlineRadio1">Petitioner</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
-                                                    <label class="form-check-label" for="inlineRadio2">Respondent</label>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Petitioner# :</label>
-                                                    <input type="text" id="case-date" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Respondent# :</label>
-                                                    <input type="text" id="case-date" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 col-xl-3">
-                                                    <label for="project-overview" class="form-label">Date of filling</label>
-                                                    <input type="date" id="case-date" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 col-xl-3">
-                                                    <label for="project-overview" class="form-label">Court Hall</label>
-                                                    <input type="text" id="case-hall" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 col-xl-2">
-                                                    <label for="project-overview" class="form-label">Floor</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Classification</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                                </div>
-                                            
-                                            <div class="mb-3 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Title</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
                                             
                                             <div class="mb-3 col-xl-12">
-                                                <label for="project-overview" class="form-label">Description</label>
-                                                <div id="snow-editor">
-                                                    <h3><span class="ql-size-large">Description</span></h3>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                                <label for="project-overview" class="form-label">Bill From :</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
+                                                    <label class="form-check-label" for="inlineRadio1">Advocate</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
+                                                    <label class="form-check-label" for="inlineRadio2">Others</label>
                                                 </div>
                                             </div>
                                             
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Before Hon'ble Judge(s)</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Referred By</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Section/Category</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Priority</label>
+                                            <div class="mb-3 col-xl-5">
+                                                    <label for="project-overview" class="form-label">Advocate :</label>
                                                     
                                                     <select class="form-control select2" data-toggle="select2">
                                                         <option>Please Select</option>
-                                                        <option value="Super Critical">Super Critical</option>
-                                                        <option value="Critical">Critical</option>
-                                                        <option value="Important">Important</option>
-                                                        <option value="Routine">Routine</option>
-                                                        <option value="Normal">Normal</option>
-                                                        <option value="Others">Others</option>
+                                                        <option value="Advocate1">Advocate1</option>
+                                                        <option value="Advocate2">Advocate2</option>
+                                                        <option value="Advocate3">Advocate3</option>
+                                                        <option value="Other">Other</option>
                                                     </select>
                                                 </div>
-                                           
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Under Act(S)</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
+                                            
+                                            <div class="mb-3 mt-3 col-xl-3">
+                                                <button type="button" class="btn btn-danger">
+                                                    <i class="mdi mdi-plus"></i>
+                                                </button>
                                             </div>
                                             
                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Under Section(S)</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">FIR Police Station</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">FIR Number</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">FIR Year</label>
-                                                    <input type="text" id="case-floor" class="form-control" >
-                                            </div>
-                                            
-                                            <div class="mb-3 mt-4 col-xl-6">
-                                                    <label for="project-overview" class="form-label">Is this affidavit / vakalath Field ? :</label>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
-                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
-                                                        <label class="form-check-label" for="inlineRadio2">No</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Not Applicable">
-                                                        <label class="form-check-label" for="inlineRadio2">Not Applicable</label>
-                                                    </div>
-                                            </div>
-                                            
-                                             <div class="mb-3 col-xl-4">
-                                                    <label for="project-overview" class="form-label">Affidavit / vakalath date :</label>
-                                                    <input type="date" id="case-date" class="form-control" >
+                                                <label for="project-overview" class="form-label">Title :</label>
+                                                    <input type="text" id="case-number" class="form-control" placeholder="Bill">
                                                 </div>
                                             
-                                            <div class="mb-1 col-xl-12">
-                                                <div class="card border-secondary border">
-                                                    <div class="card-body">
-
-                                                        <h3><label for="project-overview" class="form-label">Your Advocate</label></h3>
-
-                                                        <label for="project-overview" class="form-label">Click here to add Advocate</label>
-                                                        <select class="form-control select2" data-toggle="select2">
-                                                            <option>Please Select</option>
-                                                            <option value="Advocate1">Advocate1</option>
-                                                            <option value="Advocate2">Advocate2</option>
-                                                            <option value="Advocate3">Advocate3</option>
-                                                            <option value="Advocate4">Advocate4</option>
-                                                            <option value="Advocate5">Advocate5</option>
-                                                            <option value="Advocate6">Advocate6</option>
-                                                        </select>
-                                                    </div>  
+                                            <div class="mb-3 col-xl-6">
+                                                <label for="project-overview" class="form-label">Name :</label>
+                                                    <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
                                                 </div>
+                                            
+                                            <div class="mb-3 col-xl-6">
+                                                <label for="project-overview" class="form-label">Address :</label>
+                                                    <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                                </div>
+                                            
+                                            <div class="mb-3 col-xl-4">
+                                                <label for="project-overview" class="form-label">Bill No :</label>
+                                                    <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                                </div>
+                                            
+                                            
+                                            <div class="mb-3 col-xl-5">
+                                               <label for="project-overview" class="form-label">Bill To :</label>
+                                                    
+                                                    <select class="form-control select2" data-toggle="select2">
+                                                        <option>Please Select</option>
+                                                        <option value="a">a</option>
+                                                        <option value="b">b</option>
+                                                        <option value="c">c</option>
+                                                    </select>
+                                                </div>
+                                            
+                                            <div class="mb-3 col-xl-3">
+                                                <label for="project-overview" class="form-label">Date of Receipt: :</label>
+                                                <input type="date" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
                                             </div>
+
+                                        </div>
+                                            
+                                            <div class="row">
                                             
                                             <div class="mb-1 col-xl-12">
 
-                                                <div class="card border-secondary border">
                                                     <div class="card-body col-xl-12">
-                                                        <h3><label for="project-overview" class="form-label">Opponents</label></h3>
-
+                                                       
                                                         <div class="row">
-                                                            <div class="mb-1 col-xl-4">
-                                                                <label for="fullName1">Full Name</label>
-                                                                <input type="text" class="form-control" id="fullName1" name="fullName1">
-                                                            </div>
-                                                            <div class="mb-1 col-xl-4">
-                                                                <label for="email1">Email</label>
-                                                                <input type="text" class="form-control" id="email1" name="email1">
-                                                            </div>
-                                                            <div class="mb-1 col-xl-3">
-                                                                <label for="phoneNo1">Phone No</label>
-                                                                <input type="text" class="form-control" id="phoneNo1" name="phoneNo1">
-                                                            </div>
-                                                        </div>
+
+                                                            <table class="table table-bordered table-centered mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="text-center col-xl-1">Action</th>
+                                                                        <th class="text-center col-xl-3">Particulars</th>
+                                                                        <th class="text-center col-xl-3">Numbers</th>
+                                                                        <th class="text-center col-xl-2">Rate/Unit Cost (INR)</th>
+                                                                        <th class="text-center col-xl-2">Tax (%)</th>
+                                                                        <th class="text-center col-xl-1">Line Total</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="text-center col-xl-1"><button type="button" class="btn btn-primary mt-1" onclick="addInputs()">Add</button></td>
+                                                                        <td class="text-center col-xl-3"><input type="text" class="form-control" id="particulars1" name="particulars1"></td>
+                                                                        <td class="text-center col-xl-3"> <input type="text" class="form-control" id="numbers1" name="numbers1"></td>
+                                                                        <td class="text-center col-xl-2"><input type="text" class="form-control" id="rate1" name="rate1"></td>
+                                                                        <td class="text-center col-xl-2"> <input type="text" class="form-control" id="tax1" name="tax1"></td>
+                                                                        <td class="text-center col-xl-1"><input type="text" class="form-control" id="lineTotal1" name="lineTotal1"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                       
 
                                                         <div id="inputContainer">
                                                             <!-- Input fields will be dynamically added here -->
                                                         </div>
-
-                                                        <button type="button" class="btn btn-primary mt-3" onclick="addInputs()">Add</button>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="mb-1 col-xl-12">
-
-                                                <div class="card border-secondary border">
-                                                    <div class="card-body col-xl-12">
-                                                        <h3><label for="project-overview" class="form-label">Opponents Advocate</label></h3>
-
-                                                        <div class="row">
-                                                            <div class="mb-1 col-xl-4">
-                                                                <label for="fullName1">Full Name</label>
-                                                                <input type="text" class="form-control" id="fullName1" name="fullName1">
-                                                            </div>
-                                                            <div class="mb-1 col-xl-4">
-                                                                <label for="email1">Email</label>
-                                                                <input type="text" class="form-control" id="email1" name="email1">
-                                                            </div>
-                                                            <div class="mb-1 col-xl-3">
-                                                                <label for="phoneNo1">Phone No</label>
-                                                                <input type="text" class="form-control" id="phoneNo1" name="phoneNo1">
-                                                            </div>
+                                                        
+                                                       
+                                                       
+                                                       <table class="table table-bordered table-centered mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td rowspan="2" class="col-xl-9"></td>
+                                                                        <td class="text-center col-xl-2">Subtotal</td>
+                                                                        <td class="text-center col-xl-1">00.00</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-center col-xl-2">Total</td>
+                                                                        <td class="text-center col-xl-1">00.00</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                       </table>
                                                         </div>
 
-                                                        <div id="inputContainer2">
-                                                            <!-- Input fields will be dynamically added here -->
-                                                        </div>
+                                                    </div
+                                                    <table>
 
-                                                        <button type="button" class="btn btn-primary mt-3" onclick="addInputs2()">Add</button>
-                                                    </div>
-
-                                                </div>
                                             </div>
-                                            
-                                            <div class="mb-1 col-xl-12">
-                                                <div class="card border-secondary border">
-                                                    <div class="card-body">
 
-                                                        <h3><label for="project-overview" class="form-label">Your Team</label></h3>
 
-                                                        <label for="project-overview" class="form-label">Click here to add Team member</label>
-                                                        <select class="form-control select2" data-toggle="select2">
-                                                            <option>Please Select</option>
-                                                            <option value="Advocate1">Advocate1</option>
-                                                            <option value="Advocate2">Advocate2</option>
-                                                            <option value="Advocate3">Advocate3</option>
-                                                            <option value="Advocate4">Advocate4</option>
-                                                            <option value="Advocate5">Advocate5</option>
-                                                            <option value="Advocate6">Advocate6</option>
-                                                        </select>
-                                                    </div>  
-                                                </div>
-                                            </div>      
+                                            </div>
+                                             <div class="col-auto">
+                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                            </div>
+                                            </div>
                                         </div>
+                                    </form>
                                         <!-- end row -->
 
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card-->
                             </div> <!-- end col-->
-                        </div> <!-- end card-->
-                                    <div class="text-end">
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-                
-                
+                        </div>
+                        
 
                 <!-- Footer Start -->
                 <footer class="footer">
@@ -1752,163 +1634,59 @@
             </div>
         </div>
 
-        <!-- Vendor js -->
         <script src="{% static 'js/vendor.min.js' %}"></script>
-        
+
+        <!-- Code Highlight js -->
+        <script src="{% static 'vendor/highlightjs/highlight.pack.min.js' %}"></script>
+        <script src="{% static 'vendor/clipboard/clipboard.min.js' %}"></script>
+        <script src="{% static 'js/hyper-syntax.js' %}"></script>
+
+        <!-- Quill Editor js -->
+        <script src="{% static 'vendor/quill/quill.min.js' %}"></script>
+
+        <!-- Quill Demo js -->
+        <script src="{% static 'js/pages/demo.quilljs.js' %}"></script>
+
+        <!-- Simplemde Editor js -->
+        <script src="{% static 'vendor/simplemde/simplemde.min.js' %}"></script>
+
+        <!-- Simplemde Demo js -->
+        <script src="{% static 'js/pages/demo.simplemde.js' %}"></script>
+
         <!-- App js -->
         <script src="{% static 'js/app.min.js' %}"></script>
-
+        
         <script>
-  function addInputs() {
-    var inputContainer = document.getElementById('inputContainer');
-    var inputElement = document.createElement('div');
-    inputElement.classList.add('form-row');
-    inputElement.innerHTML = `
-      <div class="row">
-  <div class="col-xl-4">
-    <div class="mb-1">
-      <label for="fullName${inputContainer.childElementCount + 1}">Full Name</label>
-      <input type="text" class="form-control" id="fullName${inputContainer.childElementCount + 1}" name="fullName${inputContainer.childElementCount + 1}">
-    </div>
-  </div>
-  <div class="col-xl-4">
-    <div class="mb-1">
-      <label for="email${inputContainer.childElementCount + 1}">Email</label>
-      <input type="text" class="form-control" id="email${inputContainer.childElementCount + 1}" name="email${inputContainer.childElementCount + 1}">
-    </div>
-  </div>
-  <div class="col-xl-3">
-    <div class="mb-1">
-      <label for="phoneNo${inputContainer.childElementCount + 1}">Phone No</label>
-      <input type="text" class="form-control" id="phoneNo${inputContainer.childElementCount + 1}" name="phoneNo${inputContainer.childElementCount + 1}">
-    </div>
-  </div>
-  <div class="col-xl-1">
-  <div class="mb-3">
-        <br>
-    <button type="button" class="btn btn-danger" onclick="deleteInputs(this.parentNode.parentNode.parentNode)">
-      <i class="mdi mdi-minus"></i>
-    </button>
-  </div>
-</div>
-</div>
-    `;
-    inputContainer.appendChild(inputElement);
-  }
+    function addInputs() {
+        var inputContainer = document.getElementById('inputContainer');
+        var inputElement = document.createElement('div');
+        inputElement.classList.add('form-row');
+        inputElement.innerHTML = `
+            <div class="row">
+                <table class="table table-bordered table-centered mb-0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="text-center col-xl-1"><button type="button" class="btn btn-danger" onclick="deleteInputs(this.parentNode.parentNode.parentNode)">
+                            <i class="mdi mdi-minus"></i>
+                        </button></td>
+                                                                        <td class="text-center col-xl-3"><input type="text" class="form-control" id="particulars${inputContainer.childElementCount + 1}" name="particulars${inputContainer.childElementCount + 1}"></td>
+                                                                        <td class="text-center col-xl-3"> <input type="text" class="form-control" id="numbers${inputContainer.childElementCount + 1}" name="numbers${inputContainer.childElementCount + 1}"></td>
+                                                                        <td class="text-center col-xl-2"><input type="text" class="form-control" id="rate${inputContainer.childElementCount + 1}" name="rate${inputContainer.childElementCount + 1}"></td>
+                                                                        <td class="text-center col-xl-2"> <input type="text" class="form-control" id="tax${inputContainer.childElementCount + 1}" name="tax${inputContainer.childElementCount + 1}"></td>
+                                                                        <td class="text-center col-xl-1"><input type="text" class="form-control" id="lineTotal${inputContainer.childElementCount + 1}" name="lineTotal${inputContainer.childElementCount + 1}"></td>
+                                                                    </tr>
+                                                                </tbody>
+            </div
+        <table>
+        `;
+        inputContainer.appendChild(inputElement);
+    }
 
-  function deleteInputs(button) {
-    button.parentElement.remove();
-  }
-  
-</script>
-
-<script>
-  function addInputs2() {
-    var inputContainer = document.getElementById('inputContainer2');
-    var inputElement = document.createElement('div');
-    inputElement.classList.add('form-row');
-    inputElement.innerHTML = `
-      <div class="row">
-  <div class="col-xl-4">
-    <div class="mb-1">
-      <label for="fullName${inputContainer.childElementCount + 1}">Full Name</label>
-      <input type="text" class="form-control" id="fullName${inputContainer.childElementCount + 1}" name="fullName${inputContainer.childElementCount + 1}">
-    </div>
-  </div>
-  <div class="col-xl-4">
-    <div class="mb-1">
-      <label for="email${inputContainer.childElementCount + 1}">Email</label>
-      <input type="text" class="form-control" id="email${inputContainer.childElementCount + 1}" name="email${inputContainer.childElementCount + 1}">
-    </div>
-  </div>
-  <div class="col-xl-3">
-    <div class="mb-1">
-      <label for="phoneNo${inputContainer.childElementCount + 1}">Phone No</label>
-      <input type="text" class="form-control" id="phoneNo${inputContainer.childElementCount + 1}" name="phoneNo${inputContainer.childElementCount + 1}">
-    </div>
-  </div>
-  <div class="col-xl-1">
-  <div class="mb-3">
-        <br>
-    <button type="button" class="btn btn-danger" onclick="deleteInputs2(this.parentNode.parentNode.parentNode)">
-      <i class="mdi mdi-minus"></i>
-    </button>
-  </div>
-</div>
-</div>
-    `;
-    inputContainer.appendChild(inputElement);
-  }
-
-  function deleteInputs2(button) {
-    button.parentElement.remove();
-  }
-</script>
-
-<script>
-    // Districts data for each state
-    var stateDistricts = {
-    "Andaman and Nicobar": ["Nicobar", "North and Middle Andaman", "South Andaman"],
-    "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "Y.S.R. Kadapa"],
-    "Arunachal Pradesh": ["Anjaw", "Changlang", "Dibang Valley", "East Kameng", "East Siang", "Kamle", "Kra Daadi", "Kurung Kumey", "Lepa Rada", "Lohit", "Longding", "Lower Dibang Valley", "Lower Siang", "Lower Subansiri", "Namsai", "Pakke Kessang", "Papum Pare", "Shi Yomi", "Siang", "Tawang", "Tirap", "Upper Siang", "Upper Subansiri", "West Kameng", "West Siang"],
-    "Assam": ["Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Dima Hasao", "Goalpara", "Golaghat", "Hailakandi", "Hojai", "Jorhat", "Kamrup", "Kamrup Metropolitan", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Sivasagar", "Sonitpur", "South Salmara-Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"],
-    "Bihar": ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran (Motihari)", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur (Bhabua)", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger (Monghyr)", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia (Purnea)", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"],
-    "Chandigarh": ["Chandigarh"],
-    "Chhattisgarh": ["Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bemetara", "Bijapur", "Bilaspur", "Dantewada (South Bastar)", "Dhamtari", "Durg", "Gariyaband", "Janjgir-Champa", "Jashpur", "Kanker (North Bastar)", "Kawardha", "Kondagaon", "Korba", "Korea (Koriya)", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sukma", "Surajpur  ", "Surguja"],
-    "Dadra and Nagar Haveli": ["Dadra and Nagar Haveli"],
-    "Daman and Diu": ["Daman", "Diu"],
-    "Delhi": ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"],
-    "Goa": ["North Goa", "South Goa"],
-    "Gujarat": ["Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha (Palanpur)", "Bharuch", "Bhavnagar", "Botad", "Chhota Udepur", "Dahod", "Dangs (Ahwa)", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kachchh", "Kheda (Nadiad)", "Mahisagar", "Mehsana", "Morbi", "Narmada (Rajpipla)", "Navsari", "Panchmahal (Godhra)", "Patan", "Porbandar", "Rajkot", "Sabarkantha (Himmatnagar)", "Surat", "Surendranagar", "Tapi (Vyara)", "Vadodara", "Valsad"],
-    "Haryana": ["Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram (Gurgaon)", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Nuh", "Palwal", "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"],
-    "Himachal Pradesh": ["Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul and Spiti", "Mandi", "Shimla", "Sirmaur", "Solan", "Una"],
-    "Jammu and Kashmir": ["Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu", "Kathua", "Kishtwar", "Kulgam", "Kupwara", "Poonch", "Pulwama", "Rajouri", "Ramban", "Reasi", "Samba", "Shopian", "Srinagar", "Udhampur"],
-    "Jharkhand": ["Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih", "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahebganj", "Seraikela-Kharsawan", "Simdega", "West Singhbhum"],
-    "Karnataka": ["Bagalkot", "Ballari (Bellary)", "Belagavi (Belgaum)", "Bengaluru (Bangalore) Rural", "Bengaluru (Bangalore) Urban", "Bidar", "Chamarajanagar", "Chikballapur", "Chikkamagaluru (Chikmagalur)", "Chitradurga", "Dakshina Kannada", "Davangere", "Dharwad", "Gadag", "Hassan", "Haveri", "Kalaburagi (Gulbarga)", "Kodagu", "Kolar", "Koppal", "Mandya", "Mysuru (Mysore)", "Raichur", "Ramanagara", "Shivamogga (Shimoga)", "Tumakuru (Tumkur)", "Udupi", "Uttara Kannada (Karwar)", "Vijayapura (Bijapur)", "Yadgir"],
-    "Kerala": ["Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kollam", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta", "Thiruvananthapuram", "Thrissur", "Wayanad"],
-    "Ladakh": ["Kargil", "Leh"],
-    "Lakshadweep": ["Lakshadweep"],
-    "Madhya Pradesh": ["Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul", "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas", "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur", "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narsinghpur", "Neemuch", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa", "Sagar", "Satna", "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri", "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"],
-    "Maharashtra": ["Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana", "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna", "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nandurbar", "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri", "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"],
-    "Manipur": ["Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam", "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong", "Tengnoupal", "Thoubal", "Ukhrul"],
-    "Meghalaya": ["East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "North Garo Hills", "Ri-Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills", "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"],
-    "Mizoram": ["Aizawl", "Champhai", "Hnahthial", "Khawzawl", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Saitual", "Serchhip"],
-    "Nagaland": ["Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon", "Peren", "Phek", "Tuensang", "Wokha", "Zunheboto"],
-    "Odisha": ["Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Deogarh", "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghapur", "Jajpur", "Jharsuguda", "Kalahandi", "Kandhamal", "Kendrapara", "Kendujhar (Keonjhar)", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj", "Nabarangpur", "Nayagarh", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Subarnapur (Sonepur)", "Sundargarh"],
-    "Puducherry": ["Karaikal", "Mahe", "Puducherry", "Yanam"],
-    "Punjab": ["Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Ferozepur", "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Mansa", "Moga", "Muktsar", "Pathankot", "Patiala", "Rupnagar", "Sahibzada Ajit Singh Nagar (Mohali)", "Sangrur", "Shaheed Bhagat Singh Nagar (Nawanshahr)", "Sri Muktsar Sahib", "Tarn Taran"],
-    "Rajasthan": ["Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur", "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Karauli", "Kota", "Nagaur", "Pali", "Pratapgarh", "Rajsamand", "Sawai Madhopur", "Sikar", "Sirohi", "Sri Ganganagar", "Tonk", "Udaipur"],
-    "Sikkim": ["East Sikkim", "North Sikkim", "South Sikkim", "West Sikkim"],
-    "Tamil Nadu": ["Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kancheepuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupathur", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"],
-    "Telangana": ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhoopalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem", "Mahabubabad", "Mahabubnagar", "Mancherial", "Medak", "Medchal", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
-    "Tripura": ["Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura"],
-    "Uttar Pradesh": ["Agra", "Aligarh", "Ambedkar Nagar", "Amethi (Chatrapati Sahuji Mahraj Nagar)", "Amroha (J.P. Nagar)", "Auraiya", "Ayodhya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur (Panchsheel Nagar)", "Hardoi", "Hathras (Mahamaya Nagar)", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj (Kanshiram Nagar)", "Kaushambi", "Kushinagar (Padrauna)", "Lakhimpur - Kheri", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Prayagraj (Allahabad)", "Raebareli", "Rampur", "Saharanpur", "Sambhal (Bhim Nagar)", "Sant Kabir Nagar", "Shahjahanpur", "Shamali (Prabuddh Nagar)", "Shravasti", "Siddharth Nagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"],
-    "Uttarakhand": ["Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri Garhwal", "Pithoragarh", "Rudraprayag", "Tehri Garhwal", "Udham Singh Nagar", "Uttarkashi"],
-    "West Bengal": ["Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur (South Dinajpur)", "Darjeeling", "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda", "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Medinipur (West Medinipur)", "Purba Burdwan (Bardhaman)", "Purba Medinipur (East Medinipur)", "Purulia", "South 24 Parganas", "Uttar Dinajpur (North Dinajpur)"]
-    // Add more states and their districts here
-};
-
-    // Function to populate the district dropdown based on the selected state
-    function populateDistrictDropdown() {
-        var stateDropdown = document.getElementById("stateDropdown");
-        var selectedState = stateDropdown.value;
-        var districtDropdown = document.getElementById("districtDropdown");
-        districtDropdown.innerHTML = "<option>Please Select</option>";
-
-        var districts = stateDistricts[selectedState];
-        if (districts && districts.length > 0) {
-            districts.forEach(function(district) {
-                var option = document.createElement("option");
-                option.text = district;
-                option.value = district;
-                districtDropdown.appendChild(option);
-            });
-            document.getElementById("districtDropdownContainer").style.display = "block";
-        } else {
-            document.getElementById("districtDropdownContainer").style.display = "none";
-        }
+    function deleteInputs(button) {
+        button.parentElement.remove();
     }
 </script>
+
 
     </body>
 

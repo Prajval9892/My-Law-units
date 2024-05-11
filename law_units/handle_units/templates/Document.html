@@ -766,49 +766,7 @@
                                                                 <td>July 24, 2024</td>
                                                                 <td class="table-action">
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><i class="mdi mdi-file-pdf-box widget-icon text-danger bg-secondary-lighten"></i>xyz.pdf</td>
-                                                                <td>3.2 MB</td>
-                                                                <td>Type of document</td>
-                                                                <td>Case Name</td>
-                                                                <td>Himanshu Mhatre</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><i class="mdi mdi-file-word-box widget-icon text-primary bg-secondary-lighten"></i>pqr.doc</td>
-                                                                <td>3.2 MB</td>
-                                                                <td>Type of document</td>
-                                                                <td>Case Name</td>
-                                                                <td>Himanshu Mhatre</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><i class="mdi mdi-file-jpg-box widget-icon text-danger bg-secondary-lighten"></i>jci.jpg</td>
-                                                                <td>3.2 MB</td>
-                                                                <td>Type of document</td>
-                                                                <td>Case Name</td>
-                                                                <td>Himanshu Mhatre</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#update-Doc-modal" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                                 </td>
@@ -823,6 +781,195 @@
                                 </div> <!-- end card -->
                             </div><!-- end col-->
                  
+           <div class="modal fade task-modal-content" id="update-Doc-modal" tabindex="-1" role="dialog" aria-labelledby="update-Doc-modal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="update-Bill-modal">Update Document Details</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                   
+                                    <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        
+                                        <h4 class="header-title">Drop or Click on choose files to select one or many files</h4>
+                                        
+                                        <div class="mb-3 col-xl-12">
+                                            <div class="tab-pane show active" id="file-upload-preview">
+                                                <form action="#" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                                    data-upload-preview-template="#uploadPreviewTemplate">
+                                                    <div class="fallback">
+                                                        <input name="file" type="file" multiple />
+                                                    </div>
+
+                                                    <div class="dz-message needsclick">
+                                                        <i class="h1 text-muted ri-upload-cloud-2-line"></i>
+                                                        <h3>Drop files here or click to upload.</h3>
+                                                    </div>
+                                                    
+
+                                                <!-- Preview -->
+                                                <div class="dropzone-previews mt-3" id="file-previews"></div>                                         
+                                            </div> <!-- end preview-->
+
+                                        </div> <!-- end tab-content-->
+                                        <div class="row">
+                                        
+
+                                                      <div class="mb-3 col-xl-6">
+                                                    <label for="project-overview" class="form-label">Type</label>
+                                                    
+                                                    <select class="form-control select2" data-toggle="select2">
+                                                        <option>Please Select</option>
+                                                        <option value="Adjournment Letter">Adjournment Letter</option>
+                                                        <option value="Admission/ Denial">Admission/ Denial</option>
+                                                        <option value="Affidavit">Affidavit</option>
+                                                        <option value="Affidavit of Evidence">Affidavit of Evidence</option>
+                                                        <option value="Affidavit of Service">Affidavit of Service</option>
+                                                        <option value="Affidavit of documents">Affidavit of documents</option>
+                                                        <option value="Annexure">Annexure</option>
+                                                        <option value="Application">Application/option>
+                                                        <option value="Arbitration Petition">Arbitration Petition</option>
+                                                        <option value="Arguments">Arguments</option>
+                                                        <option value="Assessment Order">Assessment Order</option>
+                                                        <option value="Bare Acts">Bare Acts</option>
+                                                        <option value="CIT(Appeals) Order">CIT(Appeals) Order</option>
+                                                        <option value="Chamber Summons">Chamber Summons</option>
+                                                        <option value="Circulars">Circulars</option>
+                                                        <option value="Commission Agreement">Commission Agreement</option>
+                                                        <option value="Company Petition">Company Petition</option>
+                                                        <option value="Compilation of documents">Compilation of documents</option>
+                                                        <option value="Complaint">Complaint</option>
+                                                        <option value="Criminal Complaint">Criminal Complaint</option>
+                                                        <option value="Draft Issues">Draft Issues</option>
+                                                        <option value="End User Undertaking EUU">End User Undertaking EUU</option>
+                                                        <option value="Engagement Letter">Engagement Letter</option>
+                                                        <option value="High Court Orders">High Court Orders</option>
+                                                        <option value="ITAT Order">ITAT Order</option>
+                                                        <option value="Intellectual Property Agreement">Intellectual Property Agreement</option>
+                                                        <option value="International Channel Partner Agreement">International Channel Partner Agreement</option>
+                                                        <option value="International Distribution Agreement">International Distribution Agreement</option>
+                                                        <option value="International Representative Agreement">International Representative Agreement</option>
+                                                        <option value="Intervention Application">Intervention Application</option>
+                                                        <option value="Issues framed">Issues framed</option>
+                                                        <option value="JV- Joint Venture Agreement">JV- Joint Venture Agreement</option>
+                                                        <option value="Lease Deed">Lease Deed</option>
+                                                        <option value="Legal Consultancy Agreement">Legal Consultancy Agreement</option>
+                                                        <option value="Letter">Letter</option>
+                                                        <option value="List of dates (LOD)">List of dates (LOD)</option>
+                                                        <option value="MOU-Memorandum of Understanding">MOU-Memorandum of Understanding</option>
+                                                        <option value="Miscellaneous Agreements">Miscellaneous Agreements</option>
+                                                        <option value="Miscellaneous Application">Miscellaneous Application</option>
+                                                        <option value="NCLT Form">NCLT Form</option>
+                                                        <option value="NDA- Non Disclosure Agreement">NDA- Non Disclosure Agreement</option>
+                                                        <option value="Notice of Motion">Notice of Motion</option>
+                                                        <option value="Notices">Notices</option>
+                                                        <option value="Order">Order</option>
+                                                        <option value="Paper books">Paper books</option>
+                                                        <option value="Particular of claim">Particular of claim</option>
+                                                        <option value="Partnership Agreement">Partnership Agreement</option>
+                                                        <option value="Plaint">Plaint</option>
+                                                        <option value="Power of Attorney">Power of Attorney</option>
+                                                        <option value="Precipe">Precipe</option>
+                                                        <option value="Reconciliation">Reconciliation</option>
+                                                        <option value="Registration Certificate">Registration Certificate</option>
+                                                        <option value="Rejoinder">Rejoinder</option>
+                                                        <option value="Rent Agreement">Rent Agreement</option>
+                                                        <option value="Reply">Reply</option>
+                                                        <option value="Reply to Chamber Summons">Reply to Chamber Summons</option>
+                                                        <option value="Reply to Notice of Motion">Reply to Notice of Motion</option>
+                                                        <option value="Residual">Residual</option>
+                                                        <option value="Sales Agreement">Sales Agreement</option>
+                                                        <option value="Schedule">Schedule</option>
+                                                        <option value="Security Agency Agreement">Security Agency Agreement</option>
+                                                        <option value="Statement">Statement</option>
+                                                        <option value="Summary Suit">Summary Suit</option>
+                                                        <option value="Summons for Judgment">Summons for Judgment</option>
+                                                        <option value="Sur – rejoinder">Sur – rejoinder</option>
+                                                        <option value="Synopsis">Synopsis</option>
+                                                        <option value="Temporary Injunction Application">Temporary Injunction Application</option>
+                                                        <option value="The Agreement">The Agreement</option>
+                                                        <option value="Transfer of Technology Agreement">Transfer of Technology Agreement</option>
+                                                        <option value="Vakalatnama">Vakalatnama</option>
+                                                        <option value="Writ of Summons">Writ of Summons</option>
+                                                        <option value="Written Statement">Written Statement</option>
+                                                        <option value="Written Statement">Written Submission</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <br>
+                                                    <label for="project-overview" class="form-label">Would you like to link these documents with any of the cases :</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
+                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
+                                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                                    </div>
+                                            </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Term</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Description</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Judgement Date</label>
+                                            <input type="date" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Expiry Date</label>
+                                            <input type="date" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Purpose</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">First Party</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Second Party</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>
+                                        
+                                        <div class="mb-3 col-xl-6">
+                                            <label for="project-overview" class="form-label">Headed By</label>
+                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                        </div>     
+                                            </div>
+                                    </div>
+                                    <!-- end card-body -->
+                                </div>
+                                <!-- end card-->
+                            </div>
+                            <!-- end col-->
+                        </div>
+                                    <div class="text-end">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                        <button type="button" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
                 
 
                 <!-- Footer Start -->
