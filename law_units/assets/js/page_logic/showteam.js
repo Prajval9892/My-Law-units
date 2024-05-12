@@ -1,9 +1,7 @@
 end_point = "http://localhost:8000/"
-alert("hiii")
 page_number=1
 function nextPage(){
 page_number = page_number+1
-alert("hiiiii")
 show_table()
 
 }

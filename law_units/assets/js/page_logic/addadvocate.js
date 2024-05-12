@@ -1,7 +1,6 @@
 end_point = "http://127.0.0.1:8000/"
 function add_advocate(){
     var form_tag = document.getElementById("new_advocate")
-    alert("hii")
     var data_to_submit = {}
     data_to_submit["full_name"] = document.getElementById("full-name").value;
     data_to_submit["email"] = document.getElementById("email").value;

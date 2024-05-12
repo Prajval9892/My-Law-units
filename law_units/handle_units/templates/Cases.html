@@ -82,7 +82,7 @@
                                 <div class="input-group">
                                     <input type="search" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
                                     <span class="mdi mdi-magnify search-icon"></span>
-                                    <button class="input-group-text btn btn-primary" type="submit">Search</button>
+                                    <button class="input-group-text btn btn-primary" type="button" onclic>Search</button>
                                 </div>
                             </form>
                         </div>
@@ -757,13 +757,14 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            {% for case in query_data %}
                                                             <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
+                                                                <td>{{ case.court }}</td>
+                                                                <td>{{ case.case_type }}</td>
                                                                 <td>-</td>
                                                                 <td>Client Name</td>
                                                                 <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
+                                                                <td>{{ case.tital }}</td>
                                                                 <td class="table-action">
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
@@ -771,48 +772,7 @@
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Court Name</td>
-                                                                <td>Case Name</td>
-                                                                <td>-</td>
-                                                                <td>Client Name</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td>Case Title</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
+                                                            {% endfor %}
                                                         </tbody>
                                                     </table>
                                                 </div> <!-- end table-responsive-->                     

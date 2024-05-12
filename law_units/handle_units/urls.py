@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('login/', views.user_login,name="login"),
     path('index/', views.index,name="index"),
     path('home/cases/',views.cases,name="cases"),
-    path('home/NewCase/',views.newcases,name="newcases"),
+    path('home/NewCase/',views.add_case,name="newcases"),
     path('home/',views.home,name="home"),
     path('home/forgotpassword/',views.forgotpassword,name="forgotpassword"),
     path('home/Document/',views.document,name="doc"),
@@ -43,5 +45,6 @@ urlpatterns = [
     path('home/delete_record',views.delete_record,name="delete_record"),
     path('home/add_todo',views.add_todo,name="home/add_todo"),
     path('home/change_to_do_status',views.change_to_status,name="change_to_status"),
-]
+    path('home/filter_todo',views.filter_todo,name="filter_todo"),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
             

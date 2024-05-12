@@ -4,10 +4,16 @@ function add_case(){
     var number_of_item1 = inputContainer1.childElementCount
     data_to_submit = {}
     data_to_submit["court"] = document.getElementById("Court").value
+    data_to_submit["case-type"] = document.getElementById("case-type").value
+    console.log("pppppppppppppppp",document.getElementById("case-type").value)
     data_to_submit["case_number"] = document.getElementById("case-number").value
     data_to_submit["year"] = document.getElementById("year").value
-    data_to_submit["case_date"] = document.getElementById("case-date").value
+    // data_to_submit["case_date"] = document.getElementById("case-date").value
+    data_to_submit["crn_no"] = document.getElementById("crn_no").value
     data_to_submit["high_court"] = document.getElementById("high_court").value
+    data_to_submit["stateDropdown"] = document.getElementById("stateDropdown").value
+    data_to_submit["districtDropdown"] = document.getElementById("districtDropdown").value
+    data_to_submit["Court-Establishment"] = document.getElementById("Court-Establishment").value
     data_to_submit["case-hall"] = document.getElementById("case-hall").value
     data_to_submit["case-floor"] = document.getElementById("case-floor").value
     data_to_submit["classification"] = document.getElementById("classification").value
@@ -31,24 +37,30 @@ function add_case(){
     
     if (document.getElementById("Yes_affidavit").checked)
     {
-    data_to_submit["affidavit"] = document.getElementById("Yes_affidavit").value
+    data_to_submit["affidavit"] = true
     }
     else if(document.getElementById("No_affidavit").checked)
     {
-    data_to_submit["affidavit"] = document.getElementById("No_affidavit").value
+    data_to_submit["affidavit"] = false
     }
 
     if (document.getElementById("cnr_check_yes").checked)
     {
-    data_to_submit["cnr_check_yes"] = document.getElementById("cnr_check_yes").value
+    data_to_submit["cnr_check"] = true
     }
     else if(document.getElementById("cnr_check_no").checked)
     {
-    data_to_submit["cnr_check_no"] = document.getElementById("cnr_check_no").value
+    data_to_submit["cnr_check"] = false
     }
 
-    else if(document.getElementById("not_app_affidavit").checked){
+    if(document.getElementById("not_app_affidavit").checked){
         data_to_submit["affidavit"] = document.getElementById("not_app_affidavit").value
+    }
+    else if(document.getElementById("Yes_affidavit").checked){
+        data_to_submit["affidavit"] = document.getElementById("Yes_affidavit").value
+    }
+    else if(document.getElementById("No_affidavit").checked){
+        data_to_submit["affidavit"] = document.getElementById("No_affidavit").value
     }
     data_to_submit["advocate"] = document.getElementById("advocate").value
     data_to_submit["team"] = document.getElementById("team").value
@@ -83,7 +95,7 @@ function add_case(){
         headers :{
             "Content-type":"application/json"
         },
-        body:JSON.stringify([data_to_submit])
+        body:JSON.stringify(data_to_submit)
     }
 
     fetch(end_point+"home/NewCase/",data_to_send).then(data=>{

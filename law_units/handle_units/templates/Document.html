@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
-
+        <script src="{% static 'js/page_logic/showdoc.js' %}"></script>
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
@@ -757,13 +757,19 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            {% for i in doc_obj %}
                                                             <tr>
-                                                                <td><i class="mdi mdi-file-pdf-box widget-icon text-danger bg-secondary-lighten"></i>abcdoc.pdf</td>
-                                                                <td>3.2 MB</td>
-                                                                <td>Type of document</td>
-                                                                <td>Case Name</td>
-                                                                <td>Himanshu Mhatre</td>
-                                                                <td>July 24, 2024</td>
+                                                                <td><a href="#"><i class="mdi mdi-download download-icon" onclick="setDownloadLink(event)"
+                                                                    data-src="/files/{{ i.file }}" style="font-size: 20px;"></a></i><br>{{ i.file_name }}</br></td>
+                                                                <td>{{ i.size }} MB</td>
+                                                                <td>{{ i.doc_type }}</td>
+                                                                {% if i.case_name %}
+                                                                    <td>{{ i.case_name.tital }}</td>
+                                                                {% else %}
+                                                                <td>-</td>
+                                                                {% endif %}
+                                                                <td>{{ i.uploaded_by }}</td>
+                                                                <td>{{ i.uploaded_at }}</td>
                                                                 <td class="table-action">
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
@@ -771,48 +777,8 @@
                                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td><i class="mdi mdi-file-pdf-box widget-icon text-danger bg-secondary-lighten"></i>xyz.pdf</td>
-                                                                <td>3.2 MB</td>
-                                                                <td>Type of document</td>
-                                                                <td>Case Name</td>
-                                                                <td>Himanshu Mhatre</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><i class="mdi mdi-file-word-box widget-icon text-primary bg-secondary-lighten"></i>pqr.doc</td>
-                                                                <td>3.2 MB</td>
-                                                                <td>Type of document</td>
-                                                                <td>Case Name</td>
-                                                                <td>Himanshu Mhatre</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><i class="mdi mdi-file-jpg-box widget-icon text-danger bg-secondary-lighten"></i>jci.jpg</td>
-                                                                <td>3.2 MB</td>
-                                                                <td>Type of document</td>
-                                                                <td>Case Name</td>
-                                                                <td>Himanshu Mhatre</td>
-                                                                <td>July 24, 2024</td>
-                                                                <td class="table-action">
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="ri-file-paper-2-line"></i></a>
-                                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </td>
-                                                            </tr>
+                                                            {% endfor %}
+                                                            
                                                         </tbody>
                                                     </table>
                                                 </div> <!-- end table-responsive-->                     

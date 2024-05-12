@@ -813,43 +813,51 @@
                                 <div class="card widget-inline">
                                     <div class="card-body p-0">
                                         <div class="row g-0">
-                                            <div class="col-sm-6 col-lg-3 " >
+                                            <div class="col-sm-6 col-lg-3 " onclick="filter_todo('all')" >
                                                 <div class="card rounded-0 shadow-none m-0 bg-primary-lighten border-primary border">
+                                                    <a href="#">
                                                     <div class="card-body text-center ">
                                                         <i class="ri-survey-line text-muted font-24 text-primary"></i>
                                                         <h3><span>{{ count.all_count }}</span></h3>
                                                         <p class="text-muted font-15 mb-0">All Tasks</p>
                                                     </div>
+                                                    </a>
                                                 </div>
                                             </div>
                 
-                                            <div class="col-sm-6 col-lg-3">
+                                            <div class="col-sm-6 col-lg-3" onclick="filter_todo('upcomming')">
                                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                                                    <a href="#">
                                                     <div class="card-body text-center bg-warning-lighten border-warning border">
                                                         <i class=" ri-alarm-line text-muted font-24"></i>
                                                         <h3><span>{{ count.upcoming_count }}</span></h3>
                                                         <p class="text-muted font-15 mb-0">Upcoming Tasks</p>
                                                     </div>
+                                                    </a>
                                                 </div>
                                             </div>
                 
-                                            <div class="col-sm-6 col-lg-3">
+                                            <div class="col-sm-6 col-lg-3" onclick="filter_todo('pending')">
                                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                                                    <a href="#">
                                                     <div class="card-body text-center bg-danger-lighten border-danger border">
                                                         <i class="uil-bell text-muted font-24"></i>
                                                         <h3><span>{{ count.pending_count }}</span></h3>
                                                         <p class="text-muted font-15 mb-0">Pending Tasks</p>
                                                     </div>
+                                                    </a>
                                                 </div>
                                             </div>
                 
-                                            <div class="col-sm-6 col-lg-3">
+                                            <div class="col-sm-6 col-lg-3" onclick="filter_todo('com')">
                                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                                                    <a href="#">
                                                     <div class="card-body text-center bg-success-lighten border-success border">
                                                         <i class="ri-checkbox-circle-line text-muted font-24"></i>
                                                         <h3><span>{{ count.comp_count }}</span> </h3>
                                                         <p class="text-muted font-15 mb-0">Completed Tasks</p>
                                                     </div>
+                                                    </a>
                                                 </div>
                                             </div>
                 
@@ -860,12 +868,17 @@
                         </div>
                         <!-- end row-->
                         {% for to_do in to_do_list %}
-                        <div class="col-xxl-12 col-xl-12">
+                        <div class="col-xxl-12 col-xl-12" id = "toDoListContainer">
                                 <!-- project card -->
-                                {% if to_do.status == "expired" %}
+                                {% if to_do.status == "pending" %}
                                 <div class="card d-block bg-danger-lighten border-danger border" id='{{ to_do.id }}'>
                                 {% elif to_do.status == "comp" %}
                                 <div class="card d-block bg-success-lighten border-success border" id='{{ to_do.id }}'>
+
+                                {% elif to_do.status == "upcomming" %}
+                                <div class="card d-block bg-warning-lighten border-success border" id='{{ to_do.id }}'>
+
+                            
                                 {% else %}
                                 <div class="card d-block bg-warning-lighten border-warning border" id='{{ to_do.id }}'>
                                 {% endif %}
@@ -900,7 +913,7 @@
                                         
                                         <div class="clearfix"></div>
 
-                                        <h3 class="mt-3">Description about case</h3>
+                                        <h3 class="mt-3">{{ to_do.description }}</h3>
 
                                         <div class="row">
                                             <div class="col-6">
@@ -911,7 +924,7 @@
                                                     <i class='ri-contacts-book-2-line font-18 text-warning me-1'></i>
                                                     <div>
                                                         <h5 class="mt-1 font-14">
-                                                           {{ dt.case_id.tital }}
+                                                           {{ to_do.tital }}
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -968,9 +981,10 @@
                                     </div> <!-- end card-body-->
                                     
                                 </div> <!-- end card-->
-                        </div>
                         {% endfor %}
-
+                            
+                        </div>
+                    </div>
 
                 <!-- Footer Start -->
                 <footer class="footer">

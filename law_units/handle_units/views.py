@@ -5,6 +5,7 @@ from .models import *
 from django.http import JsonResponse
 from django.core.serializers import serialize
 from django.forms.models import model_to_dict
+from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 # Create your views here.
 
@@ -16,7 +17,8 @@ def index(request):
     return render(request,'index.html')
 
 def cases(request):
-    return render(request,'Cases.html')
+    case_obj = case.objects.all()
+    return render(request,'Cases.html',{"query_data":case_obj})
 
 def newcases(request):
     return render(request,'NewCase.html')
@@ -38,8 +40,8 @@ def alltodo(request):
     all_to_do = ToDO.objects.all()
     adv_obj = Advocate.objects.all()
     data_to_send_list=[]
-    pending_count = ToDO.objects.filter(status="pending",end_date__gt=datetime.now().date()).count()
-    upcoming_count = ToDO.objects.filter(status="pending",end_date__lt=datetime.now().date()).count()
+    pending_count = ToDO.objects.filter(status="pending",end_date__gt=datetime.now().date(),start_date__lt=datetime.now()).count()
+    upcoming_count = ToDO.objects.filter(status="pending",start_date__gt=datetime.now().date()).count()
     comp_count = ToDO.objects.filter(status="comp").count()
     all_count = ToDO.objects.all().count()
 
@@ -52,11 +54,12 @@ def alltodo(request):
         data_to_send["assign_by"] = to_do.assign_by
         data_to_send["end_date"] = to_do.end_date
         data_to_send["id"] = to_do.to_do_id
+        data_to_send["description"] = to_do.description
         if to_do.status=="comp":
             data_to_send["status"] = "comp"
-        elif to_do.end_date>datetime.now().date():
-            data_to_send["status"] = "expired"
-        elif to_do.status=="pending":
+        elif to_do.start_date>datetime.now().date() and to_do.status == "pending":
+            data_to_send["status"] = "upcomming"
+        elif to_do.status=="pending" and to_do.end_date>datetime.now().date() and to_do.start_date<datetime.now().date():
             data_to_send["status"] = "pending"
         
         data_to_send_list.append(data_to_send)
@@ -66,10 +69,33 @@ def pendingtodo(request):
     return render(request,"{% url 'alltodo' %}")
 
 def document(request):
-    return render(request,"Document.html")
+    page_number = 1
+    item_par_page =2
+    doc_obj=Document.objects.filter()
+    return render(request,"Document.html",{"doc_obj":doc_obj})
 
+@csrf_exempt
 def newdocument(request):
-    return render(request,"NewDocument.html")
+    case_obj = case.objects.all()
+    if request.method == "POST":
+        data=json.loads(request.POST.get("data"))
+        file = request.FILES.get("file", None)
+        print("8888888888888",file.name)
+        binary_size = len(file.read())
+        gb_size = round(binary_size/(1024**3),3)
+        print("############3",data.get("case",None))
+        case_obj=None
+
+        if "case" in data.keys():
+            case_obj = case.objects.get(case_number=int(data.get("case",None)))
+        print("<<<<<<<<<<<<",case_obj)
+        doc_data=Document(type=data["type"],term=data["term"],description=data["Description"],judgement_date=data["Judgement_date"],expiry_date=data["Expiry_date"],
+                          purpose=data["Purpose"],first_party=data["First_Party"],second_party=data["Second_Party"],headed_by=data["Headed_By"],would_like_to_linkdoc=data["case_link"],case_name=case_obj,file=file,
+                          uploaded_by = request.user,size=gb_size,file_name=file.name,doc_type=file.name.split(".")[1])
+        doc_data.save()
+        return JsonResponse({"message":"Document Added successfully","status":200},status=200)
+    return render(request,"NewDocument.html",{"case_obj":case_obj})
+
 
 def Dashboard(request):
     team_count = team_member.objects.all().count()
@@ -87,11 +113,17 @@ def list_team(request):
     
     query_data=team_member.objects.filter()[0:10]
     serialize_data = [obj.__dict__ for obj in query_data]
-    column = list(serialize_data[0].keys())
-    column.pop(0)
     table_data={}
-    table_data["data"] = serialize_data
-    table_data["col"] = column.pop(0)
+    column=[]
+    if serialize_data:
+        column = list(serialize_data[0].keys())
+        column.pop(0)
+        
+        table_data["data"] = serialize_data
+        table_data["col"] = column.pop(0)
+    else:
+        table_data["data"] = []
+        table_data["col"] = []
     return render(request , 'team.html',{"query_data":query_data,"cols":column})
 
 
@@ -99,7 +131,7 @@ def list_team(request):
 def team_table_page(request):
     page_number = request.GET.get('page_number', 1)
     data_base = request.GET.get('database', None)
-    item_per_page = 1
+    item_per_page = 10
     start = (int(page_number) - 1) * item_per_page
     end = int(page_number) * item_per_page
     if data_base:
@@ -122,8 +154,34 @@ def team_table_page(request):
 
 
 
+@csrf_exempt
+@api_view(["POST","GET"])
 def add_case(request):
-    data = json.loads(request.body)
+    # try:
+    adv_obj = Advocate.objects.all()
+    if request.method == "POST":
+        n_data = json.loads(request.body)
+        ndata=n_data
+        print(n_data)
+        new_adv_obj = Advocate.objects.get(advocate_id=int(ndata["advocate"]))
+        new_case=case(court=ndata["court"],case_type=ndata["case-type"],case_number=ndata["case_number"],cnr=ndata["crn_no"],respondent=ndata["Respondent-1"],
+                        high_court=ndata["high_court"],state=ndata["stateDropdown"],district=ndata["districtDropdown"],court_establishment=ndata["Court-Establishment"],year=ndata["year"],Petitioner=ndata["petitioner-1"],date_of_filling=ndata["date-filling-1"],court_hall=ndata["case-hall"],floor=ndata["case-floor"],
+                        classification=ndata["classification"],tital=ndata["Title"],disc=ndata["description"],Before_Honble_Judg=ndata["Honble_Judge"],
+                        ref_by=ndata["ref_by"],section=ndata["Section"],Priority=ndata["Priority"],under_act=ndata["Act"],under_section=ndata["under-section"],fir_police_station=ndata["FIR_Police_station"],
+                        fir_number=ndata["FIR_no"],fir_year=ndata["FIR_year"],affidavit_vakalat_date=ndata["affidavit-vakalath-date"],cnr_number=ndata["cnr_check"],advocate_id=ndata["advocate"])
+        new_case.save()
+        newcases2=case.objects.get(case_number=ndata["case_number"])
+        for ndata in n_data ["opponent_list"]:
+            newcase1=opponent(full_name=ndata["full_name"],email=ndata["email"],phone_number=ndata["phone"],case=newcases2)
+            newcase1.save()
+        
+        for ndata in n_data["advocate_detail"]:
+            advt_detail=opponent_advocate(full_name=ndata["full_name"],email=ndata["email"],phone_number=ndata["phone"],case=newcases2)
+            advt_detail.save()
+        return JsonResponse({"message":"Case added successfully","status":200},status=200)
+    # except Exception as e:
+    #     return JsonResponse({"message":e._str_(),"status":500},status=500)
+    return render(request,"Newcase.html",{"adv_obj":adv_obj})
 
 @api_view(["POST","GET"])
 def Addmember(request):
@@ -244,3 +302,35 @@ def change_to_status(request):
     to_obj.status = data["status"]
     to_obj.save()
     return JsonResponse({"message":"TO DO Updated Successfully","status":200},status=200)
+
+
+@api_view(["GET"])
+def filter_todo(request):
+    status = request.GET.get("status")
+    if status=="pending":
+        data = ToDO.objects.filter(status="pending",end_date__gt=datetime.now().date(),start_date__lt=datetime.now())
+    elif status=="upcomming":
+        data = ToDO.objects.filter(status="pending",start_date__gt=datetime.now().date())
+    elif status == "com":
+        data = ToDO.objects.filter(status="comp")
+    else:
+        data = ToDO.objects.all()
+
+    data_to_send_list=[]
+    for to_do in data:
+        data_to_send={}
+        data_to_send["tital"] = to_do.case_id.tital
+        data_to_send["advocate_name"] = to_do.advocate_name
+        data_to_send["assign_by"] = to_do.assign_by
+        data_to_send["end_date"] = to_do.end_date
+        data_to_send["id"] = to_do.to_do_id
+        data_to_send["description"] = to_do.description
+        if to_do.status=="comp":
+            data_to_send["status"] = "comp"
+        elif to_do.start_date>datetime.now().date() and to_do.status == "pending":
+            data_to_send["status"] = "upcomming"
+        elif to_do.status=="pending" and to_do.end_date>datetime.now().date() and to_do.start_date<datetime.now().date():
+            data_to_send["status"] = "pending"
+        data_to_send_list.append(data_to_send)
+    return JsonResponse({"to_do_list":data_to_send_list})
+

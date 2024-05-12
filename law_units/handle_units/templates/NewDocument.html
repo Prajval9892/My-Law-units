@@ -7,9 +7,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
-
+        <style>
+        #toast {
+            visibility: hidden; 
+            min-width: 100px; 
+            margin-left: -125px; 
+            background-color: var(--primary); 
+            color: whitesmoke; 
+            text-align: center; 
+            border-radius: 8px;
+            padding: 12px;
+            position: fixed; 
+            z-index: 1; 
+            right: 5%;
+            top: 80px;
+          }
+          
+          #toast.show {
+            visibility: visible; 
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+          }
+          
+          @keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+          }
+          
+          @keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+          }
+        </style>
+        
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+        <script src="{% static 'js/page_logic/add_doc.js' %}"></script>
+
 
         <!-- Theme Config Js -->
         <script src="{% static 'js/hyper-config.js' %}"></script>
@@ -47,7 +81,7 @@
         <!-- Begin page -->
         <div class="wrapper">
 
-            
+            <div id="toast">Image Uploaded</div>
             <!-- ========== Topbar Start ========== -->
             <div class="navbar-custom">
                 <div class="topbar container-fluid">
@@ -733,7 +767,7 @@
                                                 <form action="#" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
                                                     data-upload-preview-template="#uploadPreviewTemplate">
                                                     <div class="fallback">
-                                                        <input name="file" type="file" multiple />
+                                                        <input name="file" type="file" multiple id="doc_file"/>
                                                     </div>
 
                                                     <div class="dz-message needsclick">
@@ -753,7 +787,7 @@
                                                       <div class="mb-3 col-xl-6">
                                                     <label for="project-overview" class="form-label">Type</label>
                                                     
-                                                    <select class="form-control select2" data-toggle="select2">
+                                                    <select class="form-control select2" data-toggle="select2" id="Type">
                                                         <option>Please Select</option>
                                                         <option value="Adjournment Letter">Adjournment Letter</option>
                                                         <option value="Admission/ Denial">Admission/ Denial</option>
@@ -836,57 +870,68 @@
                                             <br>
                                                     <label for="project-overview" class="form-label">Would you like to link these documents with any of the cases :</label>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">
-                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes" onclick="show_case_list('Yes')">
+                                                        <label class="form-check-label" for="inlineRadio1" onclick="show_case_list('No')">Yes</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="no_radio" value="No">
                                                         <label class="form-check-label" for="inlineRadio2">No</label>
                                                     </div>
                                             </div>
                                         
+                                            <div class="mb-3 col-xl-6" hidden id="case_name">
+                                                <label for="project-overview" class="form-label">case</label>
+                                                
+                                                <select class="form-control select2" data-toggle="select2" id="case_name_list">
+                                                    <option>Please Select</option>
+                                                    {%  for i in case_obj %}
+                                                    <option value="{{ i.case_number }}">{{ i.tital }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">Term</label>
-                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="Term" class="form-label">Term</label>
+                                            <input type="text" id="Term" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">Description</label>
-                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="Description" class="form-label">Description</label>
+                                            <input type="text" id="Description" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">Judgement Date</label>
-                                            <input type="date" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="Judgement-Date" class="form-label">Judgement Date</label>
+                                            <input type="date" id="Judgement-Date" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">Expiry Date</label>
-                                            <input type="date" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="Expiry-Date" class="form-label">Expiry Date</label>
+                                            <input type="date" id="Expiry-Date" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">Purpose</label>
-                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="Purpose" class="form-label">Purpose</label>
+                                            <input type="text" id="Purpose" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">First Party</label>
-                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="First-Party" class="form-label">First Party</label>
+                                            <input type="text" id="First-Party" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">Second Party</label>
-                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="Second-Party" class="form-label">Second Party</label>
+                                            <input type="text" id="Second-Party" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="mb-3 col-xl-6">
-                                            <label for="project-overview" class="form-label">Headed By</label>
-                                            <input type="text" id="case-number" class="form-control" placeholder="Please enter the case number assigned by court">
+                                            <label for="Headed-By" class="form-label">Headed By</label>
+                                            <input type="text" id="Headed-By" class="form-control" placeholder="Please enter the case number assigned by court">
                                         </div>
                                         
                                         <div class="col-auto">
-                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                                <button type="button" class="btn btn-primary mb-2" onclick="submit_doc()">Submit</button>
                                         </div>
                                         
                                             </div>
