@@ -40,6 +40,7 @@ class contact_point(models.Model):
     designation = models.CharField(max_length=20)
 
 
+
 class case(models.Model):
     advocate = models.ForeignKey(Advocate,on_delete=models.CASCADE)
     case_number = models.IntegerField(primary_key=True)
